@@ -1,0 +1,67 @@
+{
+  "schema": "topic-registry-v0",
+  "version": "0.1",
+  "created_at": "2026-08-15",
+  "_meta": {
+    "authority_of": "结论/教训/决策理由的知识载体（Cairn topic 落地，E-130）。与判例池分层：判例=裁决（强约束），topic=结论/教训（供学习参考），互不双账。",
+    "rules": [
+      "type 值域：conclusion（结论）/ lesson（教训）/ decision-why（决策理由）",
+      "contains：关键词数组（检索用，先查已有清单优先复用，不造近义词）",
+      "source：来源任务/会话/文件（溯源必填）",
+      "结论先声明 type，正文带背景一句话（Cairn Background→Conclusion 结构）",
+      "只登记不迁移；禁自判；凭据零存储"
+    ]
+  },
+  "entries": [
+    {
+      "id": "t001",
+      "type": "lesson",
+      "title": "relay ok 但 transcript 无痕 ≠ 未送达",
+      "tldr": "判断 relay 派单是否生效，先查目标产物文件 mtime 与工作区变化，别只看 transcript（kimi 只回显提交后内容）",
+      "contains": ["relay", "transcript", "mtime", "误判"],
+      "source": "E-123 撞车教训 / slot-relay-usage.md #10",
+      "background": "E-123 曾因 transcript 无痕误判 relay 死、总控亲执撞车，实际执行侧已并行写文件",
+      "created_at": "2026-08-15"
+    },
+    {
+      "id": "t002",
+      "type": "lesson",
+      "title": "派单前置先查槽位水位",
+      "tldr": "每次 relay 派单前先查 DAC HUD//api/state 各槽 running/stopped 与 contextHealth.ratio，优先低水位活槽",
+      "contains": ["relay", "派单", "水位", "HUD"],
+      "source": "slot-relay-usage.md #11（2026-08-14 魅惑定）",
+      "background": "回车被吞/transcript 滞后两次误判都源于不了解目标忙闲",
+      "created_at": "2026-08-15"
+    },
+    {
+      "id": "t003",
+      "type": "decision-why",
+      "title": "注册制按对象类型分开，不合并大注册表",
+      "tldr": "数据库/skill/MCP 各一个注册制，合并=双头双账；注册制唯一+坐标多重",
+      "contains": ["注册制", "唯一", "双账"],
+      "source": "E-123 魅惑裁定（2026-08-14）",
+      "background": "webctl 双登教训；一个表管多种对象类型违背注册制唯一",
+      "created_at": "2026-08-15"
+    },
+    {
+      "id": "t004",
+      "type": "lesson",
+      "title": "真实任务测试价值大于夹具",
+      "tldr": "对账门三处设计修正（执行中态/旧名升级/已提交沉淀）全是真实任务 E-108/E-128 暴露的，夹具测不出",
+      "contains": ["测试", "真实任务", "夹具", "回归"],
+      "source": "E-127 回归轮 2/3 + E-128",
+      "background": "六路径夹具全绿后，真实任务仍暴露 3 个设计洞",
+      "created_at": "2026-08-15"
+    },
+    {
+      "id": "t005",
+      "type": "conclusion",
+      "title": "标准修订必须自带漂移检测",
+      "tldr": "修订附四段式（Affects/Detect/Fix/Safety）+ skill_spec_date，老会话按旧规干活可被机器查出（Cairn U1）",
+      "contains": ["漂移", "标准修订", "四段式"],
+      "source": "E-129（Cairn U1 落地）/ 普通标准「标准修订规范」节",
+      "background": "执行侧 agent 不知新规矩是我们体系最深的洞",
+      "created_at": "2026-08-15"
+    }
+  ]
+}

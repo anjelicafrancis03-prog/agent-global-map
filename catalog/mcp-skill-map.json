@@ -1,0 +1,213 @@
+{
+ "schema": "mcp-skill-map-v1",
+ "authority_note": "E-23/E-22 联动（2026-08-03 总控批准）：MCP↔skill 挂载维度映射。mcp_manager/registry.json 为 MCP 唯一权威，本文件为投影；skill 仅指 skill-manager central 库（C:\\Users\\64998\\.agents\\skills）。改 MCP 先改 registry，再同步本文件，过 mcp_manager audit --check-skill-map 门闸（零未知指向）。",
+ "created_at": "2026-08-03T19:40:00+08:00",
+ "gate_rules": {
+  "exposer_skip_static_list_check": true,
+  "external_skip_central_membership_check": true
+ },
+ "mcps": {
+  "agent_toolbox": {
+   "panel": "mcp-manager.servers",
+   "nature": "tool-interface",
+   "skills": [
+    "anysearch",
+    "zhihu-master",
+    "zhihu-converter",
+    "agent-reach",
+    "redfox-gzh-search",
+    "redfox-gzh-astock-top",
+    "redfox-gzh-subscribe",
+    "redfox-wechat-search",
+    "redfox-wechat-10w-hot",
+    "redfox-wechat-top-account",
+    "redfox-wechat-account-analyzer",
+    "redfox-wechat-similar-account",
+    "redfox-wechat-fastest-growing",
+    "redfox-wechat-original-hot",
+    "redfox-wechat-channels-ai-feed",
+    "search-tools-sop",
+    "wechat-article-camofox",
+    "wechat-public-article-reader",
+    "baoyu-post-to-wechat",
+    "workflow-validator-generator",
+    "right-button-screenshot-assistant",
+    "windows-system-maintenance",
+    "skills-master-rules-distill",
+    "skill-creator",
+    "skill-vetter",
+    "writing-skills",
+    "find-skills",
+    "mcp-builder",
+    "mcp-cli",
+    "mcp-workflow-master",
+    "agent-toolbox"
+   ],
+   "pure_tool_modules": {
+    "note": "以下 9 个模块为纯工具（无 central skill），显式 null 防误判",
+    "local-search": null,
+    "webclaw": null,
+    "wechat-download-tool": null,
+    "codegraph": null,
+    "agentmemory": null,
+    "codex-harness": null,
+    "artifact-provenance": null,
+    "harness-evidence-index": null,
+    "threadmerge-everything-discovery": null
+   }
+  },
+  "webctl": {
+   "panel": "hardware.tools-browser",
+   "nature": "tool-interface",
+   "skills": [
+    "playwright",
+    "playwright-interactive",
+    "agent-browser",
+    "browser-act"
+   ],
+   "note": "另有 6 个关联 skill（browser-use/clawbrowser/playwright-browser-automation/playwright-scraper-skill/agent-browser-core/web-access）在 WorkBuddy 库（非 central），本映射文件只管 central 库，故不纳入"
+  },
+  "skilltool": {
+   "panel": "mcp-manager.servers",
+   "nature": "exposer",
+   "type": "exposer",
+   "note": "动态管道：暴露全部 formal skill，不列静态清单；门闸跳过静态清单校验（gate_rules.exposer_skip_static_list_check）"
+  },
+  "mattpocock_skills": {
+   "panel": "skill-manager.catalog",
+   "nature": "external",
+   "target": "external",
+   "note": "映射对象为外部仓库 F:\\codex\\external\\mattpocock-skills（非 central 库）；门闸跳过 central 成员校验（gate_rules.external_skip_central_membership_check）"
+  },
+  "agent_hub": {
+   "panel": "mcp-manager.servers",
+   "nature": "unmapped",
+   "skills": [],
+   "note": "E-123 阶段4 补登记（skills 待逐条映射，禁瞎挂）"
+  },
+  "agentmemory": {
+   "panel": "mcp-manager.servers",
+   "nature": "unmapped",
+   "skills": [],
+   "note": "E-123 阶段4 补登记（skills 待逐条映射，禁瞎挂）"
+  },
+  "brightdata": {
+   "panel": "mcp-manager.servers",
+   "nature": "unmapped",
+   "skills": [],
+   "note": "E-123 阶段4 补登记（skills 待逐条映射，禁瞎挂）"
+  },
+  "codebase_memory_mcp": {
+   "panel": "mcp-manager.servers",
+   "nature": "unmapped",
+   "skills": [],
+   "note": "E-123 阶段4 补登记（skills 待逐条映射，禁瞎挂）"
+  },
+  "codegraph": {
+   "panel": "mcp-manager.servers",
+   "nature": "unmapped",
+   "skills": [],
+   "note": "E-123 阶段4 补登记（skills 待逐条映射，禁瞎挂）"
+  },
+  "context-mode": {
+   "panel": "mcp-manager.servers",
+   "nature": "unmapped",
+   "skills": [],
+   "note": "E-123 阶段4 补登记（skills 待逐条映射，禁瞎挂）"
+  },
+  "context7": {
+   "panel": "mcp-manager.servers",
+   "nature": "unmapped",
+   "skills": [],
+   "note": "E-123 阶段4 补登记（skills 待逐条映射，禁瞎挂）"
+  },
+  "dbx": {
+   "panel": "mcp-manager.servers",
+   "nature": "unmapped",
+   "skills": [],
+   "note": "E-123 阶段4 补登记（skills 待逐条映射，禁瞎挂）"
+  },
+  "docker": {
+   "panel": "mcp-manager.servers",
+   "nature": "unmapped",
+   "skills": [],
+   "note": "E-123 阶段4 补登记（skills 待逐条映射，禁瞎挂）"
+  },
+  "figma": {
+   "panel": "mcp-manager.servers",
+   "nature": "unmapped",
+   "skills": [],
+   "note": "E-123 阶段4 补登记（skills 待逐条映射，禁瞎挂）"
+  },
+  "firecrawl": {
+   "panel": "mcp-manager.servers",
+   "nature": "unmapped",
+   "skills": [],
+   "note": "E-123 阶段4 补登记（skills 待逐条映射，禁瞎挂）"
+  },
+  "github": {
+   "panel": "mcp-manager.servers",
+   "nature": "unmapped",
+   "skills": [],
+   "note": "E-123 阶段4 补登记（skills 待逐条映射，禁瞎挂）"
+  },
+  "glm4v-vision": {
+   "panel": "mcp-manager.servers",
+   "nature": "unmapped",
+   "skills": [],
+   "note": "E-123 阶段4 补登记（skills 待逐条映射，禁瞎挂）"
+  },
+  "grok": {
+   "panel": "mcp-manager.servers",
+   "nature": "unmapped",
+   "skills": [],
+   "note": "E-123 阶段4 补登记（skills 待逐条映射，禁瞎挂）"
+  },
+  "kimi-cu-win": {
+   "panel": "mcp-manager.servers",
+   "nature": "unmapped",
+   "skills": [],
+   "note": "E-123 阶段4 补登记（skills 待逐条映射，禁瞎挂）"
+  },
+  "node_repl": {
+   "panel": "mcp-manager.servers",
+   "nature": "unmapped",
+   "skills": [],
+   "note": "E-123 阶段4 补登记（skills 待逐条映射，禁瞎挂）"
+  },
+  "onemcp_pilot": {
+   "panel": "mcp-manager.servers",
+   "nature": "unmapped",
+   "skills": [],
+   "note": "E-123 阶段4 补登记（skills 待逐条映射，禁瞎挂）"
+  },
+  "playwright": {
+   "panel": "mcp-manager.servers",
+   "nature": "unmapped",
+   "skills": [],
+   "note": "E-123 阶段4 补登记（skills 待逐条映射，禁瞎挂）"
+  },
+  "tavily": {
+   "panel": "mcp-manager.servers",
+   "nature": "unmapped",
+   "skills": [],
+   "note": "E-123 阶段4 补登记（skills 待逐条映射，禁瞎挂）"
+  },
+  "threadmerge": {
+   "panel": "mcp-manager.servers",
+   "nature": "unmapped",
+   "skills": [],
+   "note": "E-123 阶段4 补登记（skills 待逐条映射，禁瞎挂）"
+  },
+  "vibe_conductor": {
+   "panel": "mcp-manager.servers",
+   "nature": "unmapped",
+   "skills": [],
+   "note": "E-123 阶段4 补登记（skills 待逐条映射，禁瞎挂）"
+  }
+ },
+ "_meta_e123": {
+  "note": "E-123 阶段4 补全 21 个未映射 MCP（2026-08-14）：全 25 覆盖，skills 空待映射",
+  "gate": "零未知指向（skills 为空或指向 central 库）"
+ }
+}

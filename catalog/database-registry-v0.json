@@ -1,0 +1,567 @@
+{
+  "schema": "database-registry-v0",
+  "version": "0.1",
+  "updated_at": "2026-08-14",
+  "_meta": {
+    "authority_of": "全系统数据库/数据仓库/JSON 台账的唯一权威台账（E-123 数据库注册制第一版）",
+    "rules": [
+      "注册制唯一：一个数据库只登记一次，家=本注册表；坐标可挂语义域（map_node_id+map_subnode），注册表不分 L3（L3 归语义域）",
+      "category 值域：business-db / system-db / registry-json / file-corpus（源文件语料非库）/ app-cache（忽略清单不注册）",
+      "original_doc 分类型：business-db 知识类必填原文路径；system-db/registry-json 允许空（本体路径即原文）；database_ref 必填且路径存在",
+      "lifecycle 值域：active / pilot / deprecated / archived（只 deprecated 不删；禁自判，反查权威）",
+      "只登记不迁移：注册表是投影，不动任何数据库本体；只存路径指针，零凭据"
+    ]
+  },
+  "entries": [
+    {
+      "id": "db-001",
+      "name": "顾子明知识库",
+      "engine": "sqlite",
+      "path": "F:/政经/_knowledge_base/data/kb.db",
+      "size_note": "kb.db+knowledge_base.db",
+      "lifecycle": "active",
+      "category": "business-db",
+      "map_coordinate": {
+        "map_node_id": "search",
+        "map_subnode": "tools"
+      },
+      "topic": "rag/政经",
+      "original_doc": "F:/政经/_knowledge_base/incoming_articles",
+      "database_ref": "F:/政经/_knowledge_base/data/kb.db",
+      "owner": "用户",
+      "updated_at": "2026-08-14"
+    },
+    {
+      "id": "db-002",
+      "name": "医美语料库",
+      "engine": "sqlite+duckdb",
+      "path": "F:/codex/data/medical-aesthetic-corpus/medical_aesthetic_corpus.sqlite",
+      "size_note": "sqlite 342MB+duckdb 104MB，1089 文",
+      "lifecycle": "active",
+      "category": "business-db",
+      "map_coordinate": {
+        "map_node_id": "projects",
+        "map_subnode": "project-assets"
+      },
+      "topic": "rag/医美",
+      "original_doc": "F:/codex/data/medical-aesthetic-corpus/reference",
+      "database_ref": "F:/codex/data/medical-aesthetic-corpus/medical_aesthetic_corpus.sqlite",
+      "owner": "用户",
+      "updated_at": "2026-08-14"
+    },
+    {
+      "id": "db-003",
+      "name": "记忆承载 RAG",
+      "engine": "sqlite",
+      "path": "C:/RAG/corpora/memory-carry",
+      "size_note": "graph 34MB，117 文档",
+      "lifecycle": "active",
+      "category": "business-db",
+      "map_coordinate": {
+        "map_node_id": "search",
+        "map_subnode": "tools"
+      },
+      "topic": "rag/记忆承载",
+      "original_doc": "C:/RAG/corpora/memory-carry/markdown",
+      "database_ref": "C:/RAG/corpora/memory-carry",
+      "owner": "用户",
+      "updated_at": "2026-08-14"
+    },
+    {
+      "id": "db-004",
+      "name": "显明易说 KB",
+      "engine": "sqlite+duckdb",
+      "path": "F:/codex/data/xianming-yishuo-kb",
+      "size_note": "xmy.db 12MB+duckdb 17MB，164 文",
+      "lifecycle": "active",
+      "category": "business-db",
+      "map_coordinate": {
+        "map_node_id": "search",
+        "map_subnode": "tools"
+      },
+      "topic": "rag/显明易说",
+      "original_doc": "F:/codex/data/xianming-yishuo-kb",
+      "database_ref": "F:/codex/data/xianming-yishuo-kb",
+      "owner": "用户",
+      "updated_at": "2026-08-14"
+    },
+    {
+      "id": "db-005",
+      "name": "史记 KB",
+      "engine": "sqlite+duckdb+d1",
+      "path": "F:/codex/cloudflare/shiji-kb",
+      "size_note": "130章/3197事件，已部署",
+      "lifecycle": "active",
+      "category": "business-db",
+      "map_coordinate": {
+        "map_node_id": "projects",
+        "map_subnode": "project-assets"
+      },
+      "topic": "rag/史记",
+      "original_doc": "F:/codex/cloudflare/shiji-kb",
+      "database_ref": "F:/codex/cloudflare/shiji-kb",
+      "owner": "用户",
+      "updated_at": "2026-08-14"
+    },
+    {
+      "id": "db-006",
+      "name": "付费文档",
+      "engine": "files",
+      "path": "D:/新建文件夹/记忆承载21-26付费文",
+      "size_note": "134 文件 370MB",
+      "lifecycle": "archived",
+      "category": "file-corpus",
+      "map_coordinate": {
+        "map_node_id": "beads",
+        "map_subnode": "intake"
+      },
+      "topic": "语料/付费文",
+      "original_doc": "D:/新建文件夹/记忆承载21-26付费文",
+      "database_ref": "D:/新建文件夹/记忆承载21-26付费文",
+      "owner": "用户",
+      "updated_at": "2026-08-14",
+      "note": "源文件语料非数据库（裁定 file-corpus 分类）"
+    },
+    {
+      "id": "db-007",
+      "name": "公众号原始下载",
+      "engine": "files",
+      "path": "F:/codex/下载",
+      "size_note": "3725 文件待整理",
+      "lifecycle": "pilot",
+      "category": "file-corpus",
+      "map_coordinate": {
+        "map_node_id": "beads",
+        "map_subnode": "intake"
+      },
+      "topic": "语料/公众号",
+      "original_doc": "F:/codex/下载",
+      "database_ref": "F:/codex/下载",
+      "owner": "用户",
+      "updated_at": "2026-08-14",
+      "note": "源文件语料非数据库（裁定 file-corpus 分类）"
+    },
+    {
+      "id": "db-008",
+      "name": "n8n 本地库",
+      "engine": "sqlite",
+      "path": "F:/codex/data/n8n-local-dev/database.sqlite",
+      "size_note": "0.8MB 开发",
+      "lifecycle": "active",
+      "category": "business-db",
+      "map_coordinate": {
+        "map_node_id": "hardware",
+        "map_subnode": "tools-windows"
+      },
+      "topic": "工具/n8n",
+      "original_doc": null,
+      "database_ref": "F:/codex/data/n8n-local-dev/database.sqlite",
+      "owner": "用户",
+      "updated_at": "2026-08-14",
+      "note": "original_doc=本体路径即原文"
+    },
+    {
+      "id": "db-009",
+      "name": "we-mp-rss 库",
+      "engine": "sqlite",
+      "path": "F:/codex/output/we-mp-rss/data/db.db",
+      "size_note": "32.5MB",
+      "lifecycle": "active",
+      "category": "business-db",
+      "map_coordinate": {
+        "map_node_id": "hardware",
+        "map_subnode": "tools-windows"
+      },
+      "topic": "工具/we-mp-rss",
+      "original_doc": null,
+      "database_ref": "F:/codex/output/we-mp-rss/data/db.db",
+      "owner": "用户",
+      "updated_at": "2026-08-14",
+      "note": "original_doc=本体路径即原文"
+    },
+    {
+      "id": "db-010",
+      "name": "医美 APP demo",
+      "engine": "sqlite",
+      "path": "F:/codex/nose-sim-demo/data/demo.sqlite3",
+      "size_note": "0.1MB 演示",
+      "lifecycle": "pilot",
+      "category": "business-db",
+      "map_coordinate": {
+        "map_node_id": "projects",
+        "map_subnode": "project-assets"
+      },
+      "topic": "项目/nose-sim-demo",
+      "original_doc": null,
+      "database_ref": "F:/codex/nose-sim-demo/data/demo.sqlite3",
+      "owner": "用户",
+      "updated_at": "2026-08-14",
+      "note": "original_doc=本体路径即原文"
+    },
+    {
+      "id": "db-011",
+      "name": "tiktok 爬虫库",
+      "engine": "sqlite",
+      "path": "F:/codex/tiktok-open-crawler-poc/data/tiktok_records.sqlite",
+      "size_note": "POC",
+      "lifecycle": "pilot",
+      "category": "business-db",
+      "map_coordinate": {
+        "map_node_id": "projects",
+        "map_subnode": "project-assets"
+      },
+      "topic": "项目/tiktok POC",
+      "original_doc": null,
+      "database_ref": "F:/codex/tiktok-open-crawler-poc/data/tiktok_records.sqlite",
+      "owner": "用户",
+      "updated_at": "2026-08-14",
+      "note": "original_doc=本体路径即原文"
+    },
+    {
+      "id": "db-012",
+      "name": "english-oral",
+      "engine": "sqlite",
+      "path": "F:/codex/tmp/english-oral-learning.db",
+      "size_note": "临时",
+      "lifecycle": "pilot",
+      "category": "business-db",
+      "map_coordinate": {
+        "map_node_id": "projects",
+        "map_subnode": "project-assets"
+      },
+      "topic": "工具/英语口语",
+      "original_doc": null,
+      "database_ref": "F:/codex/tmp/english-oral-learning.db",
+      "owner": "用户",
+      "updated_at": "2026-08-14"
+    },
+    {
+      "id": "db-013",
+      "name": "sag-okf 原型",
+      "engine": "sqlite",
+      "path": "F:/codex/tmp/sag-okf-prototype.sqlite",
+      "size_note": "原型",
+      "lifecycle": "pilot",
+      "category": "business-db",
+      "map_coordinate": {
+        "map_node_id": "projects",
+        "map_subnode": "project-assets"
+      },
+      "topic": "原型/sag-okf",
+      "original_doc": null,
+      "database_ref": "F:/codex/tmp/sag-okf-prototype.sqlite",
+      "owner": "用户",
+      "updated_at": "2026-08-14"
+    },
+    {
+      "id": "db-014",
+      "name": "applet 缓存",
+      "engine": "sqlite",
+      "path": "F:/codex/缓存/applet.db",
+      "size_note": "3.6MB 缓存",
+      "lifecycle": "active",
+      "category": "business-db",
+      "map_coordinate": {
+        "map_node_id": "hardware",
+        "map_subnode": "tools-windows"
+      },
+      "topic": "缓存/applet",
+      "original_doc": null,
+      "database_ref": "F:/codex/缓存/applet.db",
+      "owner": "用户",
+      "updated_at": "2026-08-14",
+      "note": "应用缓存类，有业务引用故列存"
+    },
+    {
+      "id": "db-015",
+      "name": "beads dolt 真身库",
+      "engine": "dolt",
+      "path": "F:/codex/.beads/embeddeddolt/codex",
+      "size_note": "任务追踪唯一权威",
+      "lifecycle": "active",
+      "category": "system-db",
+      "map_coordinate": {
+        "map_node_id": "beads",
+        "map_subnode": "intake"
+      },
+      "topic": "治理/beads 权威本体",
+      "original_doc": null,
+      "database_ref": "F:/codex/.beads/embeddeddolt/codex",
+      "owner": "总控",
+      "updated_at": "2026-08-14",
+      "note": "system-db：original_doc 空，本体路径即原文"
+    },
+    {
+      "id": "db-016",
+      "name": "codegraph 索引",
+      "engine": "sqlite",
+      "path": "F:/codex/.codegraph/codegraph.db",
+      "size_note": "544.7MB",
+      "lifecycle": "active",
+      "category": "system-db",
+      "map_coordinate": {
+        "map_node_id": "harness",
+        "map_subnode": "modules"
+      },
+      "topic": "索引/codegraph",
+      "original_doc": null,
+      "database_ref": "F:/codex/.codegraph/codegraph.db",
+      "owner": "总控",
+      "updated_at": "2026-08-14"
+    },
+    {
+      "id": "db-017",
+      "name": "grok-cli session",
+      "engine": "sqlite",
+      "path": "F:/codex/.grok-cli/session.db",
+      "size_note": "CLI 会话",
+      "lifecycle": "pilot",
+      "category": "system-db",
+      "map_coordinate": {
+        "map_node_id": "agent-hub",
+        "map_subnode": "registry"
+      },
+      "topic": "会话/grok-cli",
+      "original_doc": null,
+      "database_ref": "F:/codex/.grok-cli/session.db",
+      "owner": "总控",
+      "updated_at": "2026-08-14"
+    },
+    {
+      "id": "db-018",
+      "name": "codex sqlite",
+      "engine": "sqlite",
+      "path": "C:/Users/64998/.codex/sqlite/codex-dev.db",
+      "size_note": "Codex 状态 0.2MB",
+      "lifecycle": "active",
+      "category": "system-db",
+      "map_coordinate": {
+        "map_node_id": "agent-hub",
+        "map_subnode": "registry"
+      },
+      "topic": "状态/codex",
+      "original_doc": null,
+      "database_ref": "C:/Users/64998/.codex/sqlite/codex-dev.db",
+      "owner": "总控",
+      "updated_at": "2026-08-14"
+    },
+    {
+      "id": "db-019",
+      "name": "thread-merge 索引",
+      "engine": "sqlite",
+      "path": "F:/codex/reports/thread-merge/thread-merge-index.sqlite",
+      "size_note": "7.8GB（大）",
+      "lifecycle": "active",
+      "category": "system-db",
+      "map_coordinate": {
+        "map_node_id": "harness",
+        "map_subnode": "modules"
+      },
+      "topic": "索引/thread-merge",
+      "original_doc": null,
+      "database_ref": "F:/codex/reports/thread-merge/thread-merge-index.sqlite",
+      "owner": "总控",
+      "updated_at": "2026-08-14"
+    },
+    {
+      "id": "db-020",
+      "name": "context-mode 内容",
+      "engine": "sqlite",
+      "path": "F:/codex/reports/context-mode/content",
+      "size_note": "上下文压缩产物",
+      "lifecycle": "active",
+      "category": "system-db",
+      "map_coordinate": {
+        "map_node_id": "harness",
+        "map_subnode": "modules"
+      },
+      "topic": "压缩/context-mode",
+      "original_doc": null,
+      "database_ref": "F:/codex/reports/context-mode/content",
+      "owner": "总控",
+      "updated_at": "2026-08-14"
+    },
+    {
+      "id": "db-021",
+      "name": "browseract browsers",
+      "engine": "sqlite",
+      "path": "C:/Users/64998/AppData/Roaming/browseract/browsers.db",
+      "size_note": "浏览器自动化",
+      "lifecycle": "pilot",
+      "category": "system-db",
+      "map_coordinate": {
+        "map_node_id": "hardware",
+        "map_subnode": "tools-browser"
+      },
+      "topic": "浏览器/browseract",
+      "original_doc": null,
+      "database_ref": "C:/Users/64998/AppData/Roaming/browseract/browsers.db",
+      "owner": "总控",
+      "updated_at": "2026-08-14"
+    },
+    {
+      "id": "db-022",
+      "name": "codeg",
+      "engine": "sqlite",
+      "path": "C:/Users/64998/AppData/Roaming/codeg/codeg.db",
+      "size_note": "代码生成 0.1MB",
+      "lifecycle": "pilot",
+      "category": "system-db",
+      "map_coordinate": {
+        "map_node_id": "agent-hub",
+        "map_subnode": "registry"
+      },
+      "topic": "工具/codeg",
+      "original_doc": null,
+      "database_ref": "C:/Users/64998/AppData/Roaming/codeg/codeg.db",
+      "owner": "总控",
+      "updated_at": "2026-08-14"
+    },
+    {
+      "id": "db-023",
+      "name": "DAC agents.json",
+      "engine": "json",
+      "path": "F:/codex/tools/desktop-agent-console/config/agents.json",
+      "size_note": "agent 注册表",
+      "lifecycle": "active",
+      "category": "registry-json",
+      "map_coordinate": {
+        "map_node_id": "agent-hub",
+        "map_subnode": "registry"
+      },
+      "topic": "注册制/DAC agents",
+      "original_doc": null,
+      "database_ref": "F:/codex/tools/desktop-agent-console/config/agents.json",
+      "owner": "总控",
+      "updated_at": "2026-08-14"
+    },
+    {
+      "id": "db-024",
+      "name": "DAC slot-status.json",
+      "engine": "json",
+      "path": "F:/codex/tools/desktop-agent-console/config/slot-status.json",
+      "size_note": "槽位状态权威",
+      "lifecycle": "active",
+      "category": "registry-json",
+      "map_coordinate": {
+        "map_node_id": "agent-hub",
+        "map_subnode": "registry"
+      },
+      "topic": "注册制/DAC 槽位",
+      "original_doc": null,
+      "database_ref": "F:/codex/tools/desktop-agent-console/config/slot-status.json",
+      "owner": "总控",
+      "updated_at": "2026-08-14"
+    },
+    {
+      "id": "db-025",
+      "name": "DAC devices.json",
+      "engine": "json",
+      "path": "F:/codex/tools/desktop-agent-console/config/devices.json",
+      "size_note": "设备状态权威",
+      "lifecycle": "active",
+      "category": "registry-json",
+      "map_coordinate": {
+        "map_node_id": "hardware",
+        "map_subnode": "tools-windows"
+      },
+      "topic": "注册制/DAC 设备",
+      "original_doc": null,
+      "database_ref": "F:/codex/tools/desktop-agent-console/config/devices.json",
+      "owner": "总控",
+      "updated_at": "2026-08-14"
+    },
+    {
+      "id": "db-026",
+      "name": "DAC layouts.json",
+      "engine": "json",
+      "path": "F:/codex/tools/desktop-agent-console/config/layouts.json",
+      "size_note": "布局权威",
+      "lifecycle": "active",
+      "category": "registry-json",
+      "map_coordinate": {
+        "map_node_id": "agent-hub",
+        "map_subnode": "registry"
+      },
+      "topic": "注册制/DAC 布局",
+      "original_doc": null,
+      "database_ref": "F:/codex/tools/desktop-agent-console/config/layouts.json",
+      "owner": "总控",
+      "updated_at": "2026-08-14"
+    },
+    {
+      "id": "db-027",
+      "name": "DAC slot-relay.json",
+      "engine": "json",
+      "path": "F:/codex/tools/desktop-agent-console/config/slot-relay.json",
+      "size_note": "relay 白名单权威",
+      "lifecycle": "active",
+      "category": "registry-json",
+      "map_coordinate": {
+        "map_node_id": "agent-hub",
+        "map_subnode": "registry"
+      },
+      "topic": "注册制/relay 白名单",
+      "original_doc": null,
+      "database_ref": "F:/codex/tools/desktop-agent-console/config/slot-relay.json",
+      "owner": "总控",
+      "updated_at": "2026-08-14"
+    },
+    {
+      "id": "db-028",
+      "name": "topic 结论注册表",
+      "engine": "json",
+      "path": "F:/codex/tools/agent-system-map/catalog/topic-registry-v0.json",
+      "size_note": "5 条起步（E-130 建），管结论/教训/决策理由",
+      "lifecycle": "active",
+      "category": "registry-json",
+      "map_coordinate": {
+        "map_node_id": "map.topology",
+        "map_subnode": "governance"
+      },
+      "topic": "注册制/topic 结论层",
+      "original_doc": null,
+      "database_ref": "F:/codex/tools/agent-system-map/catalog/topic-registry-v0.json",
+      "owner": "总控",
+      "updated_at": "2026-08-15",
+      "note": "E-130 新建；与判例池分层（判例=裁决/topic=结论）"
+    },
+    {
+      "id": "db-029",
+      "name": "L3 值域全局注册表",
+      "engine": "json",
+      "path": "F:/codex/tools/agent-system-map/catalog/l3-registry-v0.json",
+      "size_note": "41 L3（data-asset 15 + credential 26），生成物索引",
+      "lifecycle": "active",
+      "category": "registry-json",
+      "map_coordinate": {
+        "map_node_id": "map.topology",
+        "map_subnode": "governance"
+      },
+      "topic": "注册制/L3 全局值域",
+      "original_doc": null,
+      "database_ref": "F:/codex/tools/agent-system-map/catalog/l3-registry-v0.json",
+      "owner": "总控",
+      "updated_at": "2026-08-15",
+      "note": "E-135 生成式注册表（build_l3_registry.py 生成，源=各域 taxonomy；kind 按 source 判定；task-projection 未登记记为历史遗漏）"
+    },
+    {
+      "id": "db-030",
+      "name": "维修手册章节索引",
+      "path": "F:\\codex\\tools\\agent-system-map\\catalog\\repair-manual-section-map-v0.json",
+      "engine": "json",
+      "purpose": "E-136 v7：维修手册章节树确定性坐标映射（144/170 章节），covers_object 关联键",
+      "lifecycle": "active",
+      "owner": "总控1",
+      "map_coordinate": {
+        "map_node_id": "topology",
+        "map_subnode": "governance"
+      },
+      "source": "E-136 手册关联方案 v7",
+      "added_at": "2026-08-16T01:05:00+08:00",
+      "category": "registry-json",
+      "database_ref": "F:/codex/tools/agent-system-map/catalog/repair-manual-section-map-v0.json",
+      "updated_at": "2026-08-16"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "registry_id": "new-media-ops-taxonomy-v0",
+  "schema": "taxonomy-v0",
+  "authority_note": "新媒体运营域 L3 细分权威（2026-08-10 魅惑立）。语法同 dac：parent 挂子域/增长走候选→魅惑或总控批/只 deprecated 不删。",
+  "data_asset_classes": [
+    {
+      "id": "douyin",
+      "name": "抖音",
+      "parent": "projects.new-media-ops",
+      "status": "active",
+      "note": "抖音新媒体运营 L3（2026-08-10 魅惑拍板设类）：抖音视频下载/批量下载/爆款文案/自动发布/通用文案等 skill 归此"
+    }
+  ]
+}

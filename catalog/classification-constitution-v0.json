@@ -1,0 +1,112 @@
+{
+  "schema": "classification-constitution-v0",
+  "created_at": "2026-08-04",
+  "authority_note": "宪法文本在普通标准「标准动作」节分类总则（E-31）；本文件为机器消费骨架；域维度细则由板块 owner 后续补（用户原话，非本单范围）。",
+  "first_weights": {
+    "coordinate": {
+      "label": "归属轴",
+      "fields": [
+        "map_node_id",
+        "map_subnode",
+        "dac"
+      ],
+      "authority": [
+        "catalog/panel-manifest-v0.json",
+        "catalog/data-asset-taxonomy-v0.json"
+      ],
+      "rule": "对象进场先给坐标；坐标与值域只许反查权威，禁自判（门闸 T8 校验）"
+    },
+    "lifecycle": {
+      "label": "状态轴",
+      "pattern": "candidate → active/managed → deprecated/archived（按域定型）",
+      "per_domain_states": {
+        "task": [
+          "open",
+          "in_progress",
+          "blocked",
+          "deferred",
+          "closed",
+          "archived(lifecycle标注，非 beads 原生态)"
+        ],
+        "mcp": [
+          "pilot",
+          "managed"
+        ],
+        "skill": [
+          "draft",
+          "test",
+          "formal",
+          "classified"
+        ],
+        "asset": [
+          "candidate",
+          "pilot",
+          "managed",
+          "deprecated"
+        ],
+        "agent": [
+          "pilot",
+          "managed"
+        ],
+        "thread": [
+          "candidate",
+          "active",
+          "candidate-archive",
+          "archived"
+        ],
+        "guardian_task": [
+          "enabled",
+          "disabled",
+          "running/ready",
+          "unregistered"
+        ]
+      }
+    }
+  },
+  "domain_dimensions": {
+    "task": [
+      "effort",
+      "effort_reason",
+      "priority",
+      "risk",
+      "origin"
+    ],
+    "mcp": [
+      "enabled_for",
+      "status"
+    ],
+    "skill": [
+      "lifecycle",
+      "panel_subnode"
+    ],
+    "asset": [
+      "type",
+      "lifecycle"
+    ],
+    "agent": [
+      "family",
+      "slot",
+      "status"
+    ],
+    "thread": [
+      "mode",
+      "post",
+      "status"
+    ],
+    "guardian_task": [
+      "运行状态",
+      "运行史",
+      "停止原因"
+    ]
+  },
+  "sources": {
+    "task": "effort-rules-v0.json + 任务多维分类（thread-center module-card）",
+    "mcp": "mcp_manager/registry.json（20 managed / 3 pilot，无 deprecated 实测）",
+    "skill": "~/.agents/skills/_lifecycle.json（register-test→test→formal transitions）",
+    "asset": "webpage-asset-registry-v0.json（16 db candidate 等 lifecycle）",
+    "agent": "agent-hub/agents.json（10 agents：6 managed/4 pilot；词汇表含 blocked/deprecated 但未实测使用）",
+    "thread": "thread-center/registry.json + module-card（四态）",
+    "guardian_task": "计划任务实测（Enabled/State/LastTaskResult，E-03 门闸）"
+  },
+  "generated_at": "2026-08-04T02:50:00+08:00"
+}

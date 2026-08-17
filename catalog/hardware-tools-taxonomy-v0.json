@@ -1,0 +1,51 @@
+{
+  "registry_id": "hardware-tools-taxonomy-v0",
+  "schema": "hardware-tools-taxonomy-v0",
+  "created_at": "2026-08-04T23:55:00+08:00",
+  "read_only": true,
+  "authority": "E-35 施工项 1（三级坐标优化决议 2026-08-04 §面板3 hardware）",
+  "authority_note": "hardware 面板 tools-windows 子域工具性质 L3【唯一定义点】。语法照 dac（data-asset-taxonomy-v0）：新类=候选提案→总控批准→active；类只许 deprecated 不许删；混合性质用 _secondary 副字段；破格独立走增长流。破格四类（使用频率+复杂度破格，手机/平板按设备切，adb+desktop 移动版归它们）+ 常规三类。L3 切法可按功能也可按设备（对象中心），检索优先族谱不究。",
+  "dac_syntax_ref": "F:/codex/tools/agent-system-map/catalog/data-asset-taxonomy-v0.json",
+  "lifecycle_rules": {
+    "candidate": "候选提案",
+    "active": "总控批准后",
+    "deprecated": "只许 deprecated 不许删"
+  },
+  "tool_classes": {
+    "breakout": {
+      "browser": {
+        "title": "browser 系",
+        "note": "浏览器工具/浏览器化封装（使用频率+复杂度破格；tools-browser 早独立，追认既有事实）"
+      },
+      "cloudflare": {
+        "title": "cloudflare 系",
+        "note": "Cloudflare 平台工具（Workers/Pages/部署）"
+      },
+      "phone": {
+        "title": "手机系",
+        "note": "按设备切：手机端工具（含 adb 相关）"
+      },
+      "tablet": {
+        "title": "平板系",
+        "note": "按设备切：平板端工具（含 desktop 移动版；termux 系归此）"
+      }
+    },
+    "regular": {
+      "content-production": {
+        "title": "内容生产",
+        "note": "内容生成/处理/下载/导入等生产类工具"
+      },
+      "infra-ops": {
+        "title": "基建运维",
+        "note": "代理/网关/保活/数据库/部署/运维类"
+      },
+      "dev-debug": {
+        "title": "开发调试",
+        "note": "脚本/模板/调试/理解类开发工具"
+      }
+    }
+  },
+  "l3_status": "deprecated-merged-into-dac",
+  "note": "34 卡打标建议见 asset registry 的 l3_tool_class 字段（E-35 施工项 1）；拿不准的列 ❓ 交魅惑（清单见 E35-run-manifest 或施工交付物）",
+  "merged_note": "2026-08-05 魅惑拍板：tools-windows 的 L3 统一为 dac（data-asset-taxonomy-v0.json 为唯一 L3 权威）——exe/工具=dac:ruanjian，figma 等终端设计=dac:shijue；browser/cloudflare/手机/平板破格类仍在各自子域/设备 L3；本文件留档"
+}

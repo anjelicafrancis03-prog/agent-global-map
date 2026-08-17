@@ -1,0 +1,260 @@
+{
+  "registry_id": "search-tools-registry-v0",
+  "schema": "search-tools-registry-v0",
+  "created_at": "2026-08-04T23:45:00+08:00",
+  "read_only": true,
+  "authority": "E-35 施工项 2（三级坐标优化决议 2026-08-04 §面板4 search）",
+  "authority_note": "search 工具机器权威【唯一定义点】。线上 L3=时效三层（A1 高时效/A2 一般/X 海外，与 8 搜索宪法路由层合一，路由即分类；通道名/国内外作标签不作类目）；线下 L3 五层（使用手册/维修手册/OKF/codegraph+cbm/rg+Everything，检索纵深先经验→再结构→最后暴力扫）。lifecycle 三态：可用/degraded/retired。状态只在此定义；okf-bundles/search-tools/index.md 变人读视图（头部注机器权威在本文件）。checker=search_constitution_checker.py（E-26 立，E-35 扩展 retired 引用报警）。",
+  "constitution_ref": "F:/codex/reports/8-search-capability-constitution-v2-20260624.md",
+  "okf_human_view": "F:/codex/okf-bundles/search-tools/index.md",
+  "channel_layers": {
+    "online": [
+      "A1",
+      "A2",
+      "X"
+    ],
+    "offline": [
+      "使用手册",
+      "维修手册",
+      "OKF",
+      "codegraph+cbm",
+      "rg+Everything"
+    ]
+  },
+  "tools": [
+    {
+      "id": "brightdata",
+      "name": "BrightData MCP",
+      "channel": "A1",
+      "layer": "online",
+      "lifecycle": "可用",
+      "verified_at": "2026-07-05",
+      "evidence": "okf-bundles/search-tools/index.md（评测 S 级）"
+    },
+    {
+      "id": "anysearch",
+      "name": "AnySearch",
+      "channel": "A1",
+      "layer": "online",
+      "lifecycle": "可用",
+      "verified_at": "2026-07-05",
+      "evidence": "OKF S 级；中文 zone/proxy 已修"
+    },
+    {
+      "id": "builtin-web-search",
+      "name": "内置 Web 搜索",
+      "channel": "A1",
+      "layer": "online",
+      "lifecycle": "可用",
+      "verified_at": "持续",
+      "evidence": "普通标准 L56 A1 通用发现"
+    },
+    {
+      "id": "tavily",
+      "name": "Tavily",
+      "channel": "A1",
+      "layer": "online",
+      "lifecycle": "可用",
+      "verified_at": "2026-07-05",
+      "evidence": "OKF B 级；复核后补源"
+    },
+    {
+      "id": "zhihu-api",
+      "name": "Zhihu 官方 API",
+      "channel": "A2",
+      "layer": "online",
+      "lifecycle": "可用",
+      "verified_at": "2026-07-05",
+      "evidence": "OKF S 级；中文深度/医美医生评价"
+    },
+    {
+      "id": "redfox-wechat",
+      "name": "RedFox 微信文章搜索",
+      "channel": "A2",
+      "layer": "online",
+      "lifecycle": "可用",
+      "verified_at": "2026-07-05",
+      "evidence": "OKF A 级；遵守原文链接 gate"
+    },
+    {
+      "id": "redfox-xiaohongshu",
+      "name": "RedFox 小红书",
+      "channel": "A2",
+      "layer": "online",
+      "lifecycle": "可用",
+      "verified_at": "2026-07-05",
+      "evidence": "OKF A 级；当线索不当事实"
+    },
+    {
+      "id": "redfox-douyin",
+      "name": "RedFox 抖音",
+      "channel": "A2",
+      "layer": "online",
+      "lifecycle": "可用",
+      "verified_at": "2026-07-05",
+      "evidence": "OKF C 级；可用但不优先"
+    },
+    {
+      "id": "exa",
+      "name": "Exa MCP / Exa API",
+      "channel": "A1",
+      "layer": "online",
+      "lifecycle": "可用",
+      "verified_at": "2026-07-05",
+      "evidence": "OKF A/B；remote MCP smoke 通过；MCP 未注册（Credential Manager 直连可用）"
+    },
+    {
+      "id": "ref",
+      "name": "Ref MCP",
+      "channel": "A2",
+      "layer": "online",
+      "lifecycle": "可用",
+      "verified_at": "2026-07-05",
+      "evidence": "OKF A/B；技术文档补源；MCP 未注册"
+    },
+    {
+      "id": "context7",
+      "name": "Context7",
+      "channel": "A2",
+      "layer": "online",
+      "lifecycle": "可用",
+      "verified_at": "2026-07-05",
+      "evidence": "OKF B 级；技术文档专用"
+    },
+    {
+      "id": "github-mcp",
+      "name": "GitHub MCP",
+      "channel": "A2",
+      "layer": "online",
+      "lifecycle": "可用",
+      "verified_at": "2026-07-05",
+      "evidence": "OKF B 级；代码搜索专用"
+    },
+    {
+      "id": "agent-reach-web-jina",
+      "name": "Agent Reach web_jina",
+      "channel": "A2",
+      "layer": "online",
+      "lifecycle": "可用",
+      "verified_at": "2026-07-05",
+      "evidence": "OKF A 级备选"
+    },
+    {
+      "id": "agent-reach-other",
+      "name": "Agent Reach 其他平台渠道",
+      "channel": "A2",
+      "layer": "online",
+      "lifecycle": "degraded",
+      "verified_at": "2026-07-05",
+      "evidence": "OKF C 级；多数不支持 search action"
+    },
+    {
+      "id": "grok",
+      "name": "Grok",
+      "channel": "A2",
+      "layer": "online",
+      "lifecycle": "可用",
+      "verified_at": "2026-07-05",
+      "evidence": "OKF C 级；opt-in，仅显式要求时用"
+    },
+    {
+      "id": "firecrawl",
+      "name": "Firecrawl MCP",
+      "channel": "X",
+      "layer": "online",
+      "lifecycle": "可用",
+      "verified_at": "2026-07-05",
+      "evidence": "OKF S 级；搜索+Markdown 提取"
+    },
+    {
+      "id": "webclaw",
+      "name": "WebClaw",
+      "channel": "X",
+      "layer": "online",
+      "lifecycle": "可用",
+      "verified_at": "2026-07-05",
+      "evidence": "OKF A 级；静态正文提取"
+    },
+    {
+      "id": "webctl",
+      "name": "webctl",
+      "channel": "X",
+      "layer": "online",
+      "lifecycle": "可用",
+      "verified_at": "2026-07-05",
+      "evidence": "OKF S 级；固定 Chrome/登录态"
+    },
+    {
+      "id": "playwright",
+      "name": "Playwright / 固定 Chrome",
+      "channel": "X",
+      "layer": "online",
+      "lifecycle": "可用",
+      "verified_at": "2026-07-05",
+      "evidence": "OKF A 级；JS 渲染/截图"
+    },
+    {
+      "id": "browseract",
+      "name": "BrowserAct",
+      "channel": "X",
+      "layer": "online",
+      "lifecycle": "degraded",
+      "verified_at": "2026-07-05",
+      "evidence": "OKF B 级；daemon 状态待确认"
+    },
+    {
+      "id": "crawl4ai",
+      "name": "Crawl4AI",
+      "channel": "X",
+      "layer": "online",
+      "lifecycle": "degraded",
+      "verified_at": "2026-07-05",
+      "evidence": "OKF B 级；venv 存在但未单独验证"
+    },
+    {
+      "id": "offline-manual-usage",
+      "name": "使用手册层（线下）",
+      "channel": "offline",
+      "layer": "offline",
+      "lifecycle": "可用",
+      "verified_at": "持续",
+      "evidence": "决议 §面板4 线下五层；manual-registry 管理"
+    },
+    {
+      "id": "offline-manual-repair",
+      "name": "维修手册层（线下）",
+      "channel": "offline",
+      "layer": "offline",
+      "lifecycle": "可用",
+      "verified_at": "持续",
+      "evidence": "决议 §面板4 线下五层；manual-registry 管理"
+    },
+    {
+      "id": "offline-okf",
+      "name": "OKF 层（线下）",
+      "channel": "offline",
+      "layer": "offline",
+      "lifecycle": "可用",
+      "verified_at": "持续",
+      "evidence": "决议 §面板4 线下五层；okf-bundles"
+    },
+    {
+      "id": "offline-codegraph-cbm",
+      "name": "codegraph+cbm 层（线下）",
+      "channel": "offline",
+      "layer": "offline",
+      "lifecycle": "可用",
+      "verified_at": "持续",
+      "evidence": "决议 §面板4 线下五层；CodeGraph 轻量符号定位/CBM 架构链（CodeGraph 当前 degraded 见 E-32 异常）"
+    },
+    {
+      "id": "offline-rg-everything",
+      "name": "rg+Everything 层（线下）",
+      "channel": "offline",
+      "layer": "offline",
+      "lifecycle": "可用",
+      "verified_at": "持续",
+      "evidence": "决议 §面板4 线下五层；普通标准 L52-54"
+    }
+  ]
+}

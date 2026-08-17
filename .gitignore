@@ -1,0 +1,26 @@
+# ---- 运行时/生成物（rebuild 再生，不入库）----
+catalog/generations/
+catalog/_archive/
+catalog/multi-source-snapshot-v2.json
+catalog/task-projection-v0.json
+catalog/entity-placements-v0.json
+catalog/manual-coverage-index.json
+catalog/unified-relation-registry-v0.json
+catalog/topology-view.json
+catalog/beads-export.jsonl
+catalog/domain-cards-v0.json
+catalog/relation-samples-v0.json
+catalog/render-gate-aidlist.json
+catalog/map-build*.html
+catalog/map-candidate.html
+catalog/repair-manual-section-map-v0.json
+
+# ---- 凭据（绝不入库）----
+catalog/credential-taxonomy*.json
+
+# ---- 依赖 / 缓存 / 备份 ----
+web/node_modules/
+__pycache__/
+*.pyc
+*.bak*
+_archive/

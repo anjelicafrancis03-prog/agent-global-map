@@ -1,0 +1,9 @@
+{"id":"codex-dup1","title":"dup A","status":"open","issue_type":"task","labels":["pillar:agent-workbench"],"dependencies":[]}
+{"id":"codex-dup1","title":"dup B (same id -> G01)","status":"open","issue_type":"task","labels":["pillar:agent-workbench"],"dependencies":[]}
+{"id":"bad-no-prefix","title":"id lacks codex- (G01)","status":"open","issue_type":"task","labels":["pillar:data-assets"],"dependencies":[]}
+{"id":"codex-badedge","title":"unknown edge type (G02)","status":"open","issue_type":"task","labels":["pillar:business-loop"],"dependencies":[{"issue_id":"codex-badedge","depends_on_id":"codex-dup1","type":"totally-made-up-type","metadata":"{}"}]}
+{"id":"codex-dangling","title":"dangling edge (G03)","status":"open","issue_type":"task","labels":["pillar:overseas-infra"],"dependencies":[{"issue_id":"codex-dangling","depends_on_id":"codex-does-not-exist","type":"blocks","metadata":"{}"}]}
+{"id":"codex-badstatus","title":"invalid status (G06)","status":"frozen-nonsense","issue_type":"task","labels":["pillar:agent-workbench"],"dependencies":[]}
+{"id":"codex-drift","title":"non-canonical pillar (G05)","status":"open","issue_type":"task","labels":["pillar:desktop"],"dependencies":[]}
+{"id":"codex-unclass","title":"active no pillar (G04)","status":"in_progress","issue_type":"task","labels":[],"dependencies":[]}
+{"id":"codex-good","title":"clean control row (should NOT fire)","status":"closed","issue_type":"task","labels":["pillar:agent-workbench"],"dependencies":[{"issue_id":"codex-good","depends_on_id":"codex-dup1","type":"supersedes","metadata":"{}"}]}

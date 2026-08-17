@@ -1,0 +1,43 @@
+{
+  "schema": "archive-rules-v1",
+  "authority_note": "E-26 批次4 (2026-08-03): E-10 板块收敛制归档规则的机器可读权威。解决病例 11c（E-10 归档规则此前无独立载体，只散落于 beads-classification index.md 的 event 认知段与归档批注）。人读版仍在 okf-bundles/beads-classification/index.md 附段。",
+  "source": "E-10 归档执行（2026-08-01，512 条 lifecycle:archived）+ beads-classification index.md §附：issue_type=event 认知段",
+  "principles": [
+    "归档不删、历史留名、引用清零（E-21 同原则）",
+    "软归档：打 lifecycle:archived label，status 字段不动",
+    "event 是真相，label 是缓存（一致性由 bd set-state 原子操作保证）",
+    "活跃任务统计必须按 lifecycle label 过滤，不能只看 status"
+  ],
+  "archive_mechanics": {
+    "command": "bd set-state <issue-id> lifecycle=archived --reason \"...\"",
+    "effects": [
+      "创建一条 event bead 记录状态变更（source of truth）",
+      "删掉该维度旧 label",
+      "加新 label（lifecycle:archived，快速查找缓存）"
+    ],
+    "event_structure": {
+      "parent": "事件为父任务的子任务（父id.1）",
+      "title_template": "State change: {dimension} → {value}",
+      "description": "含 Reason: 上下文",
+      "dimensions": ["patrol:active/muted", "mode:normal/degraded", "health:healthy/failing", "lifecycle:archived"]
+    }
+  },
+  "active_task_counting": {
+    "mandatory_filters": [
+      { "filter": "issue_type != 'event'", "reason": "排除状态变更审计记录（512 条）" },
+      { "filter": "lifecycle:archived label 不视为活跃", "reason": "E-10 软归档语义：归档=打 label，status 不动（16/20 抽查实证 status=open 但 lifecycle:archived）" }
+    ],
+    "canonical_numbers": { "total_1155": "真任务 643（task 545/feature 32/bug 33/epic 29/decision 1/chore 3）+ event 512", "task_count_reporting": "一律用真任务口径 643 系，不是 1155" }
+  },
+  "event_exclusions": [
+    "不参与 Pillar/Lane 分类",
+    "不参与 effort/dac 分类",
+    "不进入判例池",
+    "不占任务数",
+    "预分/分类脚本必须显式排除（issue_type != 'event'）"
+  ],
+  "block_convergence": {
+    "note": "E-10 板块收敛制：归档按板块批量执行，每个归档动作生成独立 event 审计链（512 条 event = 512 次 lifecycle→archived 的完整审计链）",
+    "batch_audit": "批量操作留痕：查某任务为什么被归档/改状态 → 搜其子 event 的 description（含 Reason）"
+  }
+}

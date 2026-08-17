@@ -1,0 +1,69 @@
+﻿{
+    "registry_id":  "map-nodes-v0",
+    "generated_at":  "2026-07-28T00:00:00+00:00",
+    "read_only":  true,
+    "note":  "大地图 view 层 12 个规范拓扑节点的单一事实源。原硬编码于 build_map_website.py ALL_NODES；2026-07-28 管线固化抽出，build_map_website.py 与 validate_relation_samples.py 共同消费。新增/改名节点只改这里。",
+    "nodes":  [
+                  {
+                      "id":  "map.root-governance",
+                      "label":  "根治理",
+                      "order":  1
+                  },
+                  {
+                      "id":  "map.guardian",
+                      "label":  "守护",
+                      "order":  2
+                  },
+                  {
+                      "id":  "map.harness",
+                      "label":  "Harness 控制",
+                      "order":  3
+                  },
+                  {
+                      "id":  "map.beads",
+                      "label":  "Beads 任务",
+                      "order":  4
+                  },
+                  {
+                      "id":  "map.loop",
+                      "label":  "闭环",
+                      "order":  5
+                  },
+                  {
+                      "id":  "map.hardware-collaboration",
+                      "label":  "硬件协同",
+                      "order":  6
+                  },
+                  {
+                      "id":  "map.search-retrieval",
+                      "label":  "搜索检索",
+                      "order":  7
+                  },
+                  {
+                      "id":  "map.agent-hub",
+                      "label":  "Agent Hub",
+                      "order":  8
+                  },
+                  {
+                      "id":  "map.capability-management",
+                      "label":  "能力管理",
+                      "order":  9
+                  },
+                  {
+                      "id":  "map.business-assets",
+                      "label":  "业务资产",
+                      "order":  10
+                  },
+                  {
+                      "id":  "map.views",
+                      "label":  "视图",
+                      "order":  11
+                  },
+                  {
+                      "id":  "map.desktop",
+                      "label":  "桌面",
+                      "order":  12
+                  }
+              ],
+    "usage_note_e94":  "view 层（网站渲染拓扑）专用。坐标层值域查 panel-manifest-v0.json；历史值解释查 view-to-coord-map-v0.json（E-94 B方案收敛，2026-08-11）"
+}

@@ -1,0 +1,1188 @@
+{
+ "registry_id": "skill-panel-mapping-v0",
+ "schema": "skill-panel-mapping-v0",
+ "created_at": "2026-08-03T05:15:00+08:00",
+ "read_only": true,
+ "authority": "E-23（skill manager 常驻1；2026-08-03 总控拍板：单独映射文件=单一权威，全量 234，不写 SKILL.md frontmatter）",
+ "source": "reports/skills-central-classification-final-20260802.md（E-12 人工裁决）+ central 库实存对账（剔除八批已归档 101 中 36 个）",
+ "authority_note": "skill→子域/dac 映射唯一权威。SKILL.md 自带 category 与 skill_link_manager CATEGORY_RULES 为遗留方言，本文件唯一权威，方言自然淘汰。",
+ "count": 234,
+ "dac_reference": "data-asset-taxonomy-v0.json（子类唯一定义点）",
+ "mappings": [
+  {
+   "skill": "add-tts-engine",
+   "panel_subnode": "projects.project-assets[图像④]",
+   "dac": "dac:tuxiang"
+  },
+  {
+   "skill": "agent-browser",
+   "panel_subnode": "agent-hub.registry",
+   "dac": null
+  },
+  {
+   "skill": "agent-hub",
+   "panel_subnode": "agent-hub.registry",
+   "dac": null
+  },
+  {
+   "skill": "agent-reach",
+   "panel_subnode": "agent-hub.registry",
+   "dac": null
+  },
+  {
+   "skill": "agent-toolbox",
+   "panel_subnode": "agent-hub.registry",
+   "dac": null
+  },
+  {
+   "skill": "agently-mail",
+   "panel_subnode": "agent-hub.registry",
+   "dac": null
+  },
+  {
+   "skill": "aigc-aesthetic-image2-prompt",
+   "panel_subnode": "projects.project-assets[图像④]",
+   "dac": "dac:tuxiang"
+  },
+  {
+   "skill": "aigc-yinyo-prompt",
+   "panel_subnode": "projects.project-assets[图像④]",
+   "dac": "dac:tuxiang"
+  },
+  {
+   "skill": "algorithmic-art",
+   "panel_subnode": "projects.project-assets[视觉设计③]",
+   "dac": "dac:shijue"
+  },
+  {
+   "skill": "anysearch",
+   "panel_subnode": "search.tools",
+   "dac": null
+  },
+  {
+   "skill": "api-and-interface-design",
+   "panel_subnode": "harness.modules",
+   "dac": null
+  },
+  {
+   "skill": "apify-competitor-intelligence",
+   "panel_subnode": "search.tools",
+   "dac": null
+  },
+  {
+   "skill": "app-creation-skill-stack",
+   "panel_subnode": "projects.project-assets[软件开发②]",
+   "dac": "dac:ruanjian"
+  },
+  {
+   "skill": "article-magazine",
+   "panel_subnode": "projects.project-assets[图文创作①]",
+   "dac": "dac:tuwen"
+  },
+  {
+   "skill": "auto-douyin",
+   "panel_subnode": "projects.new-media-ops[douyin]",
+   "dac": "dac:tuwen",
+   "map_l3": "douyin"
+  },
+  {
+   "skill": "automation",
+   "panel_subnode": "harness.modules",
+   "dac": null
+  },
+  {
+   "skill": "automation-workflows",
+   "panel_subnode": "harness.modules",
+   "dac": null
+  },
+  {
+   "skill": "babysit-pr",
+   "panel_subnode": "projects.project-assets",
+   "dac": null
+  },
+  {
+   "skill": "baidu-search",
+   "panel_subnode": "search.tools",
+   "dac": null
+  },
+  {
+   "skill": "baoyu-markdown-to-html",
+   "panel_subnode": "projects.project-assets[图文创作①]",
+   "dac": "dac:tuwen"
+  },
+  {
+   "skill": "baoyu-post-to-wechat",
+   "panel_subnode": "projects.project-assets[图文创作①]",
+   "dac": "dac:tuwen"
+  },
+  {
+   "skill": "baoyu-post-to-weibo",
+   "panel_subnode": "projects.project-assets[图文创作①]",
+   "dac": "dac:tuwen"
+  },
+  {
+   "skill": "bilibili-cli",
+   "panel_subnode": "search.tools",
+   "dac": null
+  },
+  {
+   "skill": "bilibili-opencli-master",
+   "panel_subnode": "projects.project-assets[视频⑤]",
+   "dac": "dac:shipin"
+  },
+  {
+   "skill": "bilibili-subtitle",
+   "panel_subnode": "projects.project-assets[视频⑤]",
+   "dac": "dac:shipin"
+  },
+  {
+   "skill": "bingo-gpt-image",
+   "panel_subnode": "projects.project-assets[图像④]",
+   "dac": "dac:tuxiang"
+  },
+  {
+   "skill": "boss-opencli-master",
+   "panel_subnode": "projects.project-assets[图文创作①]",
+   "dac": "dac:tuwen"
+  },
+  {
+   "skill": "brand-guidelines",
+   "panel_subnode": "projects.project-assets[视觉设计③]",
+   "dac": "dac:shijue"
+  },
+  {
+   "skill": "browser-act",
+   "panel_subnode": "hardware.tools-browser",
+   "dac": null
+  },
+  {
+   "skill": "canghe-url-to-markdown",
+   "panel_subnode": "projects.project-assets[图文创作①]",
+   "dac": "dac:tuwen"
+  },
+  {
+   "skill": "caveman",
+   "panel_subnode": "harness.modules",
+   "dac": null
+  },
+  {
+   "skill": "clash-verge-maintenance",
+   "panel_subnode": "hardware.tools-windows",
+   "dac": null
+  },
+  {
+   "skill": "claude-design",
+   "panel_subnode": "projects.project-assets[视觉设计③]",
+   "dac": "dac:shijue"
+  },
+  {
+   "skill": "clawer",
+   "panel_subnode": "hardware.tools-browser",
+   "dac": null
+  },
+  {
+   "skill": "clone-website",
+   "panel_subnode": "projects.project-assets",
+   "dac": null
+  },
+  {
+   "skill": "code-review-and-quality",
+   "panel_subnode": "projects.project-assets",
+   "dac": null
+  },
+  {
+   "skill": "codebase-memory",
+   "panel_subnode": "search.objects",
+   "dac": null
+  },
+  {
+   "skill": "codex-context-audit",
+   "panel_subnode": "harness.modules",
+   "dac": null
+  },
+  {
+   "skill": "competitor-analysis",
+   "panel_subnode": "projects.project-assets[图文创作①]",
+   "dac": "dac:tuwen"
+  },
+  {
+   "skill": "content-ops",
+   "panel_subnode": "projects.project-assets[图文创作①]",
+   "dac": "dac:tuwen"
+  },
+  {
+   "skill": "content-performance-analysis",
+   "panel_subnode": "projects.project-assets[图文创作①]",
+   "dac": "dac:tuwen"
+  },
+  {
+   "skill": "contribute-catalog",
+   "panel_subnode": "projects.project-assets[视频⑤]",
+   "dac": "dac:shipin"
+  },
+  {
+   "skill": "cron-mastery",
+   "panel_subnode": "hardware.tools-windows",
+   "dac": null
+  },
+  {
+   "skill": "dbs-xhs-title",
+   "panel_subnode": "projects.project-assets[图文创作①]",
+   "dac": "dac:tuwen"
+  },
+  {
+   "skill": "debugging-and-error-recovery",
+   "panel_subnode": "harness.modules",
+   "dac": null
+  },
+  {
+   "skill": "deep-research",
+   "panel_subnode": "search.tools",
+   "dac": null
+  },
+  {
+   "skill": "defuddle",
+   "panel_subnode": "projects.project-assets[图文创作①]",
+   "dac": "dac:tuwen"
+  },
+  {
+   "skill": "dispatching-parallel-agents",
+   "panel_subnode": "projects.project-assets",
+   "dac": null
+  },
+  {
+   "skill": "doc-coauthoring",
+   "panel_subnode": "projects.project-assets[图文创作①]",
+   "dac": "dac:tuwen"
+  },
+  {
+   "skill": "dogfood",
+   "panel_subnode": "projects.project-assets[软件开发②]",
+   "dac": "dac:ruanjian"
+  },
+  {
+   "skill": "douyin-batch-download",
+   "panel_subnode": "projects.new-media-ops[douyin]",
+   "dac": "dac:shipin",
+   "map_l3": "douyin"
+  },
+  {
+   "skill": "douyin-video",
+   "panel_subnode": "projects.new-media-ops[douyin]",
+   "dac": "dac:shipin",
+   "map_l3": "douyin"
+  },
+  {
+   "skill": "douyin-viral-content",
+   "panel_subnode": "projects.new-media-ops[douyin]",
+   "dac": "dac:tuwen",
+   "map_l3": "douyin"
+  },
+  {
+   "skill": "electron",
+   "panel_subnode": "projects.project-assets[软件开发②]",
+   "dac": "dac:ruanjian"
+  },
+  {
+   "skill": "executing-plans",
+   "panel_subnode": "harness.modules",
+   "dac": null
+  },
+  {
+   "skill": "feature-dev",
+   "panel_subnode": "projects.project-assets",
+   "dac": null
+  },
+  {
+   "skill": "feishu-doc",
+   "panel_subnode": "hardware.devices",
+   "dac": null
+  },
+  {
+   "skill": "figma",
+   "panel_subnode": "projects.project-assets[视觉设计③]",
+   "dac": "dac:shijue"
+  },
+  {
+   "skill": "finance",
+   "panel_subnode": "projects.project-assets[图文创作①]",
+   "dac": "dac:tuwen"
+  },
+  {
+   "skill": "find-skills",
+   "panel_subnode": "skill-manager.catalog",
+   "dac": null
+  },
+  {
+   "skill": "finishing-a-development-branch",
+   "panel_subnode": "projects.project-assets",
+   "dac": null
+  },
+  {
+   "skill": "follow-builders",
+   "panel_subnode": "projects.project-assets[图文创作①]",
+   "dac": "dac:tuwen"
+  },
+  {
+   "skill": "frontend-ui-engineering",
+   "panel_subnode": "projects.project-assets[视觉设计③]",
+   "dac": "dac:shijue"
+  },
+  {
+   "skill": "general-writing",
+   "panel_subnode": "projects.project-assets[图文创作①]",
+   "dac": "dac:tuwen"
+  },
+  {
+   "skill": "gh-address-comments",
+   "panel_subnode": "projects.project-assets",
+   "dac": null
+  },
+  {
+   "skill": "gh-cli",
+   "panel_subnode": "projects.project-assets",
+   "dac": null
+  },
+  {
+   "skill": "gh-fix-ci",
+   "panel_subnode": "projects.project-assets",
+   "dac": null
+  },
+  {
+   "skill": "git-commit",
+   "panel_subnode": "projects.project-assets",
+   "dac": null
+  },
+  {
+   "skill": "gitnexus-cli",
+   "panel_subnode": "projects.project-assets",
+   "dac": null
+  },
+  {
+   "skill": "gitnexus-debugging",
+   "panel_subnode": "projects.project-assets",
+   "dac": null
+  },
+  {
+   "skill": "gitnexus-exploring",
+   "panel_subnode": "projects.project-assets",
+   "dac": null
+  },
+  {
+   "skill": "gitnexus-guide",
+   "panel_subnode": "projects.project-assets",
+   "dac": null
+  },
+  {
+   "skill": "gitnexus-impact-analysis",
+   "panel_subnode": "projects.project-assets",
+   "dac": null
+  },
+  {
+   "skill": "gitnexus-pr-review",
+   "panel_subnode": "projects.project-assets",
+   "dac": null
+  },
+  {
+   "skill": "gitnexus-pr-swarm-review",
+   "panel_subnode": "projects.project-assets",
+   "dac": null
+  },
+  {
+   "skill": "gitnexus-refactoring",
+   "panel_subnode": "projects.project-assets",
+   "dac": null
+  },
+  {
+   "skill": "google-trends",
+   "panel_subnode": "search.tools",
+   "dac": null
+  },
+  {
+   "skill": "gpt-image-2",
+   "panel_subnode": "projects.project-assets[图像④]",
+   "dac": "dac:tuxiang"
+  },
+  {
+   "skill": "grilling",
+   "panel_subnode": "harness.modules",
+   "dac": null
+  },
+  {
+   "skill": "gsap",
+   "panel_subnode": "projects.project-assets[视觉设计③]",
+   "dac": "dac:shijue"
+  },
+  {
+   "skill": "handoff",
+   "panel_subnode": "projects.project-assets",
+   "dac": null
+  },
+  {
+   "skill": "healthcare-expert",
+   "panel_subnode": "projects.project-assets[图文创作①]",
+   "dac": "dac:tuwen"
+  },
+  {
+   "skill": "healthcheck",
+   "panel_subnode": "guardian.guardian-manager",
+   "dac": null
+  },
+  {
+   "skill": "html-anything",
+   "panel_subnode": "projects.project-assets[图文创作①]",
+   "dac": "dac:tuwen"
+  },
+  {
+   "skill": "html-visual",
+   "panel_subnode": "projects.project-assets[图文创作①]",
+   "dac": "dac:tuwen"
+  },
+  {
+   "skill": "humanizer-cn",
+   "panel_subnode": "projects.project-assets[图文创作①]",
+   "dac": "dac:tuwen"
+  },
+  {
+   "skill": "hyperframes-cli",
+   "panel_subnode": "projects.project-assets[图文创作①]",
+   "dac": "dac:tuwen"
+  },
+  {
+   "skill": "image-cog",
+   "panel_subnode": "projects.project-assets[图像④]",
+   "dac": "dac:tuxiang"
+  },
+  {
+   "skill": "image-generator",
+   "panel_subnode": "projects.project-assets[图像④]",
+   "dac": "dac:tuxiang"
+  },
+  {
+   "skill": "image-ocr",
+   "panel_subnode": "projects.project-assets[图像④]",
+   "dac": "dac:tuxiang"
+  },
+  {
+   "skill": "image-processing",
+   "panel_subnode": "projects.project-assets[图像④]",
+   "dac": "dac:tuxiang"
+  },
+  {
+   "skill": "image-prompt-router",
+   "panel_subnode": "projects.project-assets[图像④]",
+   "dac": "dac:tuxiang"
+  },
+  {
+   "skill": "image-search",
+   "panel_subnode": "projects.project-assets[图像④]",
+   "dac": "dac:tuxiang"
+  },
+  {
+   "skill": "imagegen-frontend-mobile",
+   "panel_subnode": "projects.project-assets[图像④]",
+   "dac": "dac:tuxiang"
+  },
+  {
+   "skill": "incremental-implementation",
+   "panel_subnode": "harness.modules",
+   "dac": null
+  },
+  {
+   "skill": "industry-os-builder",
+   "panel_subnode": "projects.project-assets[视频⑤]",
+   "dac": "dac:shipin"
+  },
+  {
+   "skill": "instagram-research",
+   "panel_subnode": "search.tools",
+   "dac": null
+  },
+  {
+   "skill": "jianying-editor",
+   "panel_subnode": "projects.project-assets[视频⑤]",
+   "dac": "dac:shipin"
+  },
+  {
+   "skill": "json-canvas",
+   "panel_subnode": "projects.project-assets[视觉设计③]",
+   "dac": "dac:shijue"
+  },
+  {
+   "skill": "keyword-analysis",
+   "panel_subnode": "projects.project-assets[图文创作①]",
+   "dac": "dac:tuwen"
+  },
+  {
+   "skill": "knowledge-capture",
+   "panel_subnode": "projects.project-assets[图文创作①]",
+   "dac": "dac:tuwen"
+  },
+  {
+   "skill": "ky-design-to-html",
+   "panel_subnode": "projects.project-assets[视觉设计③]",
+   "dac": "dac:shijue"
+  },
+  {
+   "skill": "lark-approval",
+   "panel_subnode": "hardware.devices",
+   "dac": null
+  },
+  {
+   "skill": "lark-attendance",
+   "panel_subnode": "hardware.devices",
+   "dac": null
+  },
+  {
+   "skill": "lark-base",
+   "panel_subnode": "hardware.devices",
+   "dac": null
+  },
+  {
+   "skill": "lark-calendar",
+   "panel_subnode": "hardware.devices",
+   "dac": null
+  },
+  {
+   "skill": "lark-contact",
+   "panel_subnode": "hardware.devices",
+   "dac": null
+  },
+  {
+   "skill": "lark-doc",
+   "panel_subnode": "hardware.devices",
+   "dac": null
+  },
+  {
+   "skill": "lark-drive",
+   "panel_subnode": "hardware.devices",
+   "dac": null
+  },
+  {
+   "skill": "lark-event",
+   "panel_subnode": "hardware.devices",
+   "dac": null
+  },
+  {
+   "skill": "lark-im",
+   "panel_subnode": "hardware.devices",
+   "dac": null
+  },
+  {
+   "skill": "lark-mail",
+   "panel_subnode": "hardware.devices",
+   "dac": null
+  },
+  {
+   "skill": "lark-markdown",
+   "panel_subnode": "hardware.devices",
+   "dac": null
+  },
+  {
+   "skill": "lark-minutes",
+   "panel_subnode": "hardware.devices",
+   "dac": null
+  },
+  {
+   "skill": "lark-okr",
+   "panel_subnode": "hardware.devices",
+   "dac": null
+  },
+  {
+   "skill": "lark-openapi-explorer",
+   "panel_subnode": "hardware.devices",
+   "dac": null
+  },
+  {
+   "skill": "lark-shared",
+   "panel_subnode": "hardware.devices",
+   "dac": null
+  },
+  {
+   "skill": "lark-sheets",
+   "panel_subnode": "hardware.devices",
+   "dac": null
+  },
+  {
+   "skill": "lark-skill-maker",
+   "panel_subnode": "hardware.devices",
+   "dac": null
+  },
+  {
+   "skill": "lark-slides",
+   "panel_subnode": "hardware.devices",
+   "dac": null
+  },
+  {
+   "skill": "lark-task",
+   "panel_subnode": "hardware.devices",
+   "dac": null
+  },
+  {
+   "skill": "lark-vc",
+   "panel_subnode": "hardware.devices",
+   "dac": null
+  },
+  {
+   "skill": "lark-whiteboard",
+   "panel_subnode": "hardware.devices",
+   "dac": null
+  },
+  {
+   "skill": "lark-wiki",
+   "panel_subnode": "hardware.devices",
+   "dac": null
+  },
+  {
+   "skill": "lark-workflow-meeting-summary",
+   "panel_subnode": "hardware.devices",
+   "dac": null
+  },
+  {
+   "skill": "lark-workflow-standup-report",
+   "panel_subnode": "hardware.devices",
+   "dac": null
+  },
+  {
+   "skill": "liquid-glass-design",
+   "panel_subnode": "projects.project-assets[视觉设计③]",
+   "dac": "dac:shijue"
+  },
+  {
+   "skill": "long-running-system-design",
+   "panel_subnode": "harness.modules",
+   "dac": null
+  },
+  {
+   "skill": "lottie",
+   "panel_subnode": "projects.project-assets[视觉设计③]",
+   "dac": "dac:shijue"
+  },
+  {
+   "skill": "luban",
+   "panel_subnode": "projects.project-assets[视频⑤]",
+   "dac": "dac:shipin"
+  },
+  {
+   "skill": "mcp-builder",
+   "panel_subnode": "mcp-manager.servers",
+   "dac": null
+  },
+  {
+   "skill": "mcp-cli",
+   "panel_subnode": "mcp-manager.servers",
+   "dac": null
+  },
+  {
+   "skill": "mcp-workflow-master",
+   "panel_subnode": "mcp-manager.servers",
+   "dac": null
+  },
+  {
+   "skill": "medical-research",
+   "panel_subnode": "projects.project-assets[图文创作①]",
+   "dac": "dac:tuwen"
+  },
+  {
+   "skill": "medrxiv-search",
+   "panel_subnode": "search.tools",
+   "dac": null
+  },
+  {
+   "skill": "obsidian",
+   "panel_subnode": "projects.project-assets[图文创作①]",
+   "dac": "dac:tuwen"
+  },
+  {
+   "skill": "obsidian-bases",
+   "panel_subnode": "projects.project-assets[图文创作①]",
+   "dac": "dac:tuwen"
+  },
+  {
+   "skill": "obsidian-cli",
+   "panel_subnode": "projects.project-assets[图文创作①]",
+   "dac": "dac:tuwen"
+  },
+  {
+   "skill": "obsidian-markdown",
+   "panel_subnode": "projects.project-assets[图文创作①]",
+   "dac": "dac:tuwen"
+  },
+  {
+   "skill": "openai-whisper",
+   "panel_subnode": "projects.project-assets[视频⑤]",
+   "dac": "dac:shipin"
+  },
+  {
+   "skill": "orc-ali-code-review",
+   "panel_subnode": "projects.project-assets",
+   "dac": null
+  },
+  {
+   "skill": "parallel-feature-development",
+   "panel_subnode": "projects.project-assets",
+   "dac": null
+  },
+  {
+   "skill": "planning-and-task-breakdown",
+   "panel_subnode": "harness.modules",
+   "dac": null
+  },
+  {
+   "skill": "planning-with-files",
+   "panel_subnode": "harness.modules",
+   "dac": null
+  },
+  {
+   "skill": "playwright",
+   "panel_subnode": "hardware.tools-browser",
+   "dac": null
+  },
+  {
+   "skill": "playwright-interactive",
+   "panel_subnode": "hardware.tools-browser",
+   "dac": null
+  },
+  {
+   "skill": "proactive-agent",
+   "panel_subnode": "agent-hub.registry",
+   "dac": null
+  },
+  {
+   "skill": "product-designer",
+   "panel_subnode": "projects.project-assets[视觉设计③]",
+   "dac": "dac:shijue"
+  },
+  {
+   "skill": "qiaomu-anything-to-notebooklm",
+   "panel_subnode": "projects.project-assets[图文创作①]",
+   "dac": "dac:tuwen"
+  },
+  {
+   "skill": "qoder-gemini-cli",
+   "panel_subnode": "agent-hub.communication",
+   "dac": null
+  },
+  {
+   "skill": "r2-auth",
+   "panel_subnode": "hardware.tools-browser",
+   "dac": null
+  },
+  {
+   "skill": "r2-goods",
+   "panel_subnode": "hardware.tools-browser",
+   "dac": null
+  },
+  {
+   "skill": "r2-shared",
+   "panel_subnode": "hardware.tools-browser",
+   "dac": null
+  },
+  {
+   "skill": "r2-workflow-batch-up",
+   "panel_subnode": "hardware.tools-browser",
+   "dac": null
+  },
+  {
+   "skill": "r2-workflow-goods-audit",
+   "panel_subnode": "hardware.tools-browser",
+   "dac": null
+  },
+  {
+   "skill": "receiving-code-review",
+   "panel_subnode": "projects.project-assets",
+   "dac": null
+  },
+  {
+   "skill": "redbookskills",
+   "panel_subnode": "projects.project-assets[图文创作①]",
+   "dac": "dac:tuwen"
+  },
+  {
+   "skill": "redfox-gzh-astock-top",
+   "panel_subnode": "search.tools",
+   "dac": null
+  },
+  {
+   "skill": "redfox-gzh-search",
+   "panel_subnode": "search.tools",
+   "dac": null
+  },
+  {
+   "skill": "redfox-gzh-subscribe",
+   "panel_subnode": "search.tools",
+   "dac": null
+  },
+  {
+   "skill": "redfox-wechat-10w-hot",
+   "panel_subnode": "search.tools",
+   "dac": null
+  },
+  {
+   "skill": "redfox-wechat-account-analyzer",
+   "panel_subnode": "search.tools",
+   "dac": null
+  },
+  {
+   "skill": "redfox-wechat-channels-ai-feed",
+   "panel_subnode": "search.tools",
+   "dac": null
+  },
+  {
+   "skill": "redfox-wechat-fastest-growing",
+   "panel_subnode": "search.tools",
+   "dac": null
+  },
+  {
+   "skill": "redfox-wechat-original-hot",
+   "panel_subnode": "search.tools",
+   "dac": null
+  },
+  {
+   "skill": "redfox-wechat-search",
+   "panel_subnode": "search.tools",
+   "dac": null
+  },
+  {
+   "skill": "redfox-wechat-similar-account",
+   "panel_subnode": "search.tools",
+   "dac": null
+  },
+  {
+   "skill": "redfox-wechat-top-account",
+   "panel_subnode": "search.tools",
+   "dac": null
+  },
+  {
+   "skill": "requesting-code-review",
+   "panel_subnode": "projects.project-assets",
+   "dac": null
+  },
+  {
+   "skill": "right-button-screenshot-assistant",
+   "panel_subnode": "hardware.tools-browser",
+   "dac": null
+  },
+  {
+   "skill": "screenshot-to-figma-recreation",
+   "panel_subnode": "projects.project-assets",
+   "dac": null
+  },
+  {
+   "skill": "search-tools-sop",
+   "panel_subnode": "search.tools",
+   "dac": null
+  },
+  {
+   "skill": "session-handoff",
+   "panel_subnode": "projects.project-assets",
+   "dac": null
+  },
+  {
+   "skill": "shadcn",
+   "panel_subnode": "projects.project-assets[视觉设计③]",
+   "dac": "dac:shijue"
+  },
+  {
+   "skill": "siliconflow-vision",
+   "panel_subnode": "projects.project-assets[图像④]",
+   "dac": "dac:tuxiang"
+  },
+  {
+   "skill": "skill-creator",
+   "panel_subnode": "skill-manager.catalog",
+   "dac": null
+  },
+  {
+   "skill": "skill-vetter",
+   "panel_subnode": "skill-manager.catalog",
+   "dac": null
+  },
+  {
+   "skill": "skills-master-rules-distill",
+   "panel_subnode": "skill-manager.catalog",
+   "dac": null
+  },
+  {
+   "skill": "slides",
+   "panel_subnode": "projects.project-assets[图文创作①]",
+   "dac": "dac:tuwen"
+  },
+  {
+   "skill": "slot-relay",
+   "panel_subnode": "desktop.workbench-card",
+   "dac": null
+  },
+  {
+   "skill": "social-publisher",
+   "panel_subnode": "projects.project-assets[图文创作①]",
+   "dac": "dac:tuwen"
+  },
+  {
+   "skill": "spec-driven-development",
+   "panel_subnode": "harness.modules",
+   "dac": null
+  },
+  {
+   "skill": "spec-to-implementation",
+   "panel_subnode": "harness.modules",
+   "dac": null
+  },
+  {
+   "skill": "subagent-driven-development",
+   "panel_subnode": "harness.modules",
+   "dac": null
+  },
+  {
+   "skill": "systematic-debugging",
+   "panel_subnode": "harness.modules",
+   "dac": null
+  },
+  {
+   "skill": "tailwind",
+   "panel_subnode": "projects.project-assets[视觉设计③]",
+   "dac": "dac:shijue"
+  },
+  {
+   "skill": "taiwan-tiktok-master",
+   "panel_subnode": "projects.project-assets[视频⑤]",
+   "dac": "dac:shipin"
+  },
+  {
+   "skill": "tavily",
+   "panel_subnode": "search.tools",
+   "dac": null
+  },
+  {
+   "skill": "test-driven-development",
+   "panel_subnode": "harness.modules",
+   "dac": null
+  },
+  {
+   "skill": "tiktok-marketing",
+   "panel_subnode": "projects.project-assets[视频⑤]",
+   "dac": "dac:shipin"
+  },
+  {
+   "skill": "tiktok-research",
+   "panel_subnode": "search.tools",
+   "dac": null
+  },
+  {
+   "skill": "topic-analysis",
+   "panel_subnode": "projects.project-assets[图文创作①]",
+   "dac": "dac:tuwen"
+  },
+  {
+   "skill": "understand",
+   "panel_subnode": "search.graph",
+   "dac": null
+  },
+  {
+   "skill": "understand-chat",
+   "panel_subnode": "search.graph",
+   "dac": null
+  },
+  {
+   "skill": "understand-dashboard",
+   "panel_subnode": "search.graph",
+   "dac": null
+  },
+  {
+   "skill": "understand-diff",
+   "panel_subnode": "search.graph",
+   "dac": null
+  },
+  {
+   "skill": "understand-domain",
+   "panel_subnode": "search.graph",
+   "dac": null
+  },
+  {
+   "skill": "understand-explain",
+   "panel_subnode": "search.graph",
+   "dac": null
+  },
+  {
+   "skill": "understand-knowledge",
+   "panel_subnode": "search.graph",
+   "dac": null
+  },
+  {
+   "skill": "understand-onboard",
+   "panel_subnode": "search.graph",
+   "dac": null
+  },
+  {
+   "skill": "upload-to-catbox",
+   "panel_subnode": "projects.project-assets[图像④]",
+   "dac": "dac:tuxiang"
+  },
+  {
+   "skill": "using-git-worktrees",
+   "panel_subnode": "harness.modules",
+   "dac": null
+  },
+  {
+   "skill": "using-superpowers",
+   "panel_subnode": "harness.modules",
+   "dac": null
+  },
+  {
+   "skill": "verification-before-completion",
+   "panel_subnode": "harness.modules",
+   "dac": null
+  },
+  {
+   "skill": "video-clip-pipeline",
+   "panel_subnode": "projects.project-assets[视频⑤]",
+   "dac": "dac:shipin"
+  },
+  {
+   "skill": "video-copywriting",
+   "panel_subnode": "projects.new-media-ops[douyin]",
+   "dac": "dac:shipin",
+   "map_l3": "douyin"
+  },
+  {
+   "skill": "video-creator",
+   "panel_subnode": "projects.project-assets[视频⑤]",
+   "dac": "dac:shipin"
+  },
+  {
+   "skill": "video-frames",
+   "panel_subnode": "projects.project-assets[视频⑤]",
+   "dac": "dac:shipin"
+  },
+  {
+   "skill": "video-spec-builder",
+   "panel_subnode": "projects.project-assets[视频⑤]",
+   "dac": "dac:shipin"
+  },
+  {
+   "skill": "viral-creation",
+   "panel_subnode": "projects.project-assets[图文创作①]",
+   "dac": "dac:tuwen"
+  },
+  {
+   "skill": "web-design-guidelines",
+   "panel_subnode": "projects.project-assets[视觉设计③]",
+   "dac": "dac:shijue"
+  },
+  {
+   "skill": "web-search",
+   "panel_subnode": "search.tools",
+   "dac": null
+  },
+  {
+   "skill": "website-to-hyperframes",
+   "panel_subnode": "projects.project-assets[图文创作①]",
+   "dac": "dac:tuwen"
+  },
+  {
+   "skill": "wechat-article-camofox",
+   "panel_subnode": "projects.project-assets",
+   "dac": null
+  },
+  {
+   "skill": "wechat-public-article-reader",
+   "panel_subnode": "projects.project-assets[图文创作①]",
+   "dac": "dac:tuwen"
+  },
+  {
+   "skill": "wechat-search",
+   "panel_subnode": "search.tools",
+   "dac": null
+  },
+  {
+   "skill": "weibo-cli",
+   "panel_subnode": "hardware.tools-browser",
+   "dac": null
+  },
+  {
+   "skill": "weibo-master",
+   "panel_subnode": "projects.project-assets[图文创作①]",
+   "dac": "dac:tuwen"
+  },
+  {
+   "skill": "windows-system-maintenance",
+   "panel_subnode": "guardian.guardian-manager",
+   "dac": null
+  },
+  {
+   "skill": "workflow-validator-generator",
+   "panel_subnode": "harness.modules",
+   "dac": null
+  },
+  {
+   "skill": "wps-word-automation",
+   "panel_subnode": "projects.project-assets[图文创作①]",
+   "dac": "dac:tuwen"
+  },
+  {
+   "skill": "writing-plans",
+   "panel_subnode": "projects.project-assets[图文创作①]",
+   "dac": "dac:tuwen"
+  },
+  {
+   "skill": "writing-skills",
+   "panel_subnode": "skill-manager.catalog",
+   "dac": null
+  },
+  {
+   "skill": "yixiaoer",
+   "panel_subnode": "projects.project-assets[图文创作①]",
+   "dac": "dac:tuwen"
+  },
+  {
+   "skill": "youtube-analytics",
+   "panel_subnode": "search.tools",
+   "dac": null
+  },
+  {
+   "skill": "youtube-automation",
+   "panel_subnode": "projects.project-assets[视频⑤]",
+   "dac": "dac:shipin"
+  },
+  {
+   "skill": "youtube-master",
+   "panel_subnode": "projects.project-assets[视频⑤]",
+   "dac": "dac:shipin"
+  },
+  {
+   "skill": "youtube-thumbnail-design",
+   "panel_subnode": "projects.project-assets[视觉设计③]",
+   "dac": "dac:shijue"
+  },
+  {
+   "skill": "yt-competitive-analysis",
+   "panel_subnode": "projects.project-assets[图文创作①]",
+   "dac": "dac:tuwen"
+  },
+  {
+   "skill": "zcode-desktop-bridge",
+   "panel_subnode": "agent-hub.communication",
+   "dac": null
+  },
+  {
+   "skill": "zhihu-converter",
+   "panel_subnode": "projects.project-assets[图文创作①]",
+   "dac": "dac:tuwen"
+  },
+  {
+   "skill": "zhihu-master",
+   "panel_subnode": "projects.project-assets[图文创作①]",
+   "dac": "dac:tuwen"
+  },
+  {
+   "skill": "爽剧漫剧复刻导演大师版",
+   "panel_subnode": "projects.project-assets[图文创作①]",
+   "dac": "dac:tuwen"
+  },
+  {
+   "skill": "趋势选题表达",
+   "panel_subnode": "projects.project-assets[图文创作①]",
+   "dac": "dac:tuwen"
+  }
+ ]
+}

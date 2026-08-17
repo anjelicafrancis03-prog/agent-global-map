@@ -1,0 +1,54 @@
+{
+ "schema": "ui-mappings-v0",
+ "authority_note": "E-26 批次2: 大地图 UI 中文映射唯一权威（原硬编码于 map_website_template.html L90/207/256/260/284，2026-08-03 抽取）。模板只读，build_map_website.py 注入 data.uiMappings。改中文名只改这里。",
+ "created_at": "2026-08-03T17:18:00+08:00",
+ "anchors": {
+  "#coverage": "#beads-quality-strip",
+  "#manual-coverage": "#beads-manuals",
+  "#manuals": "#search-manuals",
+  "#workbench": "#desktop",
+  "#relations": "#topology-sources"
+ },
+ "kindTags": {
+  "asset": "资产",
+  "manual": "手册",
+  "capability": "能力",
+  "task": "任务",
+  "system": "系统"
+ },
+ "typeLabels": {
+  "tool": "工具",
+  "database": "数据库",
+  "webpage": "网页"
+ },
+ "gapLabels": {
+  "dual_manuals": "双手册",
+  "smoke_evidence": "smoke证据",
+  "standing_task": "持续任务",
+  "usage_record": "使用记录"
+ },
+ "subdomainTitles": {
+  "project-assets": "项目型资产",
+  "beads-views": "任务视图",
+  "devices": "物理设备与接入",
+  "mounts": "本机挂载物",
+  "tools-windows": "Windows 工具",
+  "tools-browser": "Cloudflare/海外",
+  "constitution": "宪法",
+  "tools": "工具",
+  "objects": "对象",
+  "okf-entry": "OKF 入口",
+  "manuals": "手册",
+  "graph": "关系图谱",
+  "modules": "模块",
+  "registry": "注册表",
+  "communication": "通信",
+  "catalog": "目录",
+  "panel": "面板",
+  "servers": "服务",
+  "providers": "Provider",
+  "gateway": "AI 网关",
+  "desktop-slots": "桌面槽位",
+  "workbench-card": "Workbench"
+ }
+}

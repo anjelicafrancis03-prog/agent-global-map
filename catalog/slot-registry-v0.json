@@ -1,0 +1,222 @@
+{
+ "registry_id": "slot-registry-v0",
+ "schema": "slot-registry-v0",
+ "created_at": "2026-08-05T00:25:00+08:00",
+ "read_only": true,
+ "authority": "E-35 施工项 3（三级坐标优化决议 2026-08-04 §面板6 agent-hub；魅惑 2026-08-05 拍 fixture v4）",
+ "authority_note": "工位档案权威（工位定义/生命周期/定制项）；线路接线权威=slot-provider-bindings.json（E-45 2026-08-06 收窄「唯一定义点」表述）",
+ "binding_source": "F:/codex/tools/agent-hub/slot-provider-bindings.json",
+ "lifecycle": [
+  "candidate",
+  "custom",
+  "dedicated",
+  "retired"
+ ],
+ "slots": [
+  {
+   "slot_id": "claude-cli",
+   "name": "claude-cli",
+   "lifecycle": "dedicated",
+   "custom_item": "基础 Claude CLI 工位",
+   "dedicated_panel": "（待总控细化）",
+   "binding": "family:claude-code-cli",
+   "evidence": "fixture v3 席位卡；slot-provider-bindings",
+   "binding_lines": [
+    "slot:terra-1",
+    "slot:terra-2",
+    "slot:terra-3",
+    "slot:sol-1",
+    "slot:sol-2",
+    "slot:sol-3",
+    "slot:luna-1",
+    "slot:luna-2",
+    "slot:luna-3"
+   ],
+   "binding_lines_note": "E-45 违例#2 修复：registry=工位档案权威（定义/生命周期/定制项）；bindings=线路接线权威（provider 路由）。seated_agent 桥接"
+  },
+  {
+   "slot_id": "claude-omniroute-coding",
+   "name": "claude-omniroute-coding",
+   "lifecycle": "dedicated",
+   "custom_item": "omniroute 编码路由工位",
+   "dedicated_panel": "（待总控细化）",
+   "binding": "family:claude-code-cli / omniroute",
+   "evidence": "fixture v3 席位卡",
+   "binding_lines": [
+    "slot:omniroute2"
+   ],
+   "binding_lines_note": "E-45 违例#2 修复：registry=工位档案权威（定义/生命周期/定制项）；bindings=线路接线权威（provider 路由）。seated_agent 桥接"
+  },
+  {
+   "slot_id": "claude-omniroute-fast",
+   "name": "claude-omniroute-fast",
+   "lifecycle": "dedicated",
+   "custom_item": "omniroute 快速路由工位",
+   "dedicated_panel": "（待总控细化）",
+   "binding": "family:claude-code-cli / omniroute",
+   "evidence": "fixture v3 席位卡",
+   "binding_lines": [
+    "slot:omniroute1"
+   ],
+   "binding_lines_note": "E-45 违例#2 修复：registry=工位档案权威（定义/生命周期/定制项）；bindings=线路接线权威（provider 路由）。seated_agent 桥接"
+  },
+  {
+   "slot_id": "claude-omniroute-reasoning",
+   "name": "claude-omniroute-reasoning",
+   "lifecycle": "dedicated",
+   "custom_item": "omniroute 推理路由工位",
+   "dedicated_panel": "（待总控细化）",
+   "binding": "family:claude-code-cli / omniroute",
+   "evidence": "fixture v3 席位卡；E-24 alias_of 互链（claude-grok-45-5yuan）",
+   "binding_lines": [
+    "slot:grok4.5"
+   ],
+   "binding_lines_note": "E-45 违例#2 修复：registry=工位档案权威（定义/生命周期/定制项）；bindings=线路接线权威（provider 路由）。seated_agent 桥接"
+  },
+  {
+   "slot_id": "claude-sensenova-ccd",
+   "name": "claude-sensenova-ccd",
+   "lifecycle": "dedicated",
+   "custom_item": "sensenova CCD 工位",
+   "dedicated_panel": "（待总控细化）",
+   "binding": "family:claude-code-cli / sensenova",
+   "evidence": "fixture v3 席位卡",
+   "binding_lines": [
+    "slot:sensenova2"
+   ],
+   "binding_lines_note": "E-45 违例#2 修复：registry=工位档案权威（定义/生命周期/定制项）；bindings=线路接线权威（provider 路由）。seated_agent 桥接"
+  },
+  {
+   "slot_id": "claude-sensenova-reasonix",
+   "name": "claude-sensenova-reasonix",
+   "lifecycle": "dedicated",
+   "custom_item": "sensenova Reasonix 工位",
+   "dedicated_panel": "（待总控细化）",
+   "binding": "family:claude-code-cli / sensenova",
+   "evidence": "fixture v3 席位卡",
+   "binding_lines": [
+    "slot:sensenova1"
+   ],
+   "binding_lines_note": "E-45 违例#2 修复：registry=工位档案权威（定义/生命周期/定制项）；bindings=线路接线权威（provider 路由）。seated_agent 桥接"
+  },
+  {
+   "slot_id": "claude-sensenova-user1",
+   "name": "claude-sensenova-user1",
+   "lifecycle": "dedicated",
+   "custom_item": "sensenova user1 工位",
+   "dedicated_panel": "（待总控细化）",
+   "binding": "family:claude-code-cli / sensenova",
+   "evidence": "fixture v3 席位卡",
+   "binding_lines": [
+    "slot:sensenova3"
+   ],
+   "binding_lines_note": "E-45 违例#2 修复：registry=工位档案权威（定义/生命周期/定制项）；bindings=线路接线权威（provider 路由）。seated_agent 桥接"
+  },
+  {
+   "slot_id": "codex-cli-ip34",
+   "name": "codex-cli-ip34",
+   "lifecycle": "dedicated",
+   "custom_item": "Codex CLI 工位（ip34）",
+   "dedicated_panel": "（待总控细化）",
+   "binding": "family:codex-cli",
+   "evidence": "fixture v3 席位卡；agents.json codex-cli-ip34 managed",
+   "binding_lines": [
+    "slot:c1",
+    "slot:c2",
+    "slot:c3"
+   ],
+   "binding_lines_note": "E-45 违例#2 修复：registry=工位档案权威（定义/生命周期/定制项）；bindings=线路接线权威（provider 路由）。seated_agent 桥接"
+  },
+  {
+   "slot_id": "kimi-sensenova",
+   "name": "Kimi S1 (BC ds4f max)",
+   "lifecycle": "dedicated",
+   "custom_item": "Kimi Code CLI 槽位（BC provider）",
+   "dedicated_panel": "（E-63 转正，报魅惑批）",
+   "binding": "family:kimi-cli",
+   "evidence": "E-63-kimicode-desktop-report-20260809（试点 codex-s4 四项验收过 + 6 面板推广）",
+   "binding_lines": [
+    "slot:sensenova1",
+    "slot:sensenova2",
+    "slot:sensenova3"
+   ],
+   "binding_lines_note": "E-63 2026-08-09：6 claude 面板换 kimi CLI，原 claude 条目 consoleDisabled=true 保留。k3 max=claude 主槽（omniroute 系），其余 5 面板 ds4f max。effort=max 经本地 proxy（bc-effort-proxy.py 改写 reasoning_effort）。"
+  },
+  {
+   "slot_id": "kimi-fable5",
+   "name": "Kimi F5 (BC ds4f max)",
+   "lifecycle": "dedicated",
+   "custom_item": "Kimi Code CLI 槽位（BC provider）",
+   "dedicated_panel": "（E-63 转正，报魅惑批）",
+   "binding": "family:kimi-cli",
+   "evidence": "E-63-kimicode-desktop-report-20260809（试点 codex-s4 四项验收过 + 6 面板推广）",
+   "binding_lines": [
+    "slot:fable5-1",
+    "slot:fable5-2",
+    "slot:fable5-3"
+   ],
+   "binding_lines_note": "E-63 2026-08-09：6 claude 面板换 kimi CLI，原 claude 条目 consoleDisabled=true 保留。k3 max=claude 主槽（omniroute 系），其余 5 面板 ds4f max。effort=max 经本地 proxy（bc-effort-proxy.py 改写 reasoning_effort）。"
+  },
+  {
+   "slot_id": "kimi-omniroute",
+   "name": "Kimi CC (BC k3 max)",
+   "lifecycle": "dedicated",
+   "custom_item": "Kimi Code CLI 槽位（BC provider）",
+   "dedicated_panel": "（E-63 转正，报魅惑批）",
+   "binding": "family:kimi-cli",
+   "evidence": "E-63-kimicode-desktop-report-20260809（试点 codex-s4 四项验收过 + 6 面板推广）",
+   "binding_lines": [
+    "slot:omniroute1",
+    "slot:omniroute2",
+    "slot:omniroute3"
+   ],
+   "binding_lines_note": "E-63 2026-08-09：omniroute1=BC k3 max（1 槽），omniroute2/3=BC ds4f max（slotOverrides command 覆盖）。其余 5 面板（sensenova/fable5/terra/sol/luna）=ds4f max。原 claude 条目 consoleDisabled=true 保留。effort=max 经本地 proxy 改写。"
+  },
+  {
+   "slot_id": "kimi-terra",
+   "name": "Kimi S2 (BC ds4f max)",
+   "lifecycle": "dedicated",
+   "custom_item": "Kimi Code CLI 槽位（BC provider）",
+   "dedicated_panel": "（E-63 转正，报魅惑批）",
+   "binding": "family:kimi-cli",
+   "evidence": "E-63-kimicode-desktop-report-20260809（试点 codex-s4 四项验收过 + 6 面板推广）",
+   "binding_lines": [
+    "slot:terra-1",
+    "slot:terra-2",
+    "slot:terra-3"
+   ],
+   "binding_lines_note": "E-63 2026-08-09：6 claude 面板换 kimi CLI，原 claude 条目 consoleDisabled=true 保留。k3 max=claude 主槽（omniroute 系），其余 5 面板 ds4f max。effort=max 经本地 proxy（bc-effort-proxy.py 改写 reasoning_effort）。"
+  },
+  {
+   "slot_id": "kimi-sol",
+   "name": "Kimi S3 (BC ds4f max)",
+   "lifecycle": "dedicated",
+   "custom_item": "Kimi Code CLI 槽位（BC provider）",
+   "dedicated_panel": "（E-63 转正，报魅惑批）",
+   "binding": "family:kimi-cli",
+   "evidence": "E-63-kimicode-desktop-report-20260809（试点 codex-s4 四项验收过 + 6 面板推广）",
+   "binding_lines": [
+    "slot:sol-1",
+    "slot:sol-2",
+    "slot:sol-3"
+   ],
+   "binding_lines_note": "E-63 2026-08-09：6 claude 面板换 kimi CLI，原 claude 条目 consoleDisabled=true 保留。k3 max=claude 主槽（omniroute 系），其余 5 面板 ds4f max。effort=max 经本地 proxy（bc-effort-proxy.py 改写 reasoning_effort）。"
+  },
+  {
+   "slot_id": "kimi-luna",
+   "name": "Kimi S4 (BC ds4f max)",
+   "lifecycle": "dedicated",
+   "custom_item": "Kimi Code CLI 槽位（BC provider）",
+   "dedicated_panel": "（E-63 转正，报魅惑批）",
+   "binding": "family:kimi-cli",
+   "evidence": "E-63-kimicode-desktop-report-20260809（试点 codex-s4 四项验收过 + 6 面板推广）",
+   "binding_lines": [
+    "slot:luna-1",
+    "slot:luna-2",
+    "slot:luna-3"
+   ],
+   "binding_lines_note": "E-63 2026-08-09：6 claude 面板换 kimi CLI，原 claude 条目 consoleDisabled=true 保留。k3 max=claude 主槽（omniroute 系），其余 5 面板 ds4f max。effort=max 经本地 proxy（bc-effort-proxy.py 改写 reasoning_effort）。"
+  }
+ ],
+ "note": "本表为「经批准投入使用的槽位台账」（人工维护，慢变化）：当前登记 14 个工位（claude-* 历史工位 + kimi 系 E-63 转正）。声明口径以 tools/desktop-agent-console/config/agents.json 为权威（2026-08-16 复核：sum_instances_all=44, console_disabled=20, console_enabled=24；投影脚本口径 instances 缺省=0 得 39/20/19，desktop 类无 instances 字段不计入——两种口径差异已记录，动态恒等式不受影响）。评估性维度（生态完备度/稳定性）进 OKF 不走本表；新工位=候选提案→总控批准→active。（2026-08-16 普通15 P1 账本统一：修正此前 note 中过时的「8 席位」描述为实际 14 条登记，并声明口径指向 agents.json）"
+}

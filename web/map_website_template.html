@@ -1,0 +1,425 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: file:; connect-src 'self'">
+<title>Agent 全局系统大地图</title>
+<style>
+:root{--bg:#f2f5f5;--surface:#fff;--ink:#17242a;--muted:#617179;--line:#d5dfe0;--soft:#e8f0f0;--teal:#086f70;--green:#287752;--amber:#956616;--red:#a53e35;--blue:#336e94}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.55 "Segoe UI","Microsoft YaHei",sans-serif;letter-spacing:0}header{position:sticky;top:0;z-index:5;background:var(--surface);border-bottom:1px solid var(--line);padding:13px 20px}h1{margin:0;font-size:20px;line-height:1.25}.meta{margin-top:4px;color:var(--muted);font-size:12px}.layout{display:grid;grid-template-columns:minmax(0,1fr);min-height:calc(100vh - 68px)}nav{position:sticky;top:68px;z-index:4;display:flex;flex-wrap:wrap;align-items:center;gap:2px;padding:6px 12px;background:var(--surface);border-bottom:1px solid var(--line)}nav a{display:inline-block;padding:6px 10px;border-bottom:2px solid transparent;color:var(--ink);font-size:12.5px;text-decoration:none}nav a:hover,nav a:focus{border-bottom-color:var(--teal);background:#eef6f6;outline:none}nav .external{margin-left:auto;border:0;border-left:1px solid var(--line);padding-left:12px;color:var(--blue)}main{min-width:0;padding:20px;max-width:1800px}.panel{margin-bottom:16px;padding:17px;background:var(--surface);border:1px solid var(--line);border-radius:8px}.panel h2{margin:0;font-size:17px;line-height:1.35}.panel h3{margin:18px 0 7px;font-size:14px}.sub,.note{color:var(--muted);font-size:12px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:10px;margin-top:11px}.metric{font-size:24px;font-weight:700;color:var(--teal)}.card{min-width:0;padding:11px;border:1px solid var(--line);border-radius:6px;background:#fbfcfc}.badge{display:inline-block;margin:8px 0 0;padding:1px 7px;border-radius:10px;background:#e9efef;color:var(--teal);font-size:11px}.badge.gated{color:var(--red);background:#f9e9e7}.badge.declared,.badge.partial{color:var(--amber);background:#faf0dc}.badge.documented{color:var(--green);background:#e9f4ed}.evidence{margin-top:11px;padding:8px 10px;border-left:3px solid var(--teal);background:#f4f8f8;color:var(--muted);font-size:12px}.scroll{max-height:470px;overflow:auto;border:1px solid var(--line);border-radius:6px}table{width:100%;border-collapse:collapse;font-size:12px}th,td{padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}th{position:sticky;top:0;background:#f8fafb;color:var(--muted);font-weight:600}.toolbar{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}.toolbar input,.toolbar select{min-width:190px;padding:6px 8px;border:1px solid var(--line);border-radius:5px;background:#fff;color:var(--ink)}code{font-family:Consolas,monospace;font-size:11.5px}.external-panel{border-style:dashed;border-color:var(--blue)}.topology-note{margin:10px 0 0;color:var(--muted);font-size:12px}.system-map{position:relative;margin-top:14px;padding:16px;border:1px solid #bbcfd0;border-radius:7px;background:#f9fcfc}.site-label{margin-bottom:8px;color:var(--muted);font-size:12px;text-align:center}.root-node{position:relative;z-index:1;max-width:310px;margin:0 auto 20px;padding:10px 14px;border:1px solid var(--teal);background:#fff;text-align:center;font-weight:700}.root-node span{display:block;margin-top:2px;color:var(--muted);font-size:11px;font-weight:400}.topology-grid{display:grid;grid-template-columns:repeat(6,minmax(145px,1fr));gap:12px;position:relative}.topology-grid:before{content:"";position:absolute;top:-11px;left:8%;right:8%;height:1px;background:#93aeb0}.topology-column{position:relative;min-width:0}.topology-column:before{content:"";position:absolute;top:-11px;left:50%;height:11px;border-left:1px solid #93aeb0}.map-node{min-height:61px;padding:8px;border:1px solid #afc2c3;background:#fff;text-align:center;font-weight:700;font-size:12px;display:flex;align-items:center;justify-content:center}.map-node small{display:block;color:var(--muted);font-size:10px;font-weight:400}.map-node.guardian{border-color:var(--red);background:#fffafa;color:#6f2720}.map-node.beads{border-color:var(--teal);color:var(--teal)}.map-node.desktop{border-color:var(--blue);color:var(--blue)}.flow-label{margin:5px 0;color:var(--muted);font-size:10px;text-align:center}.map-children{margin-top:7px;padding:7px 5px;border-top:1px dashed #b6c7c8;color:var(--muted);font-size:10.5px;line-height:1.45}.map-children div{padding:2px 0}.desktop-link{display:grid;grid-template-columns:minmax(0,1fr) 230px;gap:22px;align-items:center;margin-top:15px;padding-top:14px;border-top:1px solid var(--line)}.desktop-arrow{border-top:1px dashed var(--blue);color:var(--blue);font-size:12px;text-align:right}.desktop-arrow:after{content:"  ↝"}.desktop-portal{padding:10px;border:1px dashed var(--blue);background:#fbfdff;text-align:center}.desktop-portal a{color:var(--blue);font-weight:700;text-decoration:none}.desktop-portal small{display:block;color:var(--muted);font-weight:400}.three-col{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:11px}.section-link{color:var(--teal);text-decoration:none;font-weight:600}.section-link:hover{text-decoration:underline}@media(max-width:1080px){.topology-grid{grid-template-columns:repeat(3,minmax(180px,1fr))}.topology-grid:before{display:none}.topology-column:before{display:none}}@media(max-width:800px){header{position:relative;padding:12px}.layout{grid-template-columns:1fr}nav{position:relative;top:0;height:auto;display:flex;overflow:auto;border-right:0;border-bottom:1px solid var(--line)}nav a{flex:0 0 auto;padding:8px 11px;border-left:0;border-bottom:3px solid transparent}nav a:hover,nav a:focus{border-left:0;border-bottom-color:var(--teal)}main{padding:12px}.panel{padding:13px}.topology-grid{grid-template-columns:1fr}.desktop-link{grid-template-columns:1fr;gap:8px}.desktop-arrow{text-align:center}.three-col{grid-template-columns:1fr}}
+</style>
+<style>
+.topology-grid{grid-template-columns:repeat(8,minmax(128px,1fr))}
+.topology-grid:before{left:5%;right:5%}
+.tree-stack{display:grid;gap:5px;margin-top:7px}
+.tree-node{position:relative;min-width:0;padding:7px 6px;border:1px solid #c1d0d1;background:#fff;color:var(--ink);font-size:10.5px;line-height:1.35;text-align:center;overflow-wrap:anywhere}
+.tree-node b{display:block;font-size:11px}.tree-node small{display:block;margin-top:2px;color:var(--muted);font-size:9.5px;font-weight:400}
+.tree-node + .tree-node:before{content:"↓";position:absolute;top:-13px;left:50%;transform:translateX(-50%);color:#879fa1;font-size:10px}
+.tree-node.gated{border-color:var(--red);background:#fffafa;color:#6f2720}.tree-node.beads{border-color:var(--teal);color:var(--teal)}.tree-node.manager{border-color:#708fa7;background:#fbfdff}.tree-node.communication{border-style:dashed;border-color:var(--blue);color:var(--blue)}
+.agent-preview{display:grid;gap:4px;margin-top:6px;text-align:left}.agent-interface{padding:4px;border-top:1px dashed #c4d2d3;font-size:9.5px;line-height:1.35}.agent-interface:first-child{border-top:0}.agent-interface b{font-size:10px}
+.slot-chips{display:flex;flex-wrap:wrap;gap:3px;margin-top:4px}.slot-chip{min-width:25px;padding:1px 3px;border:1px solid #b9cacb;background:#f4f8f8;color:var(--teal);font:9px/1.35 Consolas,monospace;text-align:center}
+.branch-ladder{display:grid;grid-template-columns:minmax(150px,310px);gap:5px;margin-top:10px}.branch-ladder .tree-node{text-align:left;padding-left:10px}
+.family-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:9px;margin-top:11px}.family-block{min-width:0;padding:9px;border:1px solid var(--line);background:#fbfcfc;overflow-wrap:anywhere}.family-block h4{margin:0;font-size:12px}.family-block p{margin:3px 0;color:var(--muted);font-size:11px}.tree-node .family-grid{grid-template-columns:minmax(0,1fr)}.tree-node .family-block{padding:6px}
+.desktop-stack{display:grid;gap:5px;margin-top:7px}.desktop-stack .tree-node{border-color:#aac0d0;background:#fff;text-align:center}
+.node-link{display:block;text-decoration:none;color:inherit}
+.node-link:hover .tree-node{border-color:var(--teal);box-shadow:0 1px 5px rgba(21,101,104,.18)}
+.branch-badge{margin-top:7px;font-size:10px;color:var(--muted);text-align:center}
+.branch-badge b{color:var(--ink)}
+.branch-badge.has-blocked .blk{color:var(--red);font-weight:700}
+.branch-other{margin-top:12px;padding-top:9px;border-top:1px dashed var(--line);display:flex;flex-wrap:wrap;gap:4px 14px;font-size:11px;color:var(--muted)}
+.branch-other .branch-badge{margin-top:0}
+.metric-date{font-size:14px!important;line-height:1.3}
+.row-blocked{background:#fdf0ef}
+.row-blocked td:first-child{border-left:3px solid var(--red)}
+.chain-alive{background:#f0f7f1}
+.chain-wait{background:#fdf7ec}
+.badge-link{display:block;text-decoration:none;color:inherit}
+.badge-link:hover .branch-badge{color:var(--teal)}
+.domain-details{margin-top:8px}
+.domain-details summary{cursor:pointer;color:var(--muted);font-size:12px}
+.domain-strip{display:flex;align-items:flex-start;gap:16px;flex-wrap:wrap;margin-top:4px}
+.manual-row{font-size:11px;color:var(--muted);margin-top:8px}
+.live-strip{margin-top:10px}
+.soak-bar{height:5px;background:#e6ecec;border-radius:3px;margin-top:6px;overflow:hidden}
+.soak-bar>div{height:100%;background:var(--teal)}
+@media(max-width:1400px){.topology-grid{grid-template-columns:repeat(4,minmax(175px,1fr))}.topology-grid:before{display:none}.topology-column:before{display:none}}
+@media(max-width:1080px){.topology-grid{grid-template-columns:repeat(3,minmax(170px,1fr))}}
+@media(max-width:800px){.topology-grid{grid-template-columns:1fr}.branch-ladder{grid-template-columns:1fr}}
+.asset-grid{grid-template-columns:repeat(auto-fit,minmax(320px,1fr))}
+.asset-card a{color:var(--teal);text-decoration:none}
+.asset-card>a:hover{text-decoration:underline}
+.asset-row{display:flex;gap:7px;align-items:baseline;margin-top:5px;font-size:12px;flex-wrap:wrap}
+.asset-label{flex:0 0 auto;padding:0 5px;border-radius:4px;background:#eef3f3;color:var(--muted);font-size:10.5px}
+.asset-tag{padding:0 6px;border-radius:8px;background:#e9efef;color:var(--teal);font-size:10.5px}
+.asset-tag.tag-db{background:#eaf1f8;color:var(--blue)}
+.asset-tag.tag-warn{background:#f9e9e7;color:var(--red)}
+.asset-tag.tag-pend{background:#faf0dc;color:var(--amber)}
+.asset-tag.tag-ok{background:#e6f4ea;color:#1a7f37}
+.asset-tag.tag-pilot{background:#eef0fb;color:#5a4fcf}
+.asset-block{margin-top:8px;border-top:1px dashed var(--line);padding-top:5px}
+.asset-head{font-size:11px;color:var(--muted);margin-bottom:2px}
+.asset-group{margin:14px 0 4px;font-size:12.5px;color:var(--muted)}
+.asset-sub2{width:100%;color:var(--muted);font-size:11px}
+.asset-status{font-size:11px}
+.asset-status.st-open{color:var(--blue)}
+.asset-status.st-in_progress{color:var(--amber)}
+.asset-status.st-blocked{color:var(--red)}
+.asset-row .ok{color:var(--green)}
+.asset-row .no{color:var(--red)}
+.l2-stack{margin:5px 0 2px 20px;padding-left:10px;border-left:2px solid var(--soft);display:grid;gap:5px}
+/* E-36: 三级坐标分布总览（NAV 之上）——样式毛坯，总控美化 */
+#coord-overview{margin:10px 12px 0;padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:var(--surface)}
+#coord-overview .co-head{display:flex;align-items:baseline;gap:10px;margin-bottom:8px}
+#coord-overview .co-head b{font-size:13px}
+#coord-overview .co-head span{color:var(--muted);font-size:11.5px}
+.co-grid{display:grid;grid-template-columns:repeat(11,minmax(0,1fr));gap:6px}
+.co-col{min-width:0;border:1px solid #dfe8e8;border-radius:5px;background:#fbfcfc;overflow:hidden}
+.co-col h4{margin:0;padding:5px 6px;background:#f2f6f6;color:var(--ink);font-size:11.5px;border-bottom:1px solid var(--line);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.co-cell{display:block;padding:4px 6px;border-bottom:1px solid #eef2f2;color:var(--ink);text-decoration:none;cursor:pointer;font-size:11px}
+.co-cell:hover{background:#eef6f6}
+.co-cell .co-sub{font-weight:600}
+.co-cell .co-cts{display:flex;flex-wrap:wrap;gap:2px 6px;margin-top:2px;color:var(--muted);font-size:10px}
+.co-cell .co-cts .ct{white-space:nowrap}
+.co-cell.co-zero{color:var(--muted);cursor:default;opacity:.65}
+.co-cell.co-zero:hover{background:transparent}
+.co-l3{display:flex;flex-direction:column;gap:3px;padding:4px 6px;border-top:1px solid #eef2f2;color:var(--muted);font-size:10px;background:#f7f9f9}
+.co-l3-item{display:flex;gap:4px;align-items:baseline;width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.co-l3-lbl{color:var(--teal);font-weight:600}
+.co-l3-cts{color:var(--muted)}
+.co-l3-item.co-meta{display:block;color:#5a6b6b;font-size:10px;border-top:1px dashed #e4ecec;padding-top:3px;margin-top:2px}
+.co-note{margin-top:6px;color:var(--muted);font-size:10.5px}
+@media(max-width:1280px){.co-grid{grid-template-columns:repeat(6,minmax(0,1fr))}}
+@media(max-width:800px){.co-grid{grid-template-columns:repeat(3,minmax(0,1fr))}#coord-overview{margin:8px 8px 0}}
+.l2-stack .tree-node{border-style:dashed}
+.subnode-chip{font-size:10.5px;color:var(--teal);padding:2px 0 0 10px;text-align:left}
+.l2-vstack{display:grid;gap:9px;margin-top:9px}
+.panel.has-subnav{display:grid;grid-template-columns:172px minmax(0,1fr);gap:6px 14px}
+.panel.has-subnav>h2,.panel.has-subnav>.sub{grid-column:1/-1}
+.panel-subnav{display:grid;gap:2px;align-content:start;position:sticky;top:122px}
+.panel-subnav a{padding:4px 8px;border-left:2px solid transparent;color:var(--muted);font-size:12px;text-decoration:none}
+.panel-subnav a:hover{border-left-color:var(--teal);color:var(--ink);background:#f2f7f7}
+.panel-content{min-width:0}
+[id]{scroll-margin-top:120px}
+@media(max-width:800px){.panel.has-subnav{grid-template-columns:1fr}.panel-subnav{position:static;display:flex;flex-wrap:wrap}}
+.l2-vstack .tree-node{border-style:dashed}
+.l2-items{display:grid;gap:3px;margin:5px 0 0 14px}
+.l2-item{font-size:11px;padding:2px 7px;background:#f7fafa;border:1px solid var(--soft);border-radius:4px;overflow-wrap:anywhere}
+.l2-item a{color:var(--teal);text-decoration:none}
+.l2-item small{color:var(--muted)}
+</style>
+</head><body>
+<header><h1>Agent 全局系统大地图</h1><div class="meta" id="meta" data-as-of=""></div></header>
+<div class="layout"><div id="coord-overview"></div><nav id="nav" aria-label="地图导航"></nav><main id="main"></main></div>
+<script type="application/json" id="mapdata">__DATA__</script>
+<script>
+const D=JSON.parse(document.getElementById('mapdata').textContent), main=document.getElementById('main');
+const U=D.uiMappings||{};const ANCHOR_ALIAS=U.anchors||{};const KINDTAG=U.kindTags||{};const TL=U.typeLabels||{};const GAPLBL=U.gapLabels||{};const SUBT=U.subdomainTitles||{};
+// E-38 v2: 三级坐标分布总览渲染（NAV 之上；只读消费 D.coordOverview；L3 渲染铁律：挂 parent 缩进、可选覆盖、直属在前）
+(function(){
+  const ov=D.coordOverview;if(!ov||!ov.panels||!ov.panels.length)return;
+  const TYPE_LBL={card:'卡',task:'任务',skill:'skill',mcp:'MCP',agent:'agent',slot:'工位',thread:'线程',memory:'记忆',standard:'标准',module:'模块卡'};
+  const esc=window.esc||(s=>String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'));
+  const box=document.getElementById('coord-overview');
+  const head=`<div class="co-head"><b>三级坐标分布总览</b><span>${esc(ov.meta?ov.meta.panels+' 面板 × '+ov.meta.subdomains+' 子域 / '+ov.meta.l3_classes+' L3 类':'')} · 各坐标位独立计数（空格=0，点击下钻）</span></div>`;
+  const renderCounts=c=>Object.entries(c||{}).filter(([,v])=>v>0).map(([k,v])=>`<span class="ct">${TYPE_LBL[k]} ${v}</span>`).join('');
+  const renderL3=(l3Arr)=>((l3Arr||[]).filter(g=>g.kind!=='meta').length?(l3Arr.filter(g=>g.kind!=='meta').map(g=>{
+    const gc=g.counts||{};const gt=Object.keys(gc).filter(k=>gc[k]>0).map(k=>`${TYPE_LBL[k]} ${gc[k]}`).join(' ');
+    return `<div class="co-l3-item"><span class="co-l3-lbl">${esc(g.label||g.id)}</span>${gt?`<span class="co-l3-cts">${gt}</span>`:''}</div>`;
+  }).join('')):'');
+  const renderMeta=(l3Arr)=>((l3Arr||[]).filter(g=>g.kind==='meta').map(g=>`<div class="co-l3-item co-meta">${esc(g.label||'')}</div>`).join(''));
+  const renderCell=(p,s)=>{
+    // 面板级格（subnode=None）显示该面板直接挂板块的对象（p.counts）；子域格显示直属（s.direct）
+    // E-111 增补5：L3 独立成格平铺（co-l3cell），不嵌在子域格内
+    const d=s.subnode?(s.direct||{}):(p.counts||{});const any=Object.values(d).some(v=>v>0);
+    const l3Cells=((s.l3||[]).filter(g=>g.kind!=='meta').map(g=>{
+      const gc=g.counts||{};const gt=Object.keys(gc).filter(k=>gc[k]>0).map(k=>`${TYPE_LBL[k]} ${gc[k]}`).join(' ');
+      return `<div class="co-cell co-l3cell" data-sub="${esc(g.id||g.label||'')}"><span class="co-sub">${esc(g.label||g.id)}</span>${gt?`<div class="co-cts">${gt}</div>`:''}</div>`;
+    }).join(''));
+    if(!any&&!l3Cells)return `<div class="co-cell co-zero" data-sub="${esc(s.subnode||'')}"><span class="co-sub">${esc(SUBT[s.subnode]||s.subnode||'面板级')}</span><div class="co-cts">0</div></div>`;
+    const cts=renderCounts(d);
+    return `<div class="co-cell" data-sub="${esc(s.subnode||'')}" title="下钻: ${esc(SUBT[s.subnode]||s.subnode||'面板级')} @ ${esc(p.title)}"><span class="co-sub">${esc(SUBT[s.subnode]||s.subnode||'面板级')}</span>${cts?`<div class="co-cts">${cts}</div>`:''}${l3Cells?`<div class="co-l3">${l3Cells}</div>`:''}</div>`;
+  };
+  const cols=ov.panels.map(p=>{
+    // search 面板：显示层用 overview_groups（线上/线下两组），子域格被聚合
+    if(p.overview_groups&&p.overview_groups.length){
+      const grpCells=p.overview_groups.map(g=>{
+        const d=g.direct||{};const any=Object.values(d).some(v=>v>0);
+        const l3=(g.l3||[]).map(t=>`<div class="co-cell co-l3cell" data-sub="${esc(t.id||t.label||'')}"><span class="co-sub">${esc(t.label||t.id)}</span><span class="co-cts">${t.count?`${t.count}`:''}</span></div>`).join('');
+        return `<div class="co-cell" data-sub="${esc(g.id)}" title="下钻: ${esc(g.label)} @ ${esc(p.title)}"><span class="co-sub">${esc(g.label)}</span><span class="co-sub-note">（显示聚合，非归属包含）</span>${any?`<div class="co-cts">${renderCounts(d)}</div>`:''}${l3?`<div class="co-l3">${l3}</div>`:''}</div>`;
+      }).join('');
+      const meta=renderMeta(p.subnodes.flatMap(s=>s.l3||[]));
+      return `<div class="co-col" data-panel="${esc(p.panel_id)}"><h4 title="${esc(p.title)}">${esc(p.display_number?p.display_number+' ':'')}${esc(p.title)}</h4>${grpCells}${meta}</div>`;
+    }
+    const subCells=p.subnodes.map(s=>renderCell(p,s)).join('');
+    const meta=renderMeta(p.subnodes.flatMap(s=>s.l3||[]));
+    return `<div class="co-col" data-panel="${esc(p.panel_id)}"><h4 title="${esc(p.title)}">${esc(p.display_number?p.display_number+' ':'')}${esc(p.title)}</h4>${subCells}${meta}</div>`;
+  }).join('');
+  const note=`<div class="co-note">计数来自权威源实时统计（资产注册表 l3_tool_class 实标/task-projection/skill-panel-mapping/MCP registry+挂载/agents.json/slot-registry/thread-center 注册表/总控1 台账）；各坐标位独立计数（L3 独立成格，不缩进嵌套）；空格子显示 0 为真实分布；MCP 守恒注于 mcp-manager 列。</div>`;
+  box.innerHTML=head+`<div class="co-grid">${cols}</div>`+note;
+  // 点击下钻（E-36 行为保持：点格子跳对应面板锚点；空格子不跳）
+  box.querySelectorAll('.co-cell[data-sub]').forEach(el=>{
+    const col=el.closest('.co-col');if(!col)return;
+    const panel=col.getAttribute('data-panel');if(!panel)return;
+    el.style.cursor='pointer';
+    el.addEventListener('click',()=>{location.hash='#'+panel;document.getElementById(panel)&&document.getElementById(panel).scrollIntoView({behavior:'smooth'})});
+  });
+})();
+const ANCHOR_ALIAS_RAW={'#coverage':'#beads-quality-strip','#manual-coverage':'#beads-manuals','#manuals':'#search-manuals','#workbench':'#topology','#relations':'#topology-sources'};if((ANCHOR_ALIAS_RAW[location.hash]||ANCHOR_ALIAS[location.hash]))history.replaceState(null,'',ANCHOR_ALIAS[location.hash]||ANCHOR_ALIAS_RAW[location.hash]);
+const esc=value=>String(value??'').replace(/[&<>\"]/g,char=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[char]));
+const debounce=(fn,ms=150)=>{let t;return function(...a){clearTimeout(t);t=setTimeout(()=>fn.apply(this,a),ms)}};
+const taskById={};D.tasks.forEach(t=>{taskById[t.id]=t});
+const entById={};D.entities.forEach(e=>{entById[e.id]=e});
+const section=(id,title,sub)=>{const node=document.createElement('section');node.className='panel';node.id=id;node.innerHTML=`<h2>${esc(title)}</h2><div class="sub">${esc(sub||'')}</div>`;main.append(node);return node};
+const table=(headings,rows)=>`<div class="scroll"><table><thead><tr>${headings.map(heading=>`<th>${esc(heading)}</th>`).join('')}</tr></thead><tbody>${rows.join('')}</tbody></table></div>`;
+const card=(title,body)=>`<div class="card"><b>${esc(title)}</b><div>${body}</div></div>`;
+(function(){const C=D.coverage||{};const asOf=D.dataAsOf||D.snapshotObservedAt||D.generatedAt||'unknown';const meta=document.getElementById('meta');meta.setAttribute('data-as-of',asOf);meta.setAttribute('data-generated-at',D.generatedAt||'');meta.setAttribute('data-bound',String(C.bound_map_node_id??''));meta.setAttribute('data-unbound',String(C.unbound_map_node_id??''));meta.setAttribute('data-active-bound',String(C.active_bound??''));meta.setAttribute('data-active-unbound',String(C.active_unbound??''));meta.setAttribute('data-gate-g-receipt',C.gate_g_receipt_id||'');const stale=(function(){try{const t=Date.parse(asOf);if(!t)return'unknown';const ageH=(Date.now()-t)/36e5;return ageH>24?'stale-over-24h':'fresh'}catch(e){return'unknown'}})();meta.setAttribute('data-staleness',stale);const AS=D.dataAsOfBySource||{};const short=v=>v?String(v).slice(5,16).replace('T',' '):'?';meta.textContent=`只读关系注册表 · 生成 ${D.generatedAt} · data-as-of ${asOf} · 快照 ${D.snapshotObservedAt} · 分集[beads ${short(AS.beads)} · 资产 ${short(AS.assets)} · 手册 ${short(AS.manuals)} · guardian ${short(AS.guardian)}] · ${D.entities.length} 实体 / ${D.edges.length} 关系 · 绑定 ${C.bound_map_node_id??'?'} / lane派生 ${C.lane_derived_count??'?'} / 未归属 ${C.unassigned_count??'?'} · 活跃绑定 ${C.active_bound??'?'} / 活跃未绑定 ${C.active_unbound??'?'} · 状态 ${stale} · 未证实状态保留 unknown · GateG ${C.gate_g_receipt_id||'n/a'}`;})();
+
+// Gate H coverage panel (projection only; not apply surface)
+const qualityStripMarkup=(()=>{
+  const C=D.coverage||{};
+  const node={innerHTML:'',insertAdjacentHTML(_,h){this.innerHTML+=h}};
+  const boundRows=(C.bound_details||[]).map(r=>`<tr><td><code>${esc(r.id)}</code></td><td>${esc(r.status)}</td><td>${esc(r.map_node_id)}</td><td><code>${esc(r.map_path)}</code></td><td>${esc(r.map_projection_authorization||'')}</td></tr>`);
+  node.insertAdjacentHTML('beforeend',`<div class="grid">${card('总任务',`<div class="metric">${esc(C.total_issues)}</div>`)+card('显式绑定（metadata）',`<div class="metric">${esc(C.bound_map_node_id)}</div>`)+card('lane 派生',`<div class="metric">${esc(C.lane_derived_count??'—')}</div>`)+card('未归属',`<div class="metric">${esc(C.unassigned_count??C.unbound_map_node_id)}</div>`)+card('活跃绑定 / 活跃未绑定',`<div class="metric">${esc(C.active_bound)} / ${esc(C.active_unbound)}</div>`)}</div><p class="note">data-as-of=${esc(D.dataAsOf)} · generatedAt=${esc(D.generatedAt)} · 覆盖率三分：explicit=metadata.map_node_id · lane-derived=lane 标签映射 · unassigned=其余 · Gate G receipt=${esc(C.gate_g_receipt_id||'')} · applied=${esc((C.gate_g_applied_ids||[]).join(', '))}</p><h3>当前绑定明细</h3>${table(['issue','status','map_node_id','map_path','authorization'],boundRows)}`);
+return `<div id="beads-quality-strip"><h3>投影质量（覆盖/绑定）</h3>${node.innerHTML}</div>`})();
+
+const manualsStripMarkup=(()=>{
+  const MC=D.manualCoverage||{by_branch:[],by_object:[],zero_manual_branches:[],counts:{}};
+  const node={innerHTML:'',insertAdjacentHTML(_,h){this.innerHTML+=h}};
+  const yes='<span style="color:var(--green);font-weight:700">✓</span>', no='<span style="color:var(--red);font-weight:700">✗</span>';
+  const branchCards=MC.by_branch.map(b=>{const zero=b.total===0;return `<div class="card"${zero?' style="border-color:var(--red);background:#fff5f4"':''}><b>${esc(b.branch.replace('map.',''))}</b><div class="metric">${b.total}</div><div class="sub">使用 ${b.usage+b.both} · 维修 ${b.repair+b.both}${zero?' · <b style="color:var(--red)">0 手册</b>':''}</div></div>`}).join('');
+  const rows=MC.by_object.map(o=>`<tr><td><code>${esc(o.object)}</code></td><td>${o.usage?yes:no}</td><td>${o.repair?yes:no}</td><td>${esc(o.manuals.join('、'))}</td></tr>`);
+  node.insertAdjacentHTML('beforeend',`<div class="grid">${card('手册总数',`<div class="metric">${MC.counts.manuals??0}</div>`)+card('有手册的对象',`<div class="metric">${MC.counts.objects_covered??0}</div>`)+card('双手册齐的对象',`<div class="metric">${MC.counts.objects_full_both??0}</div>`)+card('0 手册分支',`<div class="metric" style="color:var(--red)">${MC.zero_manual_branches.length}</div><div class="sub">${esc(MC.zero_manual_branches.join('、')||'无')}</div>`)}</div><h3>按分支（使用/维修计数；维修含 both）</h3><div class="grid">${branchCards}</div><h3>对象矩阵（由 manual-covers 关系驱动）</h3>${table(['对象','使用','维修','覆盖手册(类型)'],rows)}`);
+return `<div id="beads-manuals"><h3>双手册矩阵（使用 ✓/✗ · 维修 ✓/✗）</h3>${node.innerHTML}</div>`})();
+const nav=document.getElementById('nav');D.nav.forEach(item=>nav.insertAdjacentHTML('beforeend',`<a href="#${item.key}">${esc(item.title)}</a>`));nav.insertAdjacentHTML('beforeend',`<a class="external" href="${esc(D.desktopUrl)}" target="_blank" rel="noreferrer">Desktop 独立网页 ↗</a><a class="external" href="#workbench">Workbench 深度页 ↗</a><a class="external" href="precedents.html">判例库 ↗</a>`);
+
+// The view manifest supplies presentation policy.  The renderer only follows
+// generic source entities and DECLARES_SLOT edges, so new families/interfaces
+// remain visible even before a tailored policy is added.
+const P=D.viewProjection||{};
+const projectionNodes=new Map((P.nodes||[]).map(node=>[node.id,node]));
+const sourceById=new Map(D.sources.map(source=>[source.id,source]));
+const families=(D.agentTopology&&D.agentTopology.families)||[];
+const familyById=new Map(families.map(family=>[family.id,family]));
+const agentPolicies=((P.agentPresentation&&P.agentPresentation.families)||[]);
+const policyTitle=(policy,family)=>[policy.familyTitle||family?.name||'未命名 Family',policy.interfaceTitle||family?.interface||'unspecified'].filter(Boolean).join(' / ');
+const agentFamilyBlock=(policy,family,expanded)=>{
+  const virtual=Boolean(policy.virtual&&!family);
+  const slots=family?.slots||[];
+  const mode=policy.slotMode||P.agentPresentation?.defaultSlotMode||'aggregate';
+  const title=policyTitle(policy,family);
+  const note=policy.note||((family&&`${slots.length} 个已声明槽位`)||(virtual?'可插拔 interface；等待来源注册':'等待来源注册'));
+  const slotDetails=mode==='individual'&&slots.length&&expanded
+    ? `<div class="slot-chips">${slots.map(slot=>`<span class="slot-chip" title="${esc(slot.id)}">${esc(slot.name)}</span>`).join('')}</div>`
+    : family&&`<p>${esc(mode==='individual'?`${slots.length} 个已声明槽位；明细按个展开`:`整体展示；${slots.length} 个已声明槽位`)}</p>`;
+  return `<article class="family-block ${virtual?'virtual':''}"><h4>${esc(title)}</h4><p>${esc(note)}</p>${slotDetails||''}</article>`;
+};
+const agentRegistryMarkup=(expanded=false)=>{
+  const configuredIds=new Set(agentPolicies.map(policy=>policy.familyId).filter(Boolean));
+  const configured=agentPolicies.map(policy=>agentFamilyBlock(policy,policy.familyId?familyById.get(policy.familyId):undefined,expanded));
+  const unmatched=families.filter(family=>!configuredIds.has(family.id));
+  const unmatchedMarkup=unmatched.length
+    ? (expanded
+      ? `<h4 class="registry-heading">其他已注册 Family</h4><div class="family-grid">${unmatched.map(family=>agentFamilyBlock({},family,expanded)).join('')}</div>`
+      : `<p class="registry-summary">+ ${unmatched.length} 个其他已注册 Family 会随来源快照自动出现。</p>`)
+    : '';
+  return `<div class="family-grid">${configured.join('')}</div>${unmatchedMarkup}`;
+};
+// E-24 2026-08-03：六面联邦聚合（A1 渲染层动态反查，不建聚合索引）。按引用反查每个 agent 的三面：
+// seated_agent（desktop slot）、fronted_by_agent（provider route）、backed_by_agent（MCP）。
+const fedMarkup=()=>{
+  const slots=D.entities.filter(e=>e.kind==='runtime_slot'&&e.seated_agent);
+  const routes=D.entities.filter(e=>e.capability_kind==='provider'&&e.fronted_by_agent);
+  const mcps=D.entities.filter(e=>e.id.startsWith('capability:mcp:')&&e.backed_by_agent);
+  const by={};
+  slots.forEach(s=>{(by[s.seated_agent]=by[s.seated_agent]||{slots:[],routes:[],mcps:[]}).slots.push(s.name||s.id.replace('slot:',''))});
+  routes.forEach(r=>{(by[r.fronted_by_agent]=by[r.fronted_by_agent]||{slots:[],routes:[],mcps:[]}).routes.push(r.display_name.replace('route:',''))});
+  mcps.forEach(m=>{(by[m.backed_by_agent]=by[m.backed_by_agent]||{slots:[],routes:[],mcps:[]}).mcps.push(m.display_name||m.id)});
+  const keys=Object.keys(by).sort();
+  if(!keys.length)return `<p class="registry-summary">暂无联邦引用（MCP/provider/slot 面均未挂 agent）。</p>`;
+  return `<div class="grid">${keys.map(id=>{
+    const g=by[id];const rows=[];
+    if(g.slots.length)rows.push(`<div class="asset-row"><span class="asset-label">座位</span><span>${g.slots.map(x=>`<code>${esc(x)}</code>`).join(' ')}</span></div>`);
+    if(g.routes.length)rows.push(`<div class="asset-row"><span class="asset-label">provider</span><span>${g.routes.map(x=>`<code>${esc(x)}</code>`).join(' ')}</span></div>`);
+    if(g.mcps.length)rows.push(`<div class="asset-row"><span class="asset-label">MCP</span><span>${g.mcps.map(x=>`<code>${esc(x)}</code>`).join(' ')}</span></div>`);
+    return `<div class="card asset-card" data-aid="${esc(id)}"><b>${esc(id)}</b><span class="asset-tag tag-dac">联邦聚合</span>${rows.join('')}</div>`;
+  }).join('')}</div>`;
+};
+const nodeSection={'guardian':'guardian','beads':'beads','loop':'beads','map-registry':'topology','tools':'assets','knowledge-assets':'assets','business-pages':'assets','hardware':'hardware','multi-device':'hardware','control-devices':'hardware','browser-crawler':'hardware','infra-services':'hardware','search':'search','online-search':'search','offline-search':'search','codegraph':'search','harness':'harness','evidence':'harness','agent-hub':'agent-hub','communication':'agent-hub','skill-manager':'skill-manager','mcp-manager':'mcp-manager','provider-manager':'provider-manager'};
+const branchTaskCounts={};
+D.entities.filter(e=>e.kind==='task'&&['open','in_progress','blocked'].includes(e.status)).forEach(e=>{const b=e.map_node_id||'';const c=branchTaskCounts[b]=branchTaskCounts[b]||{open:0,in_progress:0,blocked:0};c[e.status]+=1});
+const badgeFor=(ids,shared)=>{const t={open:0,in_progress:0,blocked:0};(ids||[]).forEach(id=>{const c=branchTaskCounts[id];if(c){t.open+=c.open;t.in_progress+=c.in_progress;t.blocked+=c.blocked}});const href=ids&&ids.length===1?`#beads?branch=${encodeURIComponent(ids[0])}`:'#beads';return `<a class="badge-link" href="${href}"><div class="branch-badge${t.blocked?' has-blocked':''}" title="${esc((ids||[]).join(' + '))}">open <b>${t.open}</b> · 进行 <b>${t.in_progress}</b> · 阻塞 <b class="blk">${t.blocked}</b>${shared?' ※共享':''}</div></a>`};
+const columnBranches={'guardian-beads':['map.guardian','map.beads','map.loop-runtime'],'hardware':['map.hardware-collaboration'],'search':['map.search-retrieval'],'harness':['map.harness'],'agent-hub':['map.agent-hub'],'skill-manager':['map.capability-management'],'mcp-manager':['map.capability-management'],'provider-manager':['map.capability-management']};
+const shownBranches=new Set([].concat(...Object.values(columnBranches)).concat(['map.desktop']));
+const otherBranchesMarkup=(()=>{const parts=Object.keys(branchTaskCounts).filter(b=>b&&!shownBranches.has(b)).sort().map(b=>{const c=branchTaskCounts[b];return `<a class="badge-link" href="#beads?branch=${encodeURIComponent(b)}"><span class="branch-badge${c.blocked?' has-blocked':''}">${esc(b.replace('map.',''))}: open <b>${c.open}</b> · 进行 <b>${c.in_progress}</b> · 阻塞 <b class="blk">${c.blocked}</b></span></a>`});return parts.length?`<div class="branch-other">其他分支活跃：${parts.join('')}</div>`:''})();
+const projectionNode=(id)=>{
+  const node=projectionNodes.get(id);
+  if(!node){return ''}
+  const source=sourceById.get(node.sourceId)||{};
+  const state=['gated','declared','documented','partial'].includes(node.state)?node.state:'';
+  const classes=['tree-node',state,node.id==='beads'?'beads':'',node.renderer==='manager'?'manager':'',node.id==='communication'?'communication':''].filter(Boolean).join(' ');
+  const note=node.note||source.status||'';
+  const detail=node.renderer==='agent_registry'?agentRegistryMarkup(false):node.renderer==='manager'?`<small>${esc(source.status||'unknown')} · ${Number(source.count||0)} 个投影实体</small>`:'';
+  const after=node.flowAfter?`<div class="flow-label">↓ ${esc(node.flowAfter)}</div>`:'';
+  const inner=`<div class="tree-stack"><article class="${classes}"><b>${esc(node.title||node.id)}</b>${note?`<small>${esc(note)}</small>`:''}${detail}</article>${after}</div>`;
+  const target=node.renderer==='agent_registry'?'':nodeSection[node.id];
+  return target?`<a class="node-link" href="#${target}">${inner}</a>`:inner;
+};
+const subnodeCounts={};D.entities.forEach(e=>{const s=e.map_subnode;if(!s)return;const c=subnodeCounts[s]=subnodeCounts[s]||{asset:0,manual:0,task:0,capability:0};if(c[e.kind]!==undefined)c[e.kind]+=1});
+const subnodeChip=id=>{const c=subnodeCounts[id];if(!c)return '';const parts=[c.asset?`资产 ${c.asset}`:'',c.manual?`手册 ${c.manual}`:'',c.task?`任务 ${c.task}`:'',c.capability?`能力 ${c.capability}`:''].filter(Boolean);return parts.length?`<div class="subnode-chip">L2 挂载：${parts.join(' · ')}</div>`:''};
+const projectionColumn=(column)=>{const ids=column.nodes||[];const childrenOf={};ids.forEach(id=>{const p=(projectionNodes.get(id)||{}).parentView;if(p&&ids.includes(p)){(childrenOf[p]=childrenOf[p]||[]).push(id)}});const tops=ids.filter(id=>{const p=(projectionNodes.get(id)||{}).parentView;return !(p&&ids.includes(p))});const renderWithKids=id=>projectionNode(id)+subnodeChip(id)+((childrenOf[id]||[]).length?`<div class="l2-stack">${(childrenOf[id]||[]).map(renderWithKids).join('')}</div>`:'');return `<div class="topology-column">${tops.map(renderWithKids).join('')}${badgeFor(columnBranches[column.id],['skill-manager','mcp-manager','provider-manager'].includes(column.id))}</div>`};
+
+const topologyPanel=section('topology','主网站：总容器 / 关系注册表','下面的结构是网站的主信息架构。Guardian 在体系内、但位于任务层之前；Desktop 是被连接的独立网页，而不是主网站的一张并列面板。');
+topologyPanel.innerHTML+=`<div class="grid"><div class="card"><div class="metric">${D.entities.length}</div>统一实体</div><div class="card"><div class="metric">${D.edges.length}</div>快照关系</div><div class="card"><div class="metric">${D.tasks.length}</div>活动 Beads 任务</div><div class="card"><div class="metric">${D.sources.length}</div>注册权威源</div></div>`;
+const desktopProjection=P.desktop||{};
+topologyPanel.innerHTML=`<h2>主网站：总容器 / 关系注册表</h2><div class="sub">下面的结构是网站的主信息架构。Guardian 在体系内、但位于任务层之前；Desktop 是被连接的独立网页，而不是主网站的一张并列面板。</div><div class="grid"><div class="card"><div class="metric">${D.entities.length}</div>统一实体</div><div class="card"><div class="metric">${D.edges.length}</div>快照关系</div><div class="card"><div class="metric">${D.tasks.length}</div>活动 Beads 任务</div><div class="card"><div class="metric">${D.sources.length}</div>注册权威源</div><div class="card"><div class="metric metric-date">${esc((D.dataAsOf||'').slice(0,16).replace('T',' '))}Z</div>数据截至</div></div><div class="system-map"><div class="site-label">网页 / 主网站</div><div class="root-node">Agent 全局系统大地图<span>codex-temr · 总容器 / 关系注册表</span></div><div class="topology-grid">${(P.topologyColumns||[]).map(projectionColumn).join('')}</div><div class="desktop-link"><div class="desktop-arrow">主网站关系投影</div><div class="desktop-portal"><a href="${esc(D.desktopUrl)}" target="_blank" rel="noreferrer">${esc(desktopProjection.title||'Desktop 执行与交互中心')} ↗</a><small>${esc(desktopProjection.note||'独立网页：同源通信投影')}</small>${badgeFor(['map.desktop'])}<div class="desktop-stack">${(desktopProjection.nodes||[]).map(projectionNode).join('')}</div></div></div></div>${otherBranchesMarkup}<p class="topology-note">关键因果：Guardian 给出系统健康证据；系统稳定才放行任务进入执行。Beads 不承担健康判定，Desktop 不复制主网站的权威关系。新增来源、Family、interface 或 slot 将由清单与快照自动投影。</p>`;
+
+const domainBranchMap={'guardian':['map.guardian'],'hardware':['map.hardware-collaboration'],'search':['map.search-retrieval'],'harness':['map.harness'],'agent-hub':['map.agent-hub'],'skill-manager':['map.capability-management'],'mcp-manager':['map.capability-management'],'provider-manager':['map.capability-management'],'assets':['map.business-assets','map.views']};
+const guardianLiveMarkup=()=>{const gl=D.guardianLive||{};const s=gl.soak;const p=gl.patrol;const db=((branchTaskCounts['map.desktop']||{}).blocked)||0;
+  if(!s&&!p)return '<p class="sub">实时守护数据暂不可用。</p>';
+  const pct=s?Math.min(100,Math.round(s.coverage_seconds/s.required_seconds*100)):0;
+  const waiverInfo=s&&(s.waivers||[]).length?` · 豁免记录 ${(s.waivers||[]).length} 项（仅解释历史，不改变判定：${esc(((s.waivers||[])[0]||{}).authorization_id||'')} 至 ${esc(((s.waivers||[])[0]||{}).expires_at||'?')}）`:'';
+  return `<div class="live-strip"><h3>实时守护数据</h3><div class="grid">${s?`<div class="card"><b>24h soak 覆盖</b><div class="metric">${pct}%</div><div class="sub">${Math.round(s.coverage_seconds)} / ${s.required_seconds}s · 样本 ${s.samples} · 最大间隔 ${Math.round(s.max_gap_seconds)}s（限 ${s.allowed_gap_seconds}s）· 不健康样本 ${s.unhealthy_samples||0}</div><div class="soak-bar"><div style="width:${pct}%"></div></div><div class="sub">${s.status==='passed'?'✅ 已达标':`⚠️ ${esc(s.status)} · ${(s.failures||[]).length?esc(s.failures.join('、'))+' · ':''}预计 ${esc(s.eta)}`}${waiverInfo}</div></div><div class="card"><b>最新样本年龄</b><div class="metric">${Math.round(s.latest_age_seconds)}s</div><div class="sub">限 ${s.allowed_latest_age_seconds}s · ${s.latest_age_seconds<=s.allowed_latest_age_seconds?'✅ 新鲜':'⚠️ 陈旧'}</div></div>`:''}${p?`<div class="card"><b>今日巡检</b><div class="metric">${esc(p.verdict)}</div><div class="sub">${esc(p.date)} · omniroute2</div></div>`:''}<div class="card"><b>desktop 阻塞任务</b><div class="metric">${db}</div><div class="sub"><a href="#beads?branch=map.topology">→ beads 板块查看</a></div></div></div></div>`};
+function domainPanel(id){const content=D.domainCards[id], panel=section(id,content.title,content.summary);
+  const branchIds=domainBranchMap[id]||[];
+  const mc=(D.manualCoverage.by_branch||[]).filter(b=>branchIds.includes(b.branch));
+  const mu=mc.reduce((a,b)=>a+b.usage,0), mr=mc.reduce((a,b)=>a+b.repair,0), mt=mc.reduce((a,b)=>a+b.total,0);
+  const mcRow=mc.length?`<span class="manual-row" title="${esc(mc.map(b=>b.branch).join(' + '))}">手册：使用${mu?'✓':'✗'} · 维修${mr?'✓':'✗'} · 共 ${mt} 本</span>`:'';
+  panel.innerHTML+=`<span class="badge ${esc(content.state)}">${esc(content.state)}</span><details class="domain-details"><summary>职责与边界（${content.items.length} 条）</summary><ul>${content.items.map(item=>`<li>${esc(item)}</li>`).join('')}</ul></details>${id==='guardian'?guardianLiveMarkup():''}<div class="domain-strip">${badgeFor(branchIds,['skill-manager','mcp-manager','provider-manager'].includes(id))}${mcRow}</div><div class="evidence">证据：${esc(content.evidence)}</div>`;return panel}
+topologyPanel.insertAdjacentHTML('beforeend',`<div id="topology-sources"><h3>注册权威源（14 源状态+准入分列）</h3>${table(['源','状态','状态面','实体','权威说明'],D.sources.map(source=>`<tr><td><code>${esc(source.id)}</code></td><td>${esc(source.status)}</td><td>${esc(source.plane||'n/a')}</td><td>${source.count}</td><td>${esc(source.authority)}</td></tr>`))}</div>`);
+topologyPanel.insertAdjacentHTML('beforeend',`<div id="topology-precedents"><h3>判例库（${(D.precedents||[]).length} 条 · <a href="precedents.html" target="_blank" rel="noreferrer">完整判例站 ↗</a>）</h3><div class="sub">系统外元层级注册——管系统的不属于系统；权重双轴：使用次数（机器累计）/权威级（魅惑定级）</div>${table(['ID','判定内容','坐标','时间','权威级','使用'],(D.precedents||[]).slice(0,5).map(p=>`<tr><td><code>${esc(p.id)}</code></td><td>${esc(p['判定内容'])}</td><td><code>${esc((p.map_node_id||'')+(p.map_subnode?'.'+p.map_subnode:'')+(p.map_l3?'.'+p.map_l3:''))}</code></td><td>${esc(p.created_at)}</td><td>${esc(p.weight_authority||'')}</td><td>${p.weight_usage||0}</td></tr>`))}</div>`);
+domainPanel('guardian');document.getElementById('guardian').innerHTML+=guardianCuratedTable();
+const beads=section('beads','Beads：任务与依赖','在 Guardian 的健康放行之后，Beads 是项目任务、优先级、认领和依赖关系的唯一权威。它与资产、工具、系统、业务页面和证据形成稳定 ID 的双向链接。任务表仅列活跃任务（open / in_progress / blocked）；全量状态计数见下方卡片。');
+beads.innerHTML+=`<div class="grid">${Object.entries(D.taskCounts).map(([status,count])=>`<div class="card"><b>${esc(status)}</b><div class="metric">${count}</div></div>`).join('')}</div><div class="toolbar"><input id="task-query" placeholder="筛选 ID / 标题 / pillar / lane"><select id="task-status"><option value="">全部状态</option><option value="open">open</option><option value="in_progress">in_progress</option><option value="blocked">blocked</option></select><select id="task-pillar"><option value="">全部 pillar</option>${Object.keys(D.pillarCounts).sort().map(key=>`<option value="${esc(key)}">${esc(key)}</option>`).join('')}</select><select id="task-branch"><option value="">全部分支</option></select></div><div id="task-table"></div>`;
+beads.insertAdjacentHTML('beforeend',qualityStripMarkup+manualsStripMarkup);
+const candTasks=D.tasks.filter(tk=>(tk.labels||[]).includes('candidates'));if(candTasks.length)beads.insertAdjacentHTML('beforeend',`<h3>候选任务（未编号收件箱 · ${candTasks.length}）</h3>${table(['ID','P','状态','标题'],candTasks.map(tk=>`<tr><td><code>${esc(tk.id)}</code></td><td>P${esc(tk.priority)}</td><td>${esc(tk.status)}</td><td>${esc(tk.title)}</td></tr>`))}`);
+beads.querySelector('.toolbar').insertAdjacentHTML('beforebegin',`<h3>Beads 下钻：任务与系统、工具、资产、业务的双向关系</h3><div class="branch-ladder">${(P.beadsLadder||[]).map(projectionNode).join('')}</div>`);
+const chains=D.blockChains||[];
+const chainMarkup=chains.length?`<h3>阻塞链：活跃任务被 blocks 卡住（${chains.length} 条边）</h3><div class="scroll">${table(['被卡任务','状态','← blocker','blocker 状态','判断'],chains.map(c=>{const alive=c.blockerStatus==='closed';return `<tr class="${alive?'chain-alive':'chain-wait'}"><td><code>${esc(c.id)}</code><br>${esc(c.title)}</td><td>${esc(c.status)}</td><td><code>${esc(c.blockerId)}</code><br>${esc(c.blockerTitle)}</td><td>${esc(c.blockerStatus)}</td><td>${alive?'✅ blocker 已关，可解封':'⏳ 等待 blocker'}</td></tr>`}))}</div>`:'<h3>阻塞链</h3><p class="sub">当前没有活跃任务被 blocks 边卡住。</p>';
+beads.querySelector('.toolbar').insertAdjacentHTML('beforebegin',chainMarkup);
+const branchByTask={};D.entities.forEach(e=>{if(e.kind==='task'&&e.map_node_id)branchByTask[e.id.replace(/^task:/,'')]=e.map_node_id});
+const branchSelect=document.getElementById('task-branch');
+[...new Set(Object.values(branchByTask))].sort().forEach(b=>branchSelect.insertAdjacentHTML('beforeend',`<option value="${esc(b)}">${esc(b.replace('map.',''))}</option>`));
+function renderTasks(){const query=document.getElementById('task-query').value.toLowerCase(),pillar=document.getElementById('task-pillar').value,st=document.getElementById('task-status').value,br=document.getElementById('task-branch').value;const rows=D.tasks.filter(task=>(!pillar||task.pillar===pillar)&&(!st||task.status===st)&&(!br||branchByTask[task.id]===br)&&`${task.id} ${task.title} ${task.pillar} ${task.lane}`.toLowerCase().includes(query)).map(task=>{const dep=(D.taskDeps||{})[task.id]||{};const depInfo=[(dep.blockedBy||[]).length?`←${dep.blockedBy.length}`:'',(dep.blocking||[]).length?`→${dep.blocking.length}`:''].filter(Boolean).join(' ');return `<tr class="${task.status==='blocked'?'row-blocked':''}"><td><code>${esc(task.id)}</code></td><td>P${esc(task.priority)}</td><td>${esc(task.status)}</td><td>${esc(task.pillar||'unclassified')}</td><td>${esc((task.lane||'—').replace(/^lane:/,''))}</td><td>${esc((branchByTask[task.id]||'').replace('map.','')||'—')}</td><td>${esc(depInfo)}</td><td>${esc(task.title)}</td></tr>`});document.getElementById('task-table').innerHTML=table(['ID','P','状态','Pillar','Lane','分支','依赖','标题'],rows)}renderTasks();document.getElementById('task-query').oninput=debounce(renderTasks,150);document.getElementById('task-pillar').onchange=renderTasks;document.getElementById('task-status').onchange=renderTasks;branchSelect.onchange=renderTasks;
+const applyHashFilter=()=>{const mb=location.hash.match(/^#beads\?branch=(.+)$/),mq=location.hash.match(/^#beads\?q=(.+)$/);if(mb){branchSelect.value=decodeURIComponent(mb[1])}if(mq){document.getElementById('task-query').value=decodeURIComponent(mq[1])}if(mb||mq){renderTasks();document.getElementById('beads').scrollIntoView()}};
+window.addEventListener('hashchange',applyHashFilter);applyHashFilter();
+function entityTable(sourceId,title){const rows=D.entities.filter(entity=>entity.source===sourceId).map(entity=>`<tr><td><code>${esc(entity.id)}</code></td><td>${esc(entity.kind)}</td><td>${esc(entity.name)}</td><td>${esc(entity.state)}</td><td>${esc(entity.observed||'')}</td></tr>`);return `<h3>${esc(title)}</h3>${table(['ID','类型','名称','状态','观察时间'],rows)}`}
+function guardianCuratedTable(){const rows=(D.entities||[]).filter(e=>e.source==='guardian-curated').map(e=>`<tr><td><code>${esc(e.id.replace('guardian-curated:',''))}</code></td><td>${esc(e.name)}</td><td>${esc(e.lifecycle||'?')}</td><td>${esc(e.map_node_id||'')}</td><td>${esc(e.guardian_target||'')}</td><td>${esc(e.evidence||'')}</td></tr>`);return `<h3>Curated 守护任务注册表（${rows.length} 条 · 渲染权威层）</h3>${table(['ID','名称','生命周期','坐标','守护对象','证据'],rows)}`}
+const childBlock=id=>{const items=D.entities.filter(e=>e.map_subnode===id&&e.kind!=='asset');  // codex-ygjz v5.5：资产卡统一由 assetCardsMarkup 直渲，childBlock 只挂非资产（防双渲染）
+const cards=items.filter(e=>e.kind==='asset').map(e=>assetCard(e)).join('');
+const rows=items.filter(e=>e.kind!=='asset').map(e=>{const nm=e.name||e.id;const href=e.url?e.url:(e.local_path?('file:///'+String(e.local_path).replace(/\\/g,'/')):'');const tag=KINDTAG[e.kind]||e.kind;return `<div class="l2-item">${href?`<a href="${esc(href)}" target="_blank" rel="noreferrer">${esc(nm)}</a>`:esc(nm)} <small>${esc(tag)}</small></div>`}).join('');
+const inner=rows+(cards?`<div class="grid asset-grid">${cards}</div>`:'');
+return `<div>${projectionNode(id)}<div class="l2-items">${inner||'<div class="l2-item"><small>—</small></div>'}</div></div>`};
+const deviceStripMarkup=(()=>{const devs=D.devices||[];if(!devs.length)return '';const rows=devs.map(dv=>{const on=dv.status==='online'||dv.online===true;return `<tr><td><code>${esc(dv.id||dv.name)}</code></td><td>${esc(dv.name||'')}</td><td>${esc(dv.kind||dv.type||'')}</td><td>${on?'<b class="ok">在线</b>':'<b class="no">离线</b>'}</td><td>${esc(dv.address||dv.ip||dv.tailscale_ip||'')}</td><td>${dv.lifecycle?esc(dv.lifecycle.status)+(dv.lifecycle.fresh_until?' · '+esc(dv.lifecycle.fresh_until):''):'—'}</td><td>${esc(dv.note||dv.capability||'')}</td></tr>`});return `<h3>设备显示（与 desktop HUD/system 同源投影 · ${devs.length} 台）</h3>${table(['ID','名称','类型','状态','地址','注册制','备注'],rows)}`})();
+const branchDetail=columnId=>{const column=(P.topologyColumns||[]).find(item=>item.id===columnId);if(!column)return '';const ids=column.nodes||[];const hub=ids[0];const children=ids.slice(1);
+return `<div class="branch-ladder">${projectionNode(hub)}<div class="l2-vstack">${children.map(childBlock).join('')}</div></div>`};
+[['hardware','hardware'],['search','search'],['harness','harness']].forEach(([panelId,columnId])=>{const panel=domainPanel(panelId);panel.innerHTML+=branchDetail(columnId)});
+document.getElementById('hardware').insertAdjacentHTML('beforeend',deviceStripMarkup);
+const agentHub=domainPanel('agent-hub');agentHub.innerHTML+=branchDetail('agent-hub');agentHub.innerHTML+=`<h3>可插拔 Family / Interface / Profile / Slot</h3>${agentRegistryMarkup(true)}<h3>六面联邦聚合（引用反查）</h3>${fedMarkup()}<div class="evidence">槽位由 Agent Hub 快照中的 <code>DECLARES_SLOT</code> 关系生成；接口层可新增 cli、desktop-app、gui、web、headless 或其他类型，地图不会写死某一产品形态。</div><div class="evidence">注册新 agent 或派工前必读：<code>tools/agent-hub/agent-registration-standard-v1.md</code>（三层落点+wrapper-cli 路径）· <code>tools/agent-hub/dispatch-envelope-v2.md</code>（派工信封 v2）。</div>`;
+const skillManager=domainPanel('skill-manager');skillManager.innerHTML+=entityTable('skill-manager','Skill Manager 投影');
+const mcpManager=domainPanel('mcp-manager');mcpManager.innerHTML+=entityTable('mcp-manager','MCP Manager 投影');
+const renderEnabledForMatrix=()=>{const srvs=D.entities.filter(e=>e.id.startsWith('capability:mcp:')&&(e.enabled_for_clients!==undefined));if(!srvs.length)return '';const uni=[...new Set(srvs.flatMap(e=>e.enabled_for_clients))].sort();const rows=srvs.map(e=>`<tr><td><code>${esc(e.name||e.id)}</code></td>${uni.map(c=>`<td>${e.enabled_for_clients.includes(c)?'<b class="ok">✓</b>':'<b class="no">✗</b>'}</td>`).join('')}</tr>`);return `<h3>enabled_for 逐客户端矩阵（${srvs.length} 服务 × ${uni.length} 客户端）</h3>${table(['MCP',...uni],rows)}`};
+mcpManager.innerHTML+=renderEnabledForMatrix();
+const projectsPanel=section('projects','项目与资产','项目层：任务产出的数字资产（数据库/产品/内容）注册制归宿。dac 六类为 L3。来源任务脐带见 beads 收件箱。');
+const providerManager=domainPanel('provider-manager');providerManager.innerHTML+=entityTable('apikey-provider-manager','Provider / API Key Manager 投影');
+const manuals=document.getElementById('search');manuals.insertAdjacentHTML('beforeend','<h3 id="search-manuals">OKF 手册库（全量浏览；缺口见 beads 面板双手册矩阵）</h3>');
+const allManuals=D.entities.filter(e=>e.manual_type);
+const mTypeName={'usage':'使用','repair':'维修','both':'双'};
+const mBranches=[...new Set(allManuals.map(m=>m.manual_map_node||'').filter(Boolean))].sort();
+manuals.innerHTML+=`<div class="grid"><div class="card"><b>手册总数</b><div class="metric">${allManuals.length}</div></div><div class="card"><b>有使用手册</b><div class="metric">${allManuals.filter(m=>m.manual_type==='usage'||m.manual_type==='both').length}</div></div><div class="card"><b>有维修手册</b><div class="metric">${allManuals.filter(m=>m.manual_type==='repair'||m.manual_type==='both').length}</div></div><div class="card"><b>覆盖对象</b><div class="metric">${new Set(allManuals.map(m=>m.covers_object).filter(Boolean)).size}</div></div></div><div class="toolbar"><select id="manual-type"><option value="">全部类型</option><option value="usage">使用</option><option value="repair">维修</option><option value="both">双</option></select><select id="manual-branch"><option value="">全部分支</option>${mBranches.map(b=>`<option value="${esc(b)}">${esc(b.replace('map.',''))}</option>`).join('')}</select><input id="manual-query" placeholder="筛选 id / 覆盖对象 / 路径"></div><div class="scroll" id="manual-table"></div>`;
+function renderManuals(){const t=document.getElementById('manual-type').value,br=document.getElementById('manual-branch').value,q=document.getElementById('manual-query').value.toLowerCase();const rows=allManuals.filter(m=>(!t||m.manual_type===t)&&(!br||m.manual_map_node===br)&&`${m.id} ${m.name} ${m.covers_object||''} ${m.path||''}`.toLowerCase().includes(q)).map(m=>{const href=m.path?('file:///'+String(m.path).replace(/\\/g,'/')):'';return `<tr><td><code>${esc(m.id)}</code>${m.map_number?` <span class="asset-tag tag-db">№ ${esc(m.map_number)}</span>`:''}<br>${esc(m.name||'')}</td><td>${esc(mTypeName[m.manual_type]||m.manual_type)}</td><td>${esc(m.covers_object||'—')}</td><td>${esc((m.manual_map_node||'—').replace('map.',''))}</td><td>${esc(m.form||'')}</td><td>${href?`<a href="${esc(href)}" target="_blank" rel="noreferrer">打开</a>`:''}</td></tr>`});document.getElementById('manual-table').innerHTML=table(['手册','类型','覆盖对象','分支','形式','路径'],rows)}
+renderManuals();['manual-type','manual-branch'].forEach(id=>{document.getElementById(id).onchange=renderManuals});document.getElementById('manual-query').oninput=debounce(renderManuals,150);
+const relations=document.getElementById('search');relations.insertAdjacentHTML('beforeend','<h3>关系图谱（地图关系边 + Beads 任务依赖；来源权威见 topology 来源条）</h3>');
+relations.innerHTML+=`<h3>地图关系层（快照边，${D.edges.length} 条）</h3><div class="grid">${Object.entries(D.edgeCounts).sort((a,b)=>b[1]-a[1]).map(([kind,count])=>`<div class="card edge-card" data-kind="${esc(kind)}" style="cursor:pointer"><b>${esc(kind)}</b><div class="metric">${count}</div></div>`).join('')}</div><div class="toolbar"><input id="edge-query" placeholder="筛选 from / to / 关系"><select id="edge-kind"><option value="">全部边类型</option>${Object.keys(D.edgeCounts).sort().map(k=>`<option value="${esc(k)}">${esc(k)}</option>`).join('')}</select></div><div class="scroll" id="edge-table"></div><h3>Beads 任务依赖（${D.relationRows.length} 条）</h3><div class="toolbar"><select id="relation-kind"><option value="">全部依赖类型</option>${Object.keys(D.relationCounts).sort().map(k=>`<option value="${esc(k)}">${esc(k)}（${D.relationCounts[k]}）</option>`).join('')}</select><input id="relation-query" placeholder="筛选 source / target / 关系 / 标题"></div><div class="scroll" id="relation-table"></div>`;
+const chainStatusMap={};(D.blockChains||[]).forEach(c=>{chainStatusMap[`${c.id}|${c.blockerId}`]=c.blockerStatus});
+function renderEdges(){const q=document.getElementById('edge-query').value.toLowerCase(),k=document.getElementById('edge-kind').value;const rows=D.edges.filter(e=>(!k||e.kind===k)&&`${e.from} ${e.to} ${e.kind}`.toLowerCase().includes(q)).map(e=>`<tr><td><code>${esc(e.from)}</code></td><td>${esc(e.kind)}</td><td><code>${esc(e.to)}</code></td><td>${esc(e.source||'')}</td></tr>`);document.getElementById('edge-table').innerHTML=table(['From','关系','To','来源'],rows)}
+function renderRelations(){const query=document.getElementById('relation-query').value.toLowerCase(),kind=document.getElementById('relation-kind').value,rows=D.relationRows.filter(row=>(!kind||row.kind===kind)&&`${row.source} ${row.target} ${row.kind} ${row.sourceTitle}`.toLowerCase().includes(query)).map(row=>{const bs=row.kind==='blocks'?chainStatusMap[`${row.source}|${row.target}`]:null;const cls=bs==='closed'?'chain-alive':bs?'chain-wait':'';return `<tr class="${cls}"><td><a href="#beads?q=${encodeURIComponent(row.source)}"><code>${esc(row.source)}</code></a><br>${esc(row.sourceTitle)}</td><td>${esc(row.kind)}</td><td><a href="#beads?q=${encodeURIComponent(row.target)}"><code>${esc(row.target)}</code></a></td><td>${esc(row.direction||'')}</td></tr>`});document.getElementById('relation-table').innerHTML=table(['Source','关系','Target','方向'],rows)}
+renderEdges();renderRelations();
+document.getElementById('edge-query').oninput=debounce(renderEdges,150);document.getElementById('edge-kind').onchange=renderEdges;
+document.getElementById('relation-query').oninput=debounce(renderRelations,150);document.getElementById('relation-kind').onchange=renderRelations;
+relations.querySelectorAll('.edge-card').forEach(c=>c.addEventListener('click',()=>{document.getElementById('edge-kind').value=c.dataset.kind;renderEdges();document.getElementById('edge-table').scrollIntoView({behavior:'smooth',block:'start'})}));
+const desktop=document.createElement('div');topologyPanel.appendChild(desktop);desktop.insertAdjacentHTML('beforeend','<h2 style="margin-top:18px">呈现层 · Desktop 桌面门户</h2><div class="sub">Desktop 执行与交互中心：独立网页，与主网站同源只读投影（已并入系统层，E-46）。</div>');
+const slotGroups={};D.entities.filter(e=>e.kind==='runtime_slot').forEach(e=>{const m=/^[a-zA-Z]+/.exec(e.name||'');const g=m?m[0]:'other';(slotGroups[g]=slotGroups[g]||[]).push(e.name)});
+const slotCount=D.entities.filter(e=>e.kind==='runtime_slot').length;
+desktop.innerHTML+=`<div class="domain-strip">${badgeFor(['map.desktop'])}</div><div class="grid"><div class="card"><b>Runtime Slots</b><div class="metric">${slotCount}</div><div class="sub">${Object.entries(slotGroups).sort().map(([g,l])=>`${esc(g)}×${l.length}`).join(' · ')}</div></div></div><p><a href="${esc(D.desktopUrl)}" target="_blank" rel="noreferrer"><code>${esc(D.desktopUrl)}</code></a></p>`;
+const slotOv=D.slotOverview&&D.slotOverview.slots?D.slotOverview.slots:{};const slotList=Object.entries(slotOv).filter(([k])=>k&&!k.startsWith('_'));const runSlots=slotList.filter(([,v])=>v.status==='running'),stopSlots=slotList.filter(([,v])=>v.status==='stopped');
+desktop.innerHTML+=`<h3>Desktop 槽位概览（${slotList.length} 槽：running ${runSlots.length} / stopped ${stopSlots.length}）</h3><div class="grid">${slotList.slice(0,18).map(([k,v])=>`<div class="card"><b>${esc(k)}</b><div class="metric metric-${esc(v.status==='running'?'green':'muted')}">${esc(v.status||'?')}</div><div class="sub">${esc(v.model||v.agent||'')}</div></div>`).join('')}${slotList.length>18?`<div class="card"><b>其余</b><div class="metric">${slotList.length-18}</div><div class="sub">未逐槽列出</div></div>`:''}</div><p class="topology-note">槽位细则住 agent-hub.slots；此处 0 层放概览。</p>`;
+desktop.innerHTML+=`<h3>Desktop 执行与交互中心（两级）</h3><div class="branch-ladder"><div class="tree-stack"><article class="tree-node"><b>Desktop 执行与交互中心</b><small>L1 · 桌面门户 · 独立网页同源投影</small></article></div><div class="l2-stack">${projectionNode('communication')}<div class="subnode-chip">${slotCount} 槽分组：${Object.entries(slotGroups).sort().map(([g,l])=>`${esc(g)}×${l.length}`).join(' · ')}</div></div></div>`;
+const wbSlots=D.entities.filter(e=>e.kind==='runtime_slot'),wbSkills=D.entities.filter(e=>e.id.startsWith('capability:skill:')),wbMcps=D.entities.filter(e=>e.id.startsWith('capability:mcp:'));
+const wbSkillFormal=wbSkills.filter(e=>e.status==='formal').length,wbSkillOther=wbSkills.length-wbSkillFormal;
+const wbMcpManaged=wbMcps.filter(e=>e.status==='managed').length,wbMcpPilot=wbMcps.filter(e=>e.status==='pilot').length;
+desktop.innerHTML+=`<h3>Agent Workbench（降级卡）</h3>`+`<div class="grid"><div class="card"><b>Agent Families</b><div class="metric">${(D.agentTopology.families||[]).length}</div></div><div class="card"><b>Runtime Slots</b><div class="metric">${wbSlots.length}</div></div><div class="card"><b>Skills</b><div class="metric">${wbSkillFormal}</div><div class="sub">formal${wbSkillOther?` · ${wbSkillOther} 未标/test`:''}</div></div><div class="card"><b>MCP Servers</b><div class="metric">${wbMcpManaged}</div><div class="sub">managed · ${wbMcpPilot} pilot</div></div></div><p><a href="file:///${esc(D.workbenchPath.replace(/\\/g,'/'))}" target="_blank" rel="noreferrer"><code>${esc(D.workbenchPath)}</code></a></p><div class="evidence">主地图不会绕过 Manager 的 approval / apply / CAS / evidence / rollback 边界。</div>`;
+
+// 网页资产卡片（数据驱动：card 块字段存在才渲染，注册表可增删改）
+function beadsRow(id,how){const t=taskById[id];if(!t)return `<div class="asset-row"><span class="asset-label">${esc(how)}</span><a href="#beads?q=${encodeURIComponent(id)}"><code>${esc(id)}</code></a><span class="sub">非活跃/已关闭</span></div>`;const dep=(D.taskDeps||{})[id]||{};const depInfo=[(dep.blockedBy||[]).length?`←${dep.blockedBy.length}`:'',(dep.blocking||[]).length?`→${dep.blocking.length}`:''].filter(Boolean).join(' ');return `<div class="asset-row"><span class="asset-label">${esc(how)}</span><a href="#beads?q=${encodeURIComponent(id)}"><code>${esc(id)}</code></a><span class="asset-status st-${esc(t.status)}">${esc(t.status)}</span><span class="sub">P${esc(t.priority)} · ${esc((t.lane||'—').replace(/^lane:/,''))}${depInfo?' · '+esc(depInfo):''}</span><span class="asset-sub2">${esc(t.title)}</span></div>`}
+function assetCard(a){const c=a.card||{};
+  const href=a.url?a.url:(a.local_path?('file:///'+String(a.local_path).replace(/\\/g,'/')):'');
+  const title=href?`<a href="${esc(href)}" target="_blank" rel="noreferrer"><b>${esc(a.name)}</b></a>`:`<b>${esc(a.name)}</b>`;
+  const numTag=a.map_number?`<span class="asset-tag tag-db">№ ${esc(a.map_number)}</span>`:'';
+  const dacTag=a.data_asset_class?`<span class="asset-tag tag-dac" title="数字资产子类（taxonomy）">${esc(a.data_asset_class)}</span>`:'';
+  const typeTag=`<span class="asset-tag${a.asset_type==='database'?' tag-db':''}">${TL[a.asset_type]||'资产'}</span>`;
+  const flag=c.review_flag?`<span class="asset-tag tag-warn">⚠ ${esc(c.review_flag)}</span>`:'';
+  const lc=a.lifecycle||null;
+  const lcTag=lc?(lc.status==='managed'?'<span class="asset-tag tag-ok">正式</span>':(lc.status==='deprecated'?'<span class="asset-tag tag-warn">退役</span>':'<span class="asset-tag tag-pilot">🧪 实验</span>')):'';
+  const gapRow=(lc&&lc.status==='pilot'&&(lc.gaps||[]).length)?`<div class="asset-row"><span class="asset-label">毕业缺口</span><span>${lc.gaps.map(g=>`<span class="asset-tag tag-pend">${esc(GAPLBL[g]||g)}</span>`).join(' ')}</span></div>`:'';
+  const links=[];
+  if(a.dashboard_path)links.push("<a href=\"file:///" + esc(String(a.dashboard_path).split("\\").join("/")) + "\" target=\"_blank\" rel=\"noreferrer\">本地面板</a>");
+  if(a.url)links.push(`<a href="${esc(a.url)}" target="_blank" rel="noreferrer">线上</a>`);
+  if(a.local_path)links.push(`<a href="file:///${esc(String(a.local_path).replace(/\\/g,'/'))}" target="_blank" rel="noreferrer">本地</a>`);
+  if(a.asset_size)links.push(`<span class="sub">${esc(a.asset_size)}${a.asset_mtime?' · '+esc(a.asset_mtime):''}</span>`);
+  const linkRow=links.length?`<div class="asset-row">${links.join('<span class="sub">·</span>')}</div>`:'';
+  const fld=(label,key)=>c[key]?`<div class="asset-row"><span class="asset-label">${label}</span><span>${esc(c[key])}</span></div>`:'';
+  const pending=(c.pending_sources&&c.pending_sources.length)?`<div class="asset-row"><span class="asset-label">待入库</span><span>${c.pending_sources.map(x=>`<span class="asset-tag tag-pend">${esc(x)}</span>`).join(' ')}</span></div>`:'';
+  const beadsRows=[];
+  if(a.owner_beads)beadsRows.push(beadsRow(a.owner_beads,'owner'));
+  (a.related_beads||[]).filter(id=>id!==a.owner_beads).forEach(id=>beadsRows.push(beadsRow(id,'related')));
+  const beadsBlock=beadsRows.length?`<div class="asset-block"><div class="asset-head">beads</div>${beadsRows.join('')}</div>`:'';
+  const manuals=(D.edges||[]).filter(e=>e.kind==='manual-covers'&&e.to===a.id).map(e=>entById[e.from]).filter(Boolean);
+  const hasU=manuals.some(m=>m.manual_type==='usage'||m.manual_type==='both'),hasR=manuals.some(m=>m.manual_type==='repair'||m.manual_type==='both');
+  const okfBlock=`<div class="asset-row"><span class="asset-label">OKF</span><span>使用 ${hasU?'<b class="ok">✓</b>':'<b class="no">✗</b>'} · 维修 ${hasR?'<b class="ok">✓</b>':'<b class="no">✗</b>'}</span>${manuals.length?`<a class="sub" href="#beads-manuals">${esc(manuals.map(m=>m.name).join('、'))}</a>`:''}</div>`;
+  const rel=(D.edges||[]).filter(e=>(e.from===a.id||e.to===a.id)&&(e.kind==='asset-renders-capability'||e.kind==='asset-renders-system'||e.kind==='mcp-implements'||/codegraph|cbm/i.test(String(e.from||'')+String(e.to||''))));
+  const relBlock=rel.length?`<div class="asset-row"><span class="asset-label">检索</span><span>${rel.map(e=>{const o=e.from===a.id?e.to:e.from;return `${esc(e.kind)} → <code>${esc(o)}</code>`}).join('；')}</span></div>`:'';
+  const all=(D.edges||[]).filter(e=>e.from===a.id||e.to===a.id);
+  const detail=all.length?`<div class="asset-block"><div class="asset-head">全部关系 ${all.length} 条</div>${all.map(e=>{const out=e.from===a.id;const o=out?e.to:e.from;const oe=entById[o];return `<div class="asset-row"><span class="asset-label">${esc(e.kind)}</span><span>${out?'→':'←'} <code>${esc(o)}</code>${oe&&oe.name!==o?` <span class="sub">${esc(oe.name)}</span>`:''}</span></div>`}).join('')}</div>`:`<div class="asset-row"><span class="asset-label">关系</span><span class="sub">—</span></div>`;
+  return `<div class="card asset-card" data-aid="${esc(a.id)}">${title} ${numTag}${dacTag}${typeTag}${lcTag}${flag}${linkRow}${fld('数据库','database')}${fld('来源','source')}${fld('原始地址','original_url')}${fld('更新方法','update_method')}${fld('建立标准','build_standard')}${fld('精读标准','reading_standard')}${pending}${gapRow}${beadsBlock}${okfBlock}${relBlock}${detail}</div>`}
+function assetCardsMarkup(pid){const all=D.entities.filter(e=>e.kind==='asset'&&e.panel===pid);
+  // codex-ygjz v5.5：子域桶改为 manifest 面板内直渲（LADDERED 梯架旁路废弃——新子域名不在 topology 列，走梯子会丢 16 卡）
+  // E-23 2026-08-03：database 资产按 data_asset_class（taxonomy 驱动）分组；其余按 map_subnode（85 卡守恒，仅分组轴变化）
+  const DACN={'dac:tuwen':'图文创作①','dac:ruanjian':'软件开发②','dac:shijue':'视觉设计③','dac:tuxiang':'图像生成处理④','dac:shipin':'视频创作⑤','dac:zhishiku':'知识库(候选)'};
+  const dacs=all.filter(e=>e.asset_type==='database'&&e.data_asset_class),others=all.filter(e=>!(e.asset_type==='database'&&e.data_asset_class));
+  const groups={};others.filter(e=>e.map_subnode).forEach(e=>{(groups[e.map_subnode]=groups[e.map_subnode]||[]).push(e)});
+  const without=others.filter(e=>!e.map_subnode);
+  let out='';
+  const dacGroups={};dacs.forEach(e=>{(dacGroups[e.data_asset_class]=dacGroups[e.data_asset_class]||[]).push(e)});
+  Object.keys(dacGroups).sort().forEach(g=>{out+=`<h3>资产卡 · 数据库/${esc(DACN[g]||g)}（${dacGroups[g].length}）</h3><div class="grid asset-grid">${dacGroups[g].map(assetCard).join('')}</div>`});
+  const gkeys=Object.keys(groups).sort();
+  out+=gkeys.map(g=>{const t=SUBT[g]||(projectionNodes.get(g)||{}).title||g;return `<h3>资产卡 · ${esc(pid+'.'+g)}（${groups[g].length}）</h3><div class="grid asset-grid">${groups[g].map(assetCard).join('')}</div>`}).join('');
+  if(without.length)out+=`<h3>${gkeys.length?'未归子域':'资产卡'}（${without.length}）</h3><div class="grid asset-grid">${without.map(assetCard).join('')}</div>`;
+  return out}
+['beads','hardware','search','harness','agent-hub','skill-manager','mcp-manager','provider-manager','topology','projects'].forEach(pid=>{const el=document.getElementById(pid);if(!el)return;const m=assetCardsMarkup(pid);if(m)el.insertAdjacentHTML('beforeend',m)});
+// codex-ygjz v5.5 renderer 注册表（panel-manifest renderer 名 → 模板实现；门闸 11 断言全键可解析）
+const renderSourceStrip=()=>!!document.getElementById('topology-sources');
+const renderCounts=()=>true;
+const renderTopology=()=>!!document.getElementById('topology');
+const renderDepsTable=()=>typeof renderRelations!=='undefined'?renderRelations:null;
+const renderManualStrip=()=>typeof renderManuals!=='undefined'?renderManuals:null;
+const renderQualityStrip=()=>qualityStripMarkup;
+const renderGraph=()=>typeof renderEdges!=='undefined'?renderEdges:null;
+const renderAgentTopology=()=>typeof agentRegistryMarkup!=='undefined'?agentRegistryMarkup:null;
+const LAYER_ORDER=['topology','beads','harness','provider-manager','agent-hub','skill-manager','mcp-manager','search','hardware','projects','guardian'];const _main=document.getElementById('main');LAYER_ORDER.forEach(id=>{const el=document.getElementById(id);if(el)_main.appendChild(el)});
+const RENDERER_REGISTRY={renderSourceStrip,renderTopology,renderCounts,guardianLiveMarkup,renderTaskTable:renderTasks,renderCards:assetCardsMarkup,renderDepsTable,renderManualStrip,renderQualityStrip,renderGraph,renderAgentTopology,renderEnabledForMatrix};
+window.RENDERER_REGISTRY=RENDERER_REGISTRY;
+// 每个面板：最左边生成分类导航栏（h3 区块 + L2 子域，DOM 序，可点跳转）
+document.querySelectorAll('section.panel').forEach(panel=>{
+  const entries=[];
+  panel.querySelectorAll('h3, .l2-vstack > div').forEach((node,i)=>{
+    const isH3=node.tagName==='H3';
+    const label=isH3?node.textContent.replace(/\s+/g,' ').trim().slice(0,24):(node.querySelector('.tree-node b')||{}).textContent;
+    if(!label)return;
+    const id=panel.id+'-nav-'+i;node.id=id;entries.push([label,id]);
+  });
+  if(entries.length<2)return;
+  const nav=document.createElement('div');nav.className='panel-subnav';
+  nav.innerHTML=entries.map(([t,id])=>`<a href="#${id}">${esc(t)}</a>`).join('');
+  const content=document.createElement('div');content.className='panel-content';
+  [...panel.children].forEach(c=>{if(c.tagName!=='H2'&&!c.classList.contains('sub'))content.append(c)});
+  panel.classList.add('has-subnav');
+  panel.append(nav,content);
+});
+</script></body></html>

@@ -1,0 +1,394 @@
+{
+ "schema": "l3-registry-v0",
+ "version": "0.1",
+ "generated_at": "2026-08-15T14:32:13",
+ "_meta": {
+  "authority_of": "L3 值域全局索引（E-135 生成物，从 taxonomy 汇总；源=各域 taxonomy 权威）",
+  "rules": [
+   "非硬包含：panel/子域/L3 是三个独立地址层，parent 仅软提示，门闸按层精确不递归",
+   "kind 值域：data-asset（数据资产）/ credential（凭据）——按 source_taxonomy 判定，不猜 id 前缀",
+   "生成物：本文件由 build_l3_registry.py 生成，不手改；增删 L3 走各域 taxonomy（增长流 candidate→active）后重建",
+   "status 收录：!= deprecated（含 candidate）"
+  ],
+  "generator": "build_l3_registry.py (E-135)",
+  "growth_flow": "新 L3 先登记域 taxonomy（candidate，E-111 zhishiku 先例）→ 重建本文件 → 生效"
+ },
+ "counts": {
+  "total": 41,
+  "by_kind": {
+   "data-asset": 15,
+   "credential": 26
+  }
+ },
+ "entries": [
+  {
+   "l3_id": "agent-coordination",
+   "name": "agent 多任务协调",
+   "parent": "agent-hub.communication",
+   "status": "active",
+   "kind": "data-asset",
+   "source_taxonomy": "agent-hub-taxonomy-v0.json",
+   "note": "多 agent 任务协调类（共享任务板/派工协调）。首例成员 vibe_conductor（2026-08-05 魅惑拍板设类）"
+  },
+  {
+   "l3_id": "agent:ccd1",
+   "name": "CCD1 Agent",
+   "parent": "agent-hub.registry",
+   "status": "active",
+   "kind": "credential",
+   "source_taxonomy": "credential-taxonomy-v0.json",
+   "note": "E-115 凭据 L3 注册：CCD1 槽位凭据"
+  },
+  {
+   "l3_id": "agent:ccd2",
+   "name": "CCD2 Agent",
+   "parent": "agent-hub.registry",
+   "status": "active",
+   "kind": "credential",
+   "source_taxonomy": "credential-taxonomy-v0.json",
+   "note": "E-115 凭据 L3 注册：CCD2 槽位凭据"
+  },
+  {
+   "l3_id": "agent:ccd3",
+   "name": "CCD3 Agent",
+   "parent": "agent-hub.registry",
+   "status": "active",
+   "kind": "credential",
+   "source_taxonomy": "credential-taxonomy-v0.json",
+   "note": "E-115 凭据 L3 注册：CCD3 槽位凭据"
+  },
+  {
+   "l3_id": "agent:cli",
+   "name": "Agent CLI",
+   "parent": "agent-hub.registry",
+   "status": "active",
+   "kind": "credential",
+   "source_taxonomy": "credential-taxonomy-v0.json",
+   "note": "E-115 凭据 L3 注册：Agent 命令行凭据"
+  },
+  {
+   "l3_id": "browser:adspower",
+   "name": "AdsPower",
+   "parent": "hardware.tools-browser",
+   "status": "active",
+   "kind": "credential",
+   "source_taxonomy": "credential-taxonomy-v0.json",
+   "note": "E-115 凭据 L3 注册：AdsPower 浏览器凭据"
+  },
+  {
+   "l3_id": "browser:automation",
+   "name": "浏览器自动化",
+   "parent": "hardware.tools-browser",
+   "status": "active",
+   "kind": "credential",
+   "source_taxonomy": "credential-taxonomy-v0.json",
+   "note": "E-115 凭据 L3 注册：浏览器自动化凭据"
+  },
+  {
+   "l3_id": "browser:cloudflare",
+   "name": "cloudflare 操作闭环（浏览器控制台系）",
+   "parent": "hardware.tools-browser",
+   "status": "active",
+   "kind": "data-asset",
+   "source_taxonomy": "data-asset-taxonomy-v0.json",
+   "note": "E-64 魅惑裁决 2026-08-09：CF 操作闭环=浏览器控制台，并入 tools-browser"
+  },
+  {
+   "l3_id": "comm:feishu",
+   "name": "飞书通信",
+   "parent": "agent-hub.communication",
+   "status": "active",
+   "kind": "credential",
+   "source_taxonomy": "credential-taxonomy-v0.json",
+   "note": "E-115 凭据 L3 注册：飞书/IM 通信凭据"
+  },
+  {
+   "l3_id": "comm:nylas",
+   "name": "Nylas 邮件",
+   "parent": "agent-hub.communication",
+   "status": "active",
+   "kind": "credential",
+   "source_taxonomy": "credential-taxonomy-v0.json",
+   "note": "E-115 凭据 L3 注册：Nylas 邮件服务凭据"
+  },
+  {
+   "l3_id": "comm:qq",
+   "name": "QQ 通信",
+   "parent": "agent-hub.communication",
+   "status": "active",
+   "kind": "credential",
+   "source_taxonomy": "credential-taxonomy-v0.json",
+   "note": "E-115 凭据 L3 注册：QQ 通信凭据"
+  },
+  {
+   "l3_id": "dac:ruanjian",
+   "name": "软件开发",
+   "parent": "projects.project-assets",
+   "status": "active",
+   "kind": "data-asset",
+   "source_taxonomy": "data-asset-taxonomy-v0.json",
+   "note": "软件开发②：app/软件也是数字资产（E-12 用户确认）"
+  },
+  {
+   "l3_id": "dac:shijue",
+   "name": "视觉设计",
+   "parent": "projects.project-assets",
+   "status": "active",
+   "kind": "data-asset",
+   "source_taxonomy": "data-asset-taxonomy-v0.json",
+   "note": "视觉设计③：设计稿/UI/视觉资产"
+  },
+  {
+   "l3_id": "dac:shipin",
+   "name": "视频创作",
+   "parent": "projects.project-assets",
+   "status": "active",
+   "kind": "data-asset",
+   "source_taxonomy": "data-asset-taxonomy-v0.json",
+   "note": "视频⑤：视频素材/项目/制作流程"
+  },
+  {
+   "l3_id": "dac:tuwen",
+   "name": "图文创作",
+   "parent": "projects.project-assets",
+   "status": "active",
+   "kind": "data-asset",
+   "source_taxonomy": "data-asset-taxonomy-v0.json",
+   "note": "图文创作①（最重要）：文档/html-md、公众号文章、图文内容原料/语料库、文案模板。总控判据（overseas-operations 案例）：内容原料→图文①"
+  },
+  {
+   "l3_id": "dac:tuxiang",
+   "name": "图像生成处理",
+   "parent": "projects.project-assets",
+   "status": "active",
+   "kind": "data-asset",
+   "source_taxonomy": "data-asset-taxonomy-v0.json",
+   "note": "图像④：图片素材/标签/审核/生成处理"
+  },
+  {
+   "l3_id": "dac:zhishiku",
+   "name": "知识库",
+   "parent": "projects.project-assets",
+   "status": "active",
+   "kind": "data-asset",
+   "source_taxonomy": "data-asset-taxonomy-v0.json",
+   "note": "知识库（候选子类，走增长流：candidate→总控批准→active）。未批准前引用值门闸仍可通过（值存在于本文件），批准后仅需 status 改 active。"
+  },
+  {
+   "l3_id": "douyin",
+   "name": "抖音",
+   "parent": "projects.new-media-ops",
+   "status": "active",
+   "kind": "data-asset",
+   "source_taxonomy": "new-media-ops-taxonomy-v0.json",
+   "note": "抖音新媒体运营 L3（2026-08-10 魅惑拍板设类）：抖音视频下载/批量下载/爆款文案/自动发布/通用文案等 skill 归此"
+  },
+  {
+   "l3_id": "intake:audio",
+   "name": "音频渠道",
+   "parent": "beads.intake",
+   "status": "candidate",
+   "kind": "data-asset",
+   "source_taxonomy": "data-asset-taxonomy-v0.json",
+   "note": ""
+  },
+  {
+   "l3_id": "intake:image",
+   "name": "图片渠道",
+   "parent": "beads.intake",
+   "status": "candidate",
+   "kind": "data-asset",
+   "source_taxonomy": "data-asset-taxonomy-v0.json",
+   "note": ""
+  },
+  {
+   "l3_id": "intake:video",
+   "name": "视频渠道",
+   "parent": "beads.intake",
+   "status": "candidate",
+   "kind": "data-asset",
+   "source_taxonomy": "data-asset-taxonomy-v0.json",
+   "note": ""
+  },
+  {
+   "l3_id": "intake:webpage",
+   "name": "网页渠道",
+   "parent": "beads.intake",
+   "status": "candidate",
+   "kind": "data-asset",
+   "source_taxonomy": "data-asset-taxonomy-v0.json",
+   "note": ""
+  },
+  {
+   "l3_id": "intake:wechat",
+   "name": "公众号渠道",
+   "parent": "beads.intake",
+   "status": "active",
+   "kind": "data-asset",
+   "source_taxonomy": "data-asset-taxonomy-v0.json",
+   "note": "渠道类 L3（非资产类），因 L3 唯一定义点在本文件故登记于此；坐标 map.beads.intake.wechat"
+  },
+  {
+   "l3_id": "mcp:figma",
+   "name": "Figma MCP",
+   "parent": "mcp-manager.servers",
+   "status": "active",
+   "kind": "credential",
+   "source_taxonomy": "credential-taxonomy-v0.json",
+   "note": "E-115 凭据 L3 注册：Figma MCP 凭据"
+  },
+  {
+   "l3_id": "mcp:linear",
+   "name": "Linear MCP",
+   "parent": "mcp-manager.servers",
+   "status": "active",
+   "kind": "credential",
+   "source_taxonomy": "credential-taxonomy-v0.json",
+   "note": "E-115 凭据 L3 注册：Linear MCP 凭据"
+  },
+  {
+   "l3_id": "mcp:secrets",
+   "name": "MCP 密钥",
+   "parent": "mcp-manager.servers",
+   "status": "active",
+   "kind": "credential",
+   "source_taxonomy": "credential-taxonomy-v0.json",
+   "note": "E-115 凭据 L3 注册：MCP 通用密钥凭据"
+  },
+  {
+   "l3_id": "offline:everything",
+   "name": "Everything 本地文件名/路径搜索（线下搜索 D2）",
+   "parent": "search.offline-search",
+   "status": "active",
+   "kind": "data-asset",
+   "source_taxonomy": "data-asset-taxonomy-v0.json",
+   "note": "E-107 魅惑「拆先行块」2026-08-12：线下搜索扶正最小先行块，为 E-101 搜索系卡通路"
+  },
+  {
+   "l3_id": "provider:ai",
+   "name": "AI 提供商",
+   "parent": "provider-manager.providers",
+   "status": "active",
+   "kind": "credential",
+   "source_taxonomy": "credential-taxonomy-v0.json",
+   "note": "E-115 凭据 L3 注册：AI 模型/API 提供商凭据"
+  },
+  {
+   "l3_id": "search:anysearch_api_key",
+   "name": "AnySearch",
+   "parent": "search.tools",
+   "status": "active",
+   "kind": "credential",
+   "source_taxonomy": "credential-taxonomy-v0.json",
+   "note": "E-115 凭据 L3 注册：AnySearch 搜索凭据（原样保留）"
+  },
+  {
+   "l3_id": "search:apify_token",
+   "name": "Apify",
+   "parent": "search.tools",
+   "status": "active",
+   "kind": "credential",
+   "source_taxonomy": "credential-taxonomy-v0.json",
+   "note": "E-115 凭据 L3 注册：Apify 搜索凭据（原样保留）"
+  },
+  {
+   "l3_id": "search:brightdata_api_token",
+   "name": "BrightData",
+   "parent": "search.tools",
+   "status": "active",
+   "kind": "credential",
+   "source_taxonomy": "credential-taxonomy-v0.json",
+   "note": "E-115 凭据 L3 注册：BrightData 搜索凭据（原样保留）"
+  },
+  {
+   "l3_id": "search:exa_api_key",
+   "name": "Exa",
+   "parent": "search.tools",
+   "status": "active",
+   "kind": "credential",
+   "source_taxonomy": "credential-taxonomy-v0.json",
+   "note": "E-115 凭据 L3 注册：Exa 搜索凭据"
+  },
+  {
+   "l3_id": "search:firecrawl-api-key",
+   "name": "Firecrawl",
+   "parent": "search.tools",
+   "status": "active",
+   "kind": "credential",
+   "source_taxonomy": "credential-taxonomy-v0.json",
+   "note": "E-115 凭据 L3 注册：Firecrawl 抓取凭据"
+  },
+  {
+   "l3_id": "search:meoo_api_key",
+   "name": "Meoo",
+   "parent": "search.tools",
+   "status": "active",
+   "kind": "credential",
+   "source_taxonomy": "credential-taxonomy-v0.json",
+   "note": "E-115 凭据 L3 注册：Meoo 搜索凭据"
+  },
+  {
+   "l3_id": "search:redfox_api_key",
+   "name": "RedFox",
+   "parent": "search.tools",
+   "status": "active",
+   "kind": "credential",
+   "source_taxonomy": "credential-taxonomy-v0.json",
+   "note": "E-115 凭据 L3 注册：RedFox 搜索凭据（原样保留）"
+  },
+  {
+   "l3_id": "search:ref.tools.apikey",
+   "name": "Ref Tools",
+   "parent": "search.tools",
+   "status": "active",
+   "kind": "credential",
+   "source_taxonomy": "credential-taxonomy-v0.json",
+   "note": "E-115 凭据 L3 注册：Ref 工具搜索凭据"
+  },
+  {
+   "l3_id": "search:tavily_api_key",
+   "name": "Tavily 搜索",
+   "parent": "search.tools",
+   "status": "active",
+   "kind": "credential",
+   "source_taxonomy": "credential-taxonomy-v0.json",
+   "note": "E-115 凭据 L3 注册：Tavily 搜索 API 凭据（原样保留）"
+  },
+  {
+   "l3_id": "search:youtube_api_key",
+   "name": "YouTube",
+   "parent": "search.tools",
+   "status": "active",
+   "kind": "credential",
+   "source_taxonomy": "credential-taxonomy-v0.json",
+   "note": "E-115 凭据 L3 注册：YouTube API 凭据（原样保留）"
+  },
+  {
+   "l3_id": "search:zhihu_access_secret",
+   "name": "知乎",
+   "parent": "search.tools",
+   "status": "active",
+   "kind": "credential",
+   "source_taxonomy": "credential-taxonomy-v0.json",
+   "note": "E-115 凭据 L3 注册：知乎访问凭据（原样保留）"
+  },
+  {
+   "l3_id": "tool:bitwarden",
+   "name": "Bitwarden",
+   "parent": "provider-manager.gateway",
+   "status": "active",
+   "kind": "credential",
+   "source_taxonomy": "credential-taxonomy-v0.json",
+   "note": "E-115 凭据 L3 注册：密码库凭据"
+  },
+  {
+   "l3_id": "tool:local",
+   "name": "本地工具",
+   "parent": "hardware.tools-windows",
+   "status": "active",
+   "kind": "credential",
+   "source_taxonomy": "credential-taxonomy-v0.json",
+   "note": "E-115 凭据 L3 注册：本地工具/脚本凭据"
+  }
+ ]
+}

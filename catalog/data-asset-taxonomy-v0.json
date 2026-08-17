@@ -1,0 +1,379 @@
+{
+  "registry_id": "data-asset-taxonomy-v0",
+  "schema": "data-asset-taxonomy-v0",
+  "created_at": "2026-08-03T05:10:00+08:00",
+  "read_only": true,
+  "authority": "E-23 数字资产分类统一（总控拍板 2026-08-03；skill manager 常驻1 执行）",
+  "authority_note": "数字资产子类【唯一定义点】。子类只在此定义；其余文件（16 库 registry、skill-panel-mapping、渲染）只引用本文件 id，禁止二处定义。骨架=panel-manifest-v0.json 25 subnode（单向引用：taxonomy 的 parent 指向 manifest 子域 id，manifest 不回头引用 taxonomy——防环）。新子类=候选提案→总控批准→active；子类只许 deprecated 不许删。",
+  "panels_source": "tools/agent-system-map/catalog/panel-manifest-v0.json",
+  "panels": [
+    {
+      "panel_id": "topology",
+      "subnodes": [
+        {
+          "subnode_id": "desktop-slots",
+          "title": "desktop-slots"
+        },
+        {
+          "subnode_id": "workbench-card",
+          "title": "workbench-card"
+        },
+        {
+          "subnode_id": "governance",
+          "name": "governance",
+          "note": "2026-08-11 魅惑立（E-87 27条逐条过）：大地图治理机制（关系注册表/协调规则/投影批次等子机制，非大地图本体）"
+        }
+      ]
+    },
+    {
+      "panel_id": "beads",
+      "subnodes": [
+        {
+          "subnode_id": "beads-views",
+          "title": "任务视图"
+        },
+        {
+          "subnode_id": "intake",
+          "title": "入料口"
+        },
+        {
+          "subnode_id": "governance",
+          "name": "governance",
+          "note": "2026-08-11 魅惑立（E-87 27条逐条过）：beads 治理/基建/运维（非 beads-views 视图、非 intake 入料）"
+        }
+      ]
+    },
+    {
+      "panel_id": "harness",
+      "subnodes": [
+        {
+          "subnode_id": "modules",
+          "title": "modules"
+        },
+        {
+          "subnode_id": "threads",
+          "title": "threads"
+        },
+        {
+          "subnode_id": "standards",
+          "title": "standards"
+        },
+        {
+          "subnode_id": "memory",
+          "title": "memory"
+        }
+      ]
+    },
+    {
+      "panel_id": "provider-manager",
+      "subnodes": [
+        {
+          "subnode_id": "providers",
+          "title": "providers"
+        },
+        {
+          "subnode_id": "gateway",
+          "title": "gateway"
+        }
+      ]
+    },
+    {
+      "panel_id": "agent-hub",
+      "subnodes": [
+        {
+          "subnode_id": "registry",
+          "title": "registry"
+        },
+        {
+          "subnode_id": "communication",
+          "title": "communication"
+        },
+        {
+          "subnode_id": "slots",
+          "title": "slots"
+        }
+      ]
+    },
+    {
+      "panel_id": "skill-manager",
+      "subnodes": [
+        {
+          "subnode_id": "catalog",
+          "title": "catalog"
+        },
+        {
+          "subnode_id": "panel",
+          "title": "panel"
+        }
+      ]
+    },
+    {
+      "panel_id": "mcp-manager",
+      "subnodes": [
+        {
+          "subnode_id": "servers",
+          "title": "servers"
+        },
+        {
+          "subnode_id": "panel",
+          "title": "panel"
+        }
+      ]
+    },
+    {
+      "panel_id": "search",
+      "subnodes": [
+        {
+          "subnode_id": "constitution",
+          "title": "constitution"
+        },
+        {
+          "subnode_id": "tools",
+          "title": "tools"
+        },
+        {
+          "subnode_id": "objects",
+          "title": "objects"
+        },
+        {
+          "subnode_id": "okf-entry",
+          "title": "okf-entry"
+        },
+        {
+          "subnode_id": "manuals",
+          "title": "manuals"
+        },
+        {
+          "subnode_id": "graph",
+          "title": "graph"
+        },
+        {
+          "subnode_id": "offline-search",
+          "name": "offline-search",
+          "note": "E-101 魅惑裁 2026-08-11：线下搜索按工具手段划分（everything 等）"
+        }
+      ]
+    },
+    {
+      "panel_id": "hardware",
+      "subnodes": [
+        {
+          "subnode_id": "devices",
+          "title": "devices"
+        },
+        {
+          "subnode_id": "tools-windows",
+          "title": "tools-windows"
+        },
+        {
+          "subnode_id": "tools-browser",
+          "title": "tools-browser"
+        },
+        {
+          "subnode_id": "tools-cloudflare",
+          "title": "tools-cloudflare"
+        }
+      ]
+    },
+    {
+      "panel_id": "projects",
+      "subnodes": [
+        {
+          "subnode_id": "project-assets",
+          "title": "project-assets"
+        },
+        {
+          "subnode_id": "new-media-ops",
+          "name": "新媒体运营",
+          "note": "2026-08-10 魅惑立：抖音等新媒体平台运营；抖音为该子域 L3 细分"
+        }
+      ]
+    },
+    {
+      "panel_id": "guardian",
+      "subnodes": [
+        {
+          "subnode_id": "guardian-manager",
+          "title": "guardian-manager"
+        }
+      ]
+    }
+  ],
+  "data_asset_classes": [
+    {
+      "id": "dac:tuwen",
+      "name": "图文创作",
+      "order": 1,
+      "parent": "projects.project-assets",
+      "status": "active",
+      "note": "图文创作①（最重要）：文档/html-md、公众号文章、图文内容原料/语料库、文案模板。总控判据（overseas-operations 案例）：内容原料→图文①"
+    },
+    {
+      "id": "dac:ruanjian",
+      "name": "软件开发",
+      "order": 2,
+      "parent": "projects.project-assets",
+      "status": "active",
+      "note": "软件开发②：app/软件也是数字资产（E-12 用户确认）"
+    },
+    {
+      "id": "dac:shijue",
+      "name": "视觉设计",
+      "order": 3,
+      "parent": "projects.project-assets",
+      "status": "active",
+      "note": "视觉设计③：设计稿/UI/视觉资产"
+    },
+    {
+      "id": "dac:tuxiang",
+      "name": "图像生成处理",
+      "order": 4,
+      "parent": "projects.project-assets",
+      "status": "active",
+      "note": "图像④：图片素材/标签/审核/生成处理"
+    },
+    {
+      "id": "dac:shipin",
+      "name": "视频创作",
+      "order": 5,
+      "parent": "projects.project-assets",
+      "status": "active",
+      "note": "视频⑤：视频素材/项目/制作流程"
+    },
+    {
+      "id": "dac:zhishiku",
+      "name": "知识库",
+      "order": 6,
+      "parent": "projects.project-assets",
+      "status": "active",
+      "proposal": {
+        "raised_by": "skill manager 常驻1",
+        "endorsed_by": "魅惑（2026-08-03 拍板走增长流）",
+        "reason": "知识库型库出现且与图文创作①性质不同：zst-kb（公众号 2161 篇合集）、shiji-kb（史记结构化 130 篇）为「文献/知识结构化库」，非创作原料。若此类库增多，宜有独立子类",
+        "approved_at": "2026-08-03T05:55:00+08:00"
+      },
+      "note": "知识库（候选子类，走增长流：candidate→总控批准→active）。未批准前引用值门闸仍可通过（值存在于本文件），批准后仅需 status 改 active。",
+      "approved_by": "总控1（WorkBuddy）2026-08-03 13:4x：zst-kb(2161篇)+shiji-kb(史记130)实态支撑，增长流首例转正"
+    },
+    {
+      "id": "intake:wechat",
+      "name": "公众号渠道",
+      "parent": "beads.intake",
+      "status": "active",
+      "proposal": {
+        "raised_by": "魅惑",
+        "approved_at": "2026-08-08",
+        "reason": "入料口 L3=来源渠道；公众号为唯一有完整工具族（6 下载+WeRSS）的渠道，首例激活"
+      },
+      "note": "渠道类 L3（非资产类），因 L3 唯一定义点在本文件故登记于此；坐标 map.beads.intake.wechat"
+    },
+    {
+      "id": "intake:webpage",
+      "name": "网页渠道",
+      "parent": "beads.intake",
+      "status": "candidate",
+      "proposal": {
+        "raised_by": "魅惑",
+        "approved_at": "2026-08-08",
+        "reason": "入料口 L3 候选 网页渠道，用到再走增长流"
+      }
+    },
+    {
+      "id": "intake:video",
+      "name": "视频渠道",
+      "parent": "beads.intake",
+      "status": "candidate",
+      "proposal": {
+        "raised_by": "魅惑",
+        "approved_at": "2026-08-08",
+        "reason": "入料口 L3 候选 视频渠道，用到再走增长流"
+      }
+    },
+    {
+      "id": "intake:audio",
+      "name": "音频渠道",
+      "parent": "beads.intake",
+      "status": "candidate",
+      "proposal": {
+        "raised_by": "魅惑",
+        "approved_at": "2026-08-08",
+        "reason": "入料口 L3 候选 音频渠道，用到再走增长流"
+      }
+    },
+    {
+      "id": "intake:image",
+      "name": "图片渠道",
+      "parent": "beads.intake",
+      "status": "candidate",
+      "proposal": {
+        "raised_by": "魅惑",
+        "approved_at": "2026-08-08",
+        "reason": "入料口 L3 候选 图片渠道，用到再走增长流"
+      }
+    },
+    {
+      "id": "browser:cloudflare",
+      "name": "cloudflare 操作闭环（浏览器控制台系）",
+      "parent": "hardware.tools-browser",
+      "status": "active",
+      "note": "E-64 魅惑裁决 2026-08-09：CF 操作闭环=浏览器控制台，并入 tools-browser"
+    },
+    {
+      "id": "hardware.tools-cloudflare",
+      "name": "tools-cloudflare（旧子域）",
+      "parent": "hardware.tools-browser",
+      "status": "deprecated",
+      "note": "E-64 降级为 browser:cloudflare L3（2026-08-09）；历史文档/证据留长名豁免"
+    },
+    {
+      "id": "offline:everything",
+      "name": "Everything 本地文件名/路径搜索（线下搜索 D2）",
+      "parent": "search.offline-search",
+      "status": "active",
+      "note": "E-107 魅惑「拆先行块」2026-08-12：线下搜索扶正最小先行块，为 E-101 搜索系卡通路"
+    }
+  ],
+  "lifecycle_rules": {
+    "growth": "新子类=候选提案（candidate）→ 总控批准 → active",
+    "retirement": "子类只许 deprecated（标记弃用，保留 id）不许删",
+    "uniqueness": "所有引用方（webpage-asset-registry.data_asset_class / skill-panel-mapping.data_asset_class）的值必须存在于本文件 data_asset_classes（零未知指向，门闸校验）"
+  },
+  "l3_status": "正式 L3（2026-08-04 名分落实：三级坐标通用层首例；混合资产用 dac_secondary 副字段，主字段不双挂）",
+  "panels_synced_at": "2026-08-08 E-60 验收修：panels 骨架从 panel-manifest-v0.json 重镜像（单向引用规则既有，执行层未同步导致 desktop 旧面板残留/projects 等新面板缺失）",
+  "l3_mapping": {
+    "hardware.tools-windows": {
+      "l3_family": "dac 族（data-asset-taxonomy 为唯一 L3 权威）",
+      "map": {
+        "exe/工具类": "dac:ruanjian",
+        "终端设计类(figma 等)": "dac:shijue",
+        "图文内容生产": "dac:tuwen",
+        "视频生产": "dac:shipin",
+        "本地搜索工具": "offline:everything"
+      },
+      "note": "2026-08-05 魅惑拍板（hardware-tools-taxonomy merged_note 原话）；2026-08-10 E-67 入活权威；2026-08-16 E-136 值域补录（Everything GUI/rg 挂 offline:everything）"
+    },
+    "hardware.tools-browser": {
+      "l3_family": "browser 系（E-64 在册：browser:cloudflare）",
+      "note": "破格类在各自子域 L3；2026-08-15 魅惑裁：chrome-for-testing-canary/kimi-webbridge 归浏览器与爬虫 L3（browser:automation）",
+      "map": {
+        "exe/工具类": "browser:automation"
+      }
+    },
+    "其余子域": {
+      "l3_family": "projects.project-assets 已设 L3（dac:tuwen/ruanjian 等，data_asset_classes）；其余量小不设",
+      "note": "工具域已各自补 key（harness.modules/tools-browser/offline-search 2026-08-15）；其余量小不设"
+    },
+    "harness.modules": {
+      "map": {
+        "exe/工具类": "dac:ruanjian"
+      },
+      "note": "E-122 意图落地（工具默认软件类）；预判器 tools 修复执行单 2026-08-15（harness.modules 14 条模块工具）"
+    },
+    "search.offline-search": {
+      "map": {
+        "exe/工具类": "offline:everything"
+      },
+      "note": "E-122 意图落地（工具默认软件类）；预判器 tools 修复执行单 2026-08-15（search-cdf/search-stack/cnsearch 线下搜索工具，O8 魅惑裁 2026-08-15）"
+    }
+  }
+}

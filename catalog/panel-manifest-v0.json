@@ -1,0 +1,474 @@
+{
+  "schema": "panel-manifest-v0",
+  "authority_note": "层1 面板结构唯一权威（草案 v5.5 §二/§五）。renderer 名=目标实现清单，随模板改造落地；门闸 11 在模板改造后运行。",
+  "created_at": "2026-07-31T16:02:30.011994+00:00",
+  "panels": [
+    {
+      "panel_id": "topology",
+      "title": "系统层（地图+呈现）",
+      "sort_position": 1,
+      "display_number": 0,
+      "subnodes": [
+        {
+          "subnode_id": "desktop-slots",
+          "title": "desktop-slots"
+        },
+        {
+          "subnode_id": "workbench-card",
+          "title": "workbench-card",
+          "status": "deprecated",
+          "note": "E-111 deprecated（魅惑 08-11 04:31 已裁；标 deprecated 不删，渲染层跳过）"
+        },
+        {
+          "subnode_id": "governance",
+          "name": "governance",
+          "note": "2026-08-11 魅惑立（E-87 27条逐条过）：大地图治理机制（关系注册表/协调规则/投影批次等子机制，非大地图本体）"
+        }
+      ],
+      "sections": [
+        {
+          "id": "source-strip",
+          "type": "strip",
+          "source": "snapshot.sources",
+          "renderer": "renderSourceStrip"
+        },
+        {
+          "id": "main-diagram",
+          "type": "custom",
+          "source": "snapshot entities+edges",
+          "renderer": "renderTopology"
+        },
+        {
+          "id": "counts",
+          "type": "strip",
+          "source": "entityCounts+edgeCounts+branchTaskCounts",
+          "renderer": "renderCounts"
+        }
+      ]
+    },
+    {
+      "panel_id": "beads",
+      "title": "项目管理中心",
+      "sort_position": 2,
+      "display_number": 1,
+      "subnodes": [
+        {
+          "subnode_id": "beads-views",
+          "title": "任务视图"
+        },
+        {
+          "subnode_id": "intake",
+          "name": "入料口",
+          "note": "信息入口：任何信息转 md/html 后进此分诊（2026-08-08 魅惑立）；与 inbox（管事）平级，管料"
+        },
+        {
+          "subnode_id": "governance",
+          "name": "governance",
+          "note": "2026-08-11 魅惑立（E-87 27条逐条过）：beads 治理/基建/运维（非 beads-views 视图、非 intake 入料）"
+        }
+      ],
+      "sections": [
+        {
+          "id": "active-tasks",
+          "type": "table",
+          "source": "beads.active",
+          "renderer": "renderTaskTable"
+        },
+        {
+          "id": "project-assets",
+          "type": "cards",
+          "source": "placements(beads.project-assets)",
+          "renderer": "renderCards"
+        },
+        {
+          "id": "deps",
+          "type": "table",
+          "source": "beads.dependencies",
+          "renderer": "renderDepsTable"
+        },
+        {
+          "id": "manuals",
+          "type": "strip",
+          "source": "manualCoverage",
+          "renderer": "renderManualStrip"
+        },
+        {
+          "id": "quality-strip",
+          "type": "strip",
+          "source": "coverage+manualCoverage",
+          "renderer": "renderQualityStrip"
+        }
+      ]
+    },
+    {
+      "panel_id": "harness",
+      "title": "Harness 轨道",
+      "sort_position": 3,
+      "display_number": 2,
+      "subnodes": [
+        {
+          "subnode_id": "modules",
+          "title": "modules"
+        },
+        {
+          "subnode_id": "threads",
+          "title": "threads"
+        },
+        {
+          "subnode_id": "standards",
+          "title": "standards"
+        },
+        {
+          "subnode_id": "memory",
+          "title": "memory"
+        }
+      ],
+      "sections": [
+        {
+          "id": "modules",
+          "type": "cards",
+          "source": "placements(harness.modules)",
+          "renderer": "renderCards"
+        }
+      ]
+    },
+    {
+      "panel_id": "provider-manager",
+      "title": "Provider/API Key",
+      "sort_position": 4,
+      "display_number": 3,
+      "subnodes": [
+        {
+          "subnode_id": "providers",
+          "title": "providers"
+        },
+        {
+          "subnode_id": "gateway",
+          "title": "gateway"
+        }
+      ],
+      "sections": [
+        {
+          "id": "providers",
+          "type": "cards",
+          "source": "placements(provider-manager.providers)",
+          "renderer": "renderCards"
+        },
+        {
+          "id": "gateway",
+          "type": "cards",
+          "source": "placements(provider-manager.gateway)",
+          "renderer": "renderCards"
+        }
+      ]
+    },
+    {
+      "panel_id": "agent-hub",
+      "title": "Agent Hub 通信",
+      "sort_position": 5,
+      "display_number": 4,
+      "subnodes": [
+        {
+          "subnode_id": "registry",
+          "title": "registry"
+        },
+        {
+          "subnode_id": "communication",
+          "title": "communication"
+        },
+        {
+          "subnode_id": "slots",
+          "title": "slots"
+        }
+      ],
+      "sections": [
+        {
+          "id": "registry",
+          "type": "cards",
+          "source": "placements(agent-hub.registry)",
+          "renderer": "renderCards"
+        },
+        {
+          "id": "communication",
+          "type": "cards",
+          "source": "placements(agent-hub.communication)",
+          "renderer": "renderCards"
+        },
+        {
+          "id": "topology-families",
+          "type": "custom",
+          "source": "agentTopology",
+          "renderer": "renderAgentTopology"
+        }
+      ]
+    },
+    {
+      "panel_id": "skill-manager",
+      "title": "Skill Manager",
+      "sort_position": 6,
+      "display_number": 5,
+      "subnodes": [
+        {
+          "subnode_id": "catalog",
+          "title": "catalog"
+        },
+        {
+          "subnode_id": "panel",
+          "title": "panel"
+        }
+      ],
+      "sections": [
+        {
+          "id": "catalog",
+          "type": "cards",
+          "source": "placements(skill-manager.catalog)",
+          "renderer": "renderCards"
+        },
+        {
+          "id": "panel",
+          "type": "cards",
+          "source": "placements(skill-manager.panel)",
+          "renderer": "renderCards"
+        }
+      ]
+    },
+    {
+      "panel_id": "mcp-manager",
+      "title": "MCP Manager",
+      "sort_position": 7,
+      "display_number": 6,
+      "subnodes": [
+        {
+          "subnode_id": "servers",
+          "title": "servers"
+        },
+        {
+          "subnode_id": "panel",
+          "title": "panel"
+        }
+      ],
+      "sections": [
+        {
+          "id": "servers",
+          "type": "cards",
+          "source": "placements(mcp-manager.servers)",
+          "renderer": "renderCards"
+        },
+        {
+          "id": "panel",
+          "type": "cards",
+          "source": "placements(mcp-manager.panel)",
+          "renderer": "renderCards"
+        },
+        {
+          "id": "enabled_for",
+          "type": "custom",
+          "source": "mcp registry enabled_for 全矩阵",
+          "renderer": "renderEnabledForMatrix"
+        }
+      ]
+    },
+    {
+      "panel_id": "search",
+      "title": "搜索线",
+      "sort_position": 8,
+      "display_number": 7,
+      "subnodes": [
+        {
+          "subnode_id": "constitution",
+          "title": "constitution"
+        },
+        {
+          "subnode_id": "tools",
+          "title": "tools"
+        },
+        {
+          "subnode_id": "objects",
+          "title": "objects"
+        },
+        {
+          "subnode_id": "okf-entry",
+          "title": "okf-entry"
+        },
+        {
+          "subnode_id": "manuals",
+          "title": "manuals"
+        },
+        {
+          "subnode_id": "graph",
+          "title": "graph"
+        },
+        {
+          "subnode_id": "offline-search",
+          "title": "offline-search",
+          "note": "E-101 魅惑裁 2026-08-11：线下搜索按工具手段划分（everything 等）"
+        }
+      ],
+      "sections": [
+        {
+          "id": "constitution",
+          "type": "cards",
+          "source": "okf-search-constitution refs",
+          "renderer": "renderCards"
+        },
+        {
+          "id": "tools",
+          "type": "cards",
+          "source": "placements(search.tools)",
+          "renderer": "renderCards"
+        },
+        {
+          "id": "objects",
+          "type": "cards",
+          "source": "placements(search.objects)",
+          "renderer": "renderCards"
+        },
+        {
+          "id": "okf-entry",
+          "type": "cards",
+          "source": "placements(search.okf-entry)",
+          "renderer": "renderCards"
+        },
+        {
+          "id": "manuals",
+          "type": "cards",
+          "source": "manual-registry refs",
+          "renderer": "renderCards"
+        },
+        {
+          "id": "graph",
+          "type": "custom",
+          "source": "snapshot edges+codegraph-browser",
+          "renderer": "renderGraph"
+        },
+        {
+          "id": "offline-search",
+          "type": "cards",
+          "source": "placements(search.offline-search)",
+          "renderer": "renderCards"
+        }
+      ]
+    },
+    {
+      "panel_id": "hardware",
+      "title": "硬件与团队协作",
+      "sort_position": 9,
+      "display_number": 8,
+      "subnodes": [
+        {
+          "subnode_id": "devices",
+          "title": "devices"
+        },
+        {
+          "subnode_id": "tools-windows",
+          "title": "tools-windows"
+        },
+        {
+          "subnode_id": "tools-browser",
+          "title": "tools-browser"
+        }
+      ],
+      "sections": [
+        {
+          "id": "devices",
+          "type": "cards",
+          "source": "placements(hardware.devices)",
+          "renderer": "renderCards"
+        },
+        {
+          "id": "mounts",
+          "type": "cards",
+          "source": "placements(hardware.mounts)",
+          "renderer": "renderCards"
+        },
+        {
+          "id": "tools-windows",
+          "type": "cards",
+          "source": "placements(hardware.tools-windows)",
+          "renderer": "renderCards"
+        },
+        {
+          "id": "tools-browser",
+          "type": "cards",
+          "source": "placements(hardware.tools-browser)",
+          "renderer": "renderCards"
+        }
+      ]
+    },
+    {
+      "panel_id": "projects",
+      "title": "项目与资产",
+      "subnodes": [
+        {
+          "subnode_id": "project-assets",
+          "title": "project-assets"
+        },
+        {
+          "subnode_id": "new-media-ops",
+          "name": "新媒体运营",
+          "note": "2026-08-10 魅惑立：抖音等新媒体平台运营；抖音为该子域 L3 细分"
+        }
+      ],
+      "sections": [
+        {
+          "id": "project-assets",
+          "type": "cards",
+          "source": "registry(projects)",
+          "renderer": "renderCards"
+        }
+      ],
+      "display_number": 9,
+      "sort_position": 10
+    },
+    {
+      "panel_id": "guardian",
+      "title": "守护",
+      "subnodes": [
+        {
+          "subnode_id": "guardian-manager",
+          "title": "guardian-manager"
+        }
+      ],
+      "sections": [
+        {
+          "id": "guardian-manager",
+          "type": "cards",
+          "source": "guardian-registry",
+          "renderer": "renderCards"
+        }
+      ],
+      "display_number": 10,
+      "sort_position": 11
+    }
+  ],
+  "gates": {
+    "exact_panel_ids": [
+      "map.topology",
+      "map.beads",
+      "map.harness",
+      "map.provider-manager",
+      "map.agent-hub",
+      "map.skill-manager",
+      "map.mcp-manager",
+      "map.search",
+      "map.hardware",
+      "map.projects",
+      "map.guardian"
+    ],
+    "card_conservation": {
+      "scope": "43 mounted asset_ids",
+      "rule": "set-equality"
+    },
+    "drop_panels": [
+      "coverage",
+      "manual-coverage",
+      "assets",
+      "manuals",
+      "relations",
+      "workbench"
+    ],
+    "note_e46_audit": "exact_panel_ids 随 E-46 迁移同步（审核违例 C）"
+  },
+  "note_e46": "2026-08-07 分层大迁移（魅惑拍板）：desktop→topology / beads拆（收件箱留beads+project-assets→projects）/ guardian复位独立",
+  "order_fixed_at": "2026-08-08 E-60 验收后总控自审修：display_number/sort_position 原残留旧序（beads=2/hardware=3/projects/guardian 缺字段），按魅惑流水线序重排；5-8 工具层内部序=总控建议值（skill-manager/mcp-manager/search/hardware），魅惑可一句话改"
+}

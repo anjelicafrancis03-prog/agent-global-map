@@ -1,0 +1,291 @@
+{
+  "registryId": "registry:source-registry:v1",
+  "contractRef": "tools/agent-system-map/contract/core-contract-v1.1.json",
+  "viewProjectionManifest": "topology-view.json",
+  "generatedAt": "2026-07-31T22:00:00+08:00",
+  "note": [
+    "元注册表: 全局大地图的可插拔权威源清单。核心只遍历本表加载适配器,不硬编码源清单。",
+    "interface-agnostic: agent 产出统一为 agent_family,不假设 CLI;interface_kind 字段区分 cli/desktop-app/gui/web/headless/unspecified。",
+    "读写分权(硬边界): 本表只统一'读投影进 map'的接口;各 Manager 写侧(preview/approval/apply/CAS/evidence/rollback)保持独立,禁一键跨改。",
+    "范围: 本机(桌面版+CLI)agent 的注册+管理;通信/多端为 pending 源槽,不在本轮搭建。"
+  ],
+  "provenancePolicy": {
+    "requiredFields": [
+      "observed_at",
+      "fresh_until",
+      "confidence",
+      "authority",
+      "state_plane",
+      "source_refs"
+    ],
+    "freshUntilPolicy": "declared 配置源: fresh_until = 源文件 mtime + 7d; 运行观测源: 需当次探测,不用文件 mtime。"
+  },
+  "sources": [
+    {
+      "sourceId": "beads",
+      "status": "active",
+      "authority": "Beads / .beads / bd",
+      "interface": "bd export (JSONL)",
+      "producesEntities": [
+        "task",
+        "pillar",
+        "lane"
+      ],
+      "producesEdges": [
+        "BLOCKS",
+        "RELATES_TO",
+        "CLASSIFIED_AS",
+        "SUPERSEDES"
+      ],
+      "statePlane": "declared",
+      "adapter": "Invoke-MapValidator.ps1 (codex-temr.5, 已建)",
+      "sensitiveRule": "不导出 memories(bd export 默认排除)",
+      "note": "任务状态权威;map 只展示+双向关系,不复制状态。"
+    },
+    {
+      "sourceId": "agent-hub",
+      "status": "active",
+      "authority": "Agent Hub / agent-families.json",
+      "interface": "file: tools/agent-hub/agent-families.json",
+      "producesEntities": [
+        "agent_family",
+        "agent_profile",
+        "runtime_slot"
+      ],
+      "producesEdges": [
+        "HAS_PROFILE",
+        "DECLARES_SLOT"
+      ],
+      "statePlane": "declared",
+      "adapter": "adapters/agent-hub-adapter.ps1",
+      "interfaceKindField": "agent_family.interface_kind ∈ {cli,desktop-app,gui,web,headless,unspecified}",
+      "note": "声明面(declared)。24 声明槽 ≠ Desktop 观测 21;差 3 为 MiMo(已禁用)。observed 面归 desktop-live 源,不合并。"
+    },
+    {
+      "sourceId": "okf",
+      "status": "active",
+      "authority": "OKF bundles / okf-bundles/index.md",
+      "interface": "dir: okf-bundles/*/index.md",
+      "producesEntities": [
+        "manual"
+      ],
+      "producesEdges": [],
+      "statePlane": "declared",
+      "adapter": "adapters/okf-adapter.ps1",
+      "note": "每个 bundle = 一个 manual 对象。"
+    },
+    {
+      "sourceId": "harness",
+      "status": "active",
+      "authority": "Harness module index / docs/harness-modules",
+      "interface": "dir: docs/harness-modules/*/module-card.md",
+      "producesEntities": [
+        "module"
+      ],
+      "producesEdges": [],
+      "statePlane": "declared",
+      "adapter": "adapters/harness-adapter.ps1",
+      "note": "Harness 页下含 Loop Runtime / Agent System(无 Night Watch)。"
+    },
+    {
+      "sourceId": "desktop-app-agents",
+      "status": "pending",
+      "authority": "(待定: 桌面版 agent 注册文件)",
+      "interface": "(pending)",
+      "producesEntities": [
+        "agent_family(interface_kind=desktop-app)"
+      ],
+      "statePlane": "declared",
+      "note": "桌面版(非CLI)agent 注册口。当前无具体清单文件,留 pending;有了直接注册进本源,不改核心。"
+    },
+    {
+      "sourceId": "skill-manager",
+      "status": "active",
+      "authority": "Skill Manager (独立写权威)",
+      "interface": "(pending: Manager 只读 status/audit)",
+      "producesEntities": [
+        "capability(kind=skill)"
+      ],
+      "statePlane": "managed",
+      "writeBoundary": "独立 preview/approval/apply/CAS/evidence/rollback;禁与 MCP 一键跨改。",
+      "note": "读投影进 map;写侧独立。"
+    },
+    {
+      "sourceId": "mcp-manager",
+      "status": "active",
+      "authority": "MCP Manager (独立写权威)",
+      "interface": "(pending: Manager 只读 status/audit)",
+      "producesEntities": [
+        "capability(kind=mcp)"
+      ],
+      "statePlane": "managed",
+      "writeBoundary": "独立 preview/approval/apply/CAS/evidence/rollback;管 server/transport/process/port/network/credential-reference。",
+      "note": "读投影进 map;写侧独立。MCP Manager 与 Skill Manager 必须分开。"
+    },
+    {
+      "sourceId": "apikey-provider-manager",
+      "status": "active",
+      "authority": "APIkey/Provider Manager (独立写权威; provider ≡ api key)",
+      "interface": "file(只读): reports/agent-workbench-provider-rollout/inventory.json (UTF-8 BOM)",
+      "producesEntities": [
+        "provider_route",
+        "credential_ref"
+      ],
+      "producesEdges": [
+        "ROUTES_THROUGH",
+        "AUTHENTICATES_WITH"
+      ],
+      "statePlane": "managed",
+      "writeBoundary": "独立;凭据只存 sanitized pointer,禁 raw secret(validator 门13)。",
+      "note": "provider 就是 api key,同一 Manager。当前 3 Codex + 15 Claude eligible。"
+    },
+    {
+      "sourceId": "desktop-live",
+      "status": "excluded_until_repair",
+      "authority": "Desktop API 127.0.0.1:18765 (/api/state)",
+      "interface": "(live 读被 gated;仅 2026-07-17 脱敏快照可用)",
+      "producesEntities": [
+        "runtime_instance"
+      ],
+      "statePlane": "observed",
+      "note": "observed 面。running/health≠provider/tool/task proof。live 探测需单独授权。"
+    },
+    {
+      "sourceId": "hardware",
+      "status": "declared-only",
+      "authority": "硬件清单 / schema-hardware-audit",
+      "interface": "(声明,未探测)",
+      "producesEntities": [
+        "hardware_node",
+        "network_endpoint"
+      ],
+      "statePlane": "declared",
+      "note": "5 候选节点;无 RUNS_ON 运行证据(合同门4)。"
+    },
+    {
+      "sourceId": "communication",
+      "status": "deferred",
+      "authority": "Agent Hub 通信 (单一权威; codex-c5lu.1 slot comm model)",
+      "producesEntities": [
+        "comm_channel",
+        "message"
+      ],
+      "producesEdges": [
+        "COMMUNICATES_WITH"
+      ],
+      "note": "注册→通信的通信层。后期另开子任务搭建;通信只在 Agent Hub+Desktop 两处投影(Beads 无通信)。"
+    },
+    {
+      "sourceId": "multi-device",
+      "status": "deferred",
+      "authority": "多端清单 (手机/平板/电脑)",
+      "producesEntities": [
+        "device",
+        "remote_session"
+      ],
+      "note": "后期;当前只做本机。"
+    },
+    {
+      "sourceId": "relation-registry",
+      "status": "active",
+      "authority": "codex-69lp unified-relation-registry (run-manifest drafts)",
+      "interface": "dir: reports/run-manifests/2026-07-27-codex-69lp-step0-task-projection/*.json",
+      "producesEntities": [
+        "task",
+        "asset",
+        "system",
+        "capability"
+      ],
+      "producesEdges": [
+        "task-owns-asset",
+        "task-related-to-asset",
+        "task-uses-capability",
+        "task-projected-from",
+        "okf-documents-capability",
+        "okf-documents-asset",
+        "okf-documents-system",
+        "okf-governs-domain",
+        "asset-renders-capability",
+        "asset-renders-system",
+        "capability-fallback-of",
+        "tool-accesses-store",
+        "map-reads-source"
+      ],
+      "statePlane": "projected",
+      "note": "codex-69lp Step5; read-only pointer projection; CBM!=CodeGraph"
+    },
+    {
+      "sourceId": "onemcp-broker",
+      "status": "active",
+      "authority": "OneMCP broker / http://127.0.0.1:3009/mcp (loopback read-only)",
+      "interface": "http: 127.0.0.1:3009/mcp initialize + tools/list (read-only)",
+      "producesEntities": [
+        "module",
+        "capability"
+      ],
+      "producesEdges": [
+        "MANAGED_BY",
+        "SHARED_VIA"
+      ],
+      "statePlane": "observed",
+      "adapter": "build_multi_source_snapshot.py::src_onemcp_broker",
+      "sensitiveRule": "names/counts/health only; never backend env/credential values; no live mutation",
+      "note": "admission:onemcp-broker:v1 root-approved 2026-07-28; runtime observation, fresh per build"
+    },
+    {
+      "sourceId": "guardian-manager",
+      "status": "active",
+      "authority": "Guardian Manager (Schedule.Service COM enumeration; admission:guardian-manager:v1, root-approved 2026-07-31 AUTH-20260731-gm-v1)",
+      "interface": "Windows Task Scheduler service (Get-ScheduledTask cmdlet view; single data source, no parallel source)",
+      "producesEntities": [
+        "module",
+        "capability(kind=guardian)",
+        "guardian:<task-name>"
+      ],
+      "producesEdges": [
+        "MANAGED_BY",
+        "GUARDS"
+      ],
+      "statePlane": "managed",
+      "adapter": "build_multi_source_snapshot.py::src_guardian",
+      "gate13": "task metadata only (name/enabled/trigger_type/actual_state/last_run_result); no action args, credentials, process memory, raw XML",
+      "note": "Windows scheduled-task guardians registration/admission board (inc2-multi-source-v2). Enumeration via Get-ScheduledTask cmdlet (Task Scheduler service official read-only view; Schedule.Service COM GetSubFolders binding unavailable on this host, DISP_E_UNKNOWNNAME). Non-system tasks only; system tasks (\\Microsoft\\) excluded. Registration never implies schedule authorization."
+    }
+  ],
+  "managementViewSlots": [
+    {
+      "viewId": "view:beads-todo",
+      "consumes": "beads",
+      "shows": "open/in_progress 待办",
+      "note": "用户指定的 Beads 待办显示位。"
+    },
+    {
+      "viewId": "view:agent-registry",
+      "consumes": [
+        "agent-hub",
+        "desktop-app-agents"
+      ],
+      "shows": "全部注册 agent(CLI+桌面版)"
+    },
+    {
+      "viewId": "view:skill-mgmt",
+      "consumes": "skill-manager",
+      "shows": "skill 注册/健康",
+      "write": "独立 approval"
+    },
+    {
+      "viewId": "view:mcp-mgmt",
+      "consumes": "mcp-manager",
+      "shows": "mcp server/健康",
+      "write": "独立 approval"
+    },
+    {
+      "viewId": "view:apikey-provider-mgmt",
+      "consumes": "apikey-provider-manager",
+      "shows": "provider/apikey 路由(脱敏)",
+      "write": "独立 approval"
+    }
+  ],
+  "panelManifest": "tools/agent-system-map/catalog/panel-manifest-v0.json",
+  "entityPlacements": "tools/agent-system-map/catalog/entity-placements-v0.json"
+}

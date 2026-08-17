@@ -1,0 +1,83 @@
+{
+  "contractId": "contract:global-agent-map:core",
+  "contractVersion": "1.1-core",
+  "frozenBaseline": "reports/run-manifests/2026-07-17-codex-temr-1-frozen-contract/frozen-entity-edge-contract-v1.1-core.md",
+  "acceptedBy": "owner (64998) 2026-07-17",
+  "note": "Machine-readable projection of the accepted v1.1-core baseline for the read-only validator (codex-temr.5). Frozen core only: 14 entities, 16 edges. Reserved entities/edges live in the design doc and are NOT enforced here until admitted with authority source + fixture + negative case.",
+  "idPrefixPolicy": {
+    "forbidAsId": ["ip-address", "ssh-alias", "path", "display-name"],
+    "requirePrefix": true
+  },
+  "statePlanes": ["declared", "observed", "managed", "effective", "runtime_proof"],
+  "statusValues": ["active", "superseded", "conflict"],
+  "coreEntities": [
+    { "kind": "task", "idPrefix": "task:", "authority": "beads" },
+    { "kind": "pillar", "idPrefix": "pillar:", "authority": "beads-classification" },
+    { "kind": "lane", "idPrefix": "lane:", "authority": "beads-classification" },
+    { "kind": "agent_family", "idPrefix": "agent-family:", "authority": "agent-hub" },
+    { "kind": "agent_profile", "idPrefix": "agent-profile:", "authority": "agent-hub" },
+    { "kind": "runtime_slot", "idPrefix": "slot:", "authority": "agent-hub" },
+    { "kind": "module", "idPrefix": "module:", "authority": "harness" },
+    { "kind": "capability", "idPrefix": "capability:", "authority": "manager" },
+    { "kind": "hardware_node", "idPrefix": "hw:", "authority": "hardware-inventory" },
+    { "kind": "asset", "idPrefix": "asset:", "authority": "asset-inventory" },
+    { "kind": "manual", "idPrefix": "manual:", "authority": "okf" },
+    { "kind": "evidence", "idPrefix": "evidence:", "authority": "run-manifest" },
+    { "kind": "view", "idPrefix": "view:", "authority": "map-core" },
+    { "kind": "onboarding_entry", "idPrefix": "entry:", "authority": "map-core" }
+  ],
+  "coreEdges": [
+    { "kind": "HAS_PROFILE", "from": "agent_family", "to": "agent_profile", "reverse": "profile_of" },
+    { "kind": "DECLARES_SLOT", "from": "agent_family", "to": "runtime_slot", "reverse": "slot_declared_by" },
+    { "kind": "MANAGED_BY", "from": "*", "to": "module", "reverse": "manages" },
+    { "kind": "CLAIMS_TASK", "from": "agent_profile", "to": "task", "reverse": "claimed_by" },
+    { "kind": "CLASSIFIED_AS", "from": "task", "to": "pillar|lane", "reverse": "classifies" },
+    { "kind": "RELATES_TO", "from": "*", "to": "*", "reverse": "relates_to" },
+    { "kind": "BLOCKS", "from": "task", "to": "task", "reverse": "blocked_by" },
+    { "kind": "USES_CAPABILITY", "from": "agent_profile", "to": "capability", "reverse": "capability_used_by" },
+    { "kind": "PRODUCES", "from": "task", "to": "asset|evidence", "reverse": "produced_by" },
+    { "kind": "DERIVED_FROM", "from": "asset", "to": "asset", "reverse": "derives" },
+    { "kind": "DOCUMENTED_BY", "from": "*", "to": "manual", "reverse": "documents" },
+    { "kind": "SUPPORTED_BY", "from": "*", "to": "evidence", "reverse": "evidence_for" },
+    { "kind": "VALIDATES", "from": "evidence", "to": "*", "reverse": "validated_by" },
+    { "kind": "NEXT_ENTRY", "from": "task|asset|evidence", "to": "onboarding_entry", "reverse": "entry_from" },
+    { "kind": "DISPLAYED_IN", "from": "*", "to": "view", "reverse": "displays" },
+    { "kind": "SUPERSEDES", "from": "*", "to": "*", "reverse": "superseded_by" }
+  ],
+  "beadsAdapter": {
+    "source": "bd export (JSONL)",
+    "entityMap": {
+      "issue": "task"
+    },
+    "edgeTypeMap": {
+      "blocks": "BLOCKS",
+      "relates-to": "RELATES_TO",
+      "supersedes": "SUPERSEDES",
+      "parent-child": "__structural_parent_child__",
+      "discovered-from": "__structural_discovered_from__"
+    },
+    "labelDerivedEntities": {
+      "pillar:*": "pillar",
+      "lane:*": "lane"
+    },
+    "labelDerivedEdges": {
+      "pillar:*": "CLASSIFIED_AS",
+      "lane:*": "CLASSIFIED_AS"
+    },
+    "notes": [
+      "Beads issue.id already carries a stable codex-* id; validator maps to task: namespace but keeps the raw id for traceability.",
+      "parent-child is a Beads structural relation, not one of the 16 core semantic edges; it is recognized as structural and NOT flagged as an illegal edge type.",
+      "state_plane for Beads tasks is 'declared'; Beads carries no runtime_proof."
+    ]
+  },
+  "gates": [
+    { "id": "G01", "name": "id-unique-prefixed", "desc": "Every task id is unique and matches codex-* / prefixed policy." },
+    { "id": "G02", "name": "edge-type-allowlisted", "desc": "Every dependency type is a known core edge or recognized structural type." },
+    { "id": "G03", "name": "no-dangling-edge", "desc": "Every edge endpoint references an existing entity." },
+    { "id": "G04", "name": "classification-coverage", "desc": "Active tasks carry a pillar label or are surfaced as unclassified findings (not silently ignored)." },
+    { "id": "G05", "name": "label-namespace-drift", "desc": "pillar:/lane: labels use canonical namespaces; non-canonical (e.g. pillar:desktop) surfaced." },
+    { "id": "G06", "name": "status-valid", "desc": "Every task status is in the Beads status allowlist." },
+    { "id": "G07", "name": "count-provenance", "desc": "Every emitted count records source, method, command, timestamp, scope." },
+    { "id": "G08", "name": "state-plane-honesty", "desc": "Beads facts stay on 'declared' plane; no auto-promotion to runtime_proof." }
+  ]
+}
